@@ -42,7 +42,7 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 ## Planning
 **Week 1 (22/4-26/4)**
 - Brainstormfase
-**Week 2 (6/5-10/5) **
+**Week 2 (6/5-10/5)**
 - Onderzoek plannen
 - Vragenlijst opstellen
 - Vragenlijst testen
