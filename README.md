@@ -1,6 +1,8 @@
 # Project
+
 ## Omschrijving
 Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon swipen op groepen. 
+
 ## Usecases:
 **Een gebruiker kan:**
 - Een account aanmaken
@@ -39,13 +41,22 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 
 ## Opbouw frontend
 - Angular
-- ModeJS
+- NodeJS
 - *Geen CSS Frameworks* **Die schrijft joost wel**
 - 
 
 ## Opbouw backend
 - Django
-- Mysql
+- MySQL
+
+## Werkwijze
+- camelCase
+- CSS BEM
+- Regelmatig pullen
+- git push aan eind van de dag
+- Comments schrijven (JSDoc, PyDoc)
+- Atomic functies
+- Trello bijhouden
 
 ## Todo's
 - Schermontwerpen maken
