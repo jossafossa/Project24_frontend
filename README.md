@@ -4,6 +4,7 @@
 Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon swipen op groepen. 
 
 
+
 ## Werkwijze
 **Coding**
 - camelCase
@@ -45,6 +46,36 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 - prikbord edit item
 - prikbord datumprikker
 
+## API
+
+### Authentication
+| function | method | endpoint | fields | returns |
+|-|-|-|-|-|
+| signup | POST | `/signup` | `String username`<br> `String password` |
+| login | POST | `/login` | `String username`<br> `String password` | `String token` |
+
+
+### Users
+| function | method | endpoint | fields | returns |
+|-|-|-|-|-|
+| create user | POST | `/user/create` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> |
+| get user | GET | `/user/<userID>` | | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br>|
+| edit user | POST | `/user/<userID>/edit` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> |
+| get next group | GET | `/user/<userID>/match/next` | `String groupID`<br> `boolean like` | **a group object**`Group` |
+| get all matched users | GET | `/user/<userID>/match/get` |  | **A list of groups**<br>`Group[]` |
+| get a matched user | GET | `/user/<userID>/match/get/<groupID>` |  | **a group object**<br>`Group` |
+
+### Groups
+| function | method | endpoint |  fields | returns |
+|-|-|-|-|-|
+| create group| POST | `/group/create` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members`
+| get group| GET | `/group/<groupID>` | | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members` |
+| edit group| POST | `/group/<groupID>/edit` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members` |
+| get next profile | GET | `/group/<groupID>/match/next` | `String profileID`<br> `boolean like` | **a group object**<br>`Group` |
+| get all matches groups | GET | `/group/<groupID>/match/get` |  | **A list of users**<br>`User[]` |
+| get a matched user | GET | `/group/<groupID>/match/get/<userID>` |  | **A list of users**<br>`User` |
+
+
 ## Planning
 // todo
 
@@ -52,6 +83,7 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 **Een gebruiker kan:**
 - Een account aanmaken
 - Een groep aanmaken
+- Een lijst van getmatchte groepen zien
 - Profiel aanpassen
 - Swipen op groepen
 
@@ -61,6 +93,7 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 - Mensen toevoegen
 - Mensen verwijderen
 - Swipen op profielen
+- Een lijst van getmatchte profielen zien
 
 **Een groeps lid kan:**
 - Uit de groep stappen
