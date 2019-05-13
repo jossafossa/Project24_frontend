@@ -51,7 +51,8 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 **Week 3 (13/5-17/5)**
 - Vragenlijst definitief uitsturen
 
-**Week 4 (20/5-24/5) Verslag schrijven **
+**Week 4 (20/5-24/5)**
+- Verslag schrijven
 - Data analyseren
 - Verslag concept inleveren uiterlijk 24 mei, 12:00
 
