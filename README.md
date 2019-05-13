@@ -38,3 +38,22 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 - Klassendiagram maken
 - Backend opzetten
 - Frontend opzetten
+
+## Planning
+**Week 1 (22/4-26/4)**
+- Brainstormfase
+**Week 2 (6/5-10/5) **
+- Onderzoek plannen
+- Vragenlijst opstellen
+- Vragenlijst testen
+**Week 3 (13/5-17/5)**
+- Vragenlijst definitief uitsturen
+**Week 4 (20/5-24/5) Verslag schrijven **
+- Data analyseren
+- Verslag concept inleveren uiterlijk 24 mei, 12:00
+**Week 5-6 (27/05-07/06)**
+- Verslag schrijven
+**Week 7 (10/6-14/6)**
+- deadline 14/6 12:00 uur: definitief verslag (individueel)
+**Week 8 - 10**
+- Feedback 
