@@ -23,5 +23,18 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 - Een datumprikker aanmaken
 - Reageren op een datumprikker
 
+## Opbouw frontend
+- Angular
+- ModeJS
+- *Geen CSS Frameworks* **Die schrijft joost wel**
+- 
+
+## Opbouw backend
+- Django
+- Mysql
+
 ## Todo's
-// todo
+- Schermontwerpen maken
+- Klassendiagram maken
+- Backend opzetten
+- Frontend opzetten
