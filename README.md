@@ -12,10 +12,10 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 - Comments schrijven (JSDoc, PyDoc)
 - Atomic functies
 
-
-
 **git**
+- Alles op master
 - Regelmatig pullen
+- regelmatig committen
 - git push aan eind van de dag
 
 **Algemeen**
