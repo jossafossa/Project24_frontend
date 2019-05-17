@@ -81,7 +81,7 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 | get group| GET | `/group/<groupID>` | | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members`<br> `String location` |
 | edit group| POST | `/group/<groupID>/edit` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members` |
 | set photo at slot | POST | `/group/<groupID>/photos/<slotID>` | `base64 photo` |
-| remove photo at slot | POST | `/group/<groupID>/photos/<slotID>/remove` | `base64 photo` |
+| remove photo at slot | POST | `/group/<groupID>/photos/<slotID>/remove` | |
 | add interest | POST | `/group/<groupID>/interests/add` | `String InterestID` |  |
 | get interests | GET | `/group/<groupID>/interests` | `Interest[] interests` |
 | remove interest | POST | `/group/<groupID>/interests/<interestID>/remove` | 
