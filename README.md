@@ -3,8 +3,6 @@
 ## Omschrijving
 Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon swipen op groepen. 
 
-
-
 ## Werkwijze
 **Coding**
 - camelCase
@@ -31,6 +29,15 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 ## Opbouw backend
 - Django
 - MySQL
+
+## modules
+|Module|contents|
+|-|-|
+| HomeModule | `NavModule`, `WelcomeComponent` |
+| NavModule | `LoginButtonComponent`, `LogoutButtonComponent`, `SignupButtonComponent`  | 
+| CreateAccountModule | `AuthenticationInfoComponent`, `EditBasicInfoComponent`, `EditInterestsComponent`, `EditPhotosComponent` | 
+| ViewAccountModule | `ViewBasicInfoComponent`, `EditInterestsComponent`, `EditPhotosComponent`  |
+
 
 ## Pagina's
 - create account
