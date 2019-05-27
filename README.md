@@ -36,6 +36,7 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 | HomeModule | `NavModule`, `WelcomeComponent` |
 | NavModule | `LoginButtonComponent`, `LogoutButtonComponent`, `SignupButtonComponent`  | 
 | CreateAccountModule | `AuthenticationInfoComponent`, `EditBasicInfoComponent`, `EditInterestsComponent`, `EditPhotosComponent` | 
+| LoginAccountModule | `LoginComponent` | 
 | ViewAccountModule | `ViewBasicInfoComponent`, `EditInterestsComponent`, `EditPhotosComponent`  |
 
 
