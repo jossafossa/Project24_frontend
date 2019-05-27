@@ -51,29 +51,61 @@ Een app waarmee je groepen kunt vinden door te swipen. Je kunt ook als persoon s
 ### Authentication
 | function | method | endpoint | fields | returns |
 |-|-|-|-|-|
-| signup | POST | `/signup` | `String username`<br> `String password` |
-| login | POST | `/login` | `String username`<br> `String password` | `String token` |
+| signup | POST | `/signup` | `String username`<br> `String password` <br> `/user/create` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[<InterestID>] interests` |
+| login | POST | `/login` | `String username`<br> `String password` | `JWT<{userID: <userID>}> token` |
 
+### Interests
+| function | method | endpoint | fields | returns |
+|-|-|-|-|-|
+| get all | GET | `/interests` |  | `InterestObject[] interests` | 
 
 ### Users
 | function | method | endpoint | fields | returns |
 |-|-|-|-|-|
-| create user | POST | `/user/create` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> |
 | get user | GET | `/user/<userID>` | | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br>|
-| edit user | POST | `/user/<userID>/edit` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> |
-| get next group | GET | `/user/<userID>/match/next` | `String groupID`<br> `boolean like` | **a group object**`Group` |
-| get all matched users | GET | `/user/<userID>/match/get` |  | **A list of groups**<br>`Group[]` |
-| get a matched user | GET | `/user/<userID>/match/get/<groupID>` |  | **a group object**<br>`Group` |
+| edit user | POST | `/user/<userID>/edit` | `String name`<br> `Base64 profilePicture`<br> `String location` |
+| set photo at slot | POST | `/user/<userID>/photos/<slotID>` | `base64 photo` |
+| remove photo at slot | POST | `/user/<userID>/photos/<slotID>/remove` | `base64 photo` |
+| add interest | POST | `/user/<userID>/interests/add` | `String InterestID` |  |
+| get interests | GET | `/user/<userID>/interests` | `Interest[] interests` |
+| remove interest | POST | `/user/<userID>/interests/<interestID>/remove` | 
+| get next group | GET | `/user/<userID>/match/next` | `String groupID`<br> `boolean like` | **a group object**<br>`Group` |
+| get all matched groups | GET | `/user/<userID>/match/all` |  | **A list of groups**<br>`Group[]` |
+| get a matched groups | GET | `/user/<userID>/match/<groupID>` |  | **a group object**<br>`Group` |
+
 
 ### Groups
 | function | method | endpoint |  fields | returns |
 |-|-|-|-|-|
-| create group| POST | `/group/create` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members`
-| get group| GET | `/group/<groupID>` | | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members` |
+| create group| POST | `/group/create` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members` <br> `String location`
+| get group| GET | `/group/<groupID>` | | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members`<br> `String location` |
 | edit group| POST | `/group/<groupID>/edit` | `String name`<br> `Base64 profilePicture`<br>  `String description`<br> `Base64[] photos`<br> `String[] interests`<br> `String[] members` |
+| set photo at slot | POST | `/group/<groupID>/photos/<slotID>` | `base64 photo` |
+| remove photo at slot | POST | `/group/<groupID>/photos/<slotID>/remove` | |
+| add interest | POST | `/group/<groupID>/interests/add` | `String InterestID` |  |
+| get interests | GET | `/group/<groupID>/interests` | `Interest[] interests` |
+| remove interest | POST | `/group/<groupID>/interests/<interestID>/remove` | 
+| add admin | POST | `/group/<groupID>/admins/add` | `String userID` | 
+| remove admin | POST | `/group/<groupID>/admins/remove` | `String userID` | 
+| add member | POST | `/group/<groupID>/members/add` | `String userID` | 
+| remove member | POST | `/group/<groupID>/members/remove` | `String userID` | 
 | get next profile | GET | `/group/<groupID>/match/next` | `String profileID`<br> `boolean like` | **a group object**<br>`Group` |
-| get all matches groups | GET | `/group/<groupID>/match/get` |  | **A list of users**<br>`User[]` |
-| get a matched user | GET | `/group/<groupID>/match/get/<userID>` |  | **A list of users**<br>`User` |
+| get all matched profiles | GET | `/group/<groupID>/match/all` |  | **A list of users**<br>`User[]` |
+| get a matched profiles | GET | `/group/<groupID>/match/<userID>` |  | **A list of users**<br>`User` |
+| remove group | POST | `/group/<groupID>/delete` | 
+
+
+### Group prikbord
+| function | method | endpoint |  fields | returns |
+|-|-|-|-|-|
+| create a boardItem | POST | `/group/<groupID>/board/add` | `String name`<br> `String createdBy`<br> `String description`<br> `String date` | 
+| edit a boardItem | POST | `/group/<groupID>/board/<boadItemID>` | `String description`<br> `String date` |  | 
+| get a boardItem | GET | `/group/<groupID>/board/<boardItemID>` |  | **A boarditem**<br> `BoardItem` | 
+| remove a boardItem | POST | `/group/<groupID>/board/<boardItemID>/remove` |  |  | 
+| get a list of all board items | GET | `/group/<groupID>/board/all` |  | **A list of board items**<br> `BoardItem[]` |
+| comment on a boardItem | POST | `/group/<groupID>/board/<boardItemID>/comment/add` | `String userID`, `String comment` |  |
+| edit a comment | POST | `/group/<groupID>/board/<boardItemID>/comment/<commentID>` | `String comment` | |
+| remove a comment | POST | `/group/<groupID>/board/<boardItemID>/comment/remove` | | |
 
 
 ## Planning
