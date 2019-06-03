@@ -9,12 +9,9 @@ const routes: Routes = [
     path: 'accounts',
     loadChildren: () => import('./accounts/accounts.module').then(mod => mod.AccountsModule),
   },
-
 	{
 		path: '', 
-		// component: HomeComponent,
-    redirectTo: '/accounts/create',
-    pathMatch: 'full'
+		component: HomeComponent,
 	},
   {
     path: 'login', 
@@ -24,11 +21,6 @@ const routes: Routes = [
     path: 'logout', 
     component: HomeComponent,
   },
-  {
-    path: 'signup', 
-    component: HomeComponent,
-  },
-
 ];
 
 @NgModule({
