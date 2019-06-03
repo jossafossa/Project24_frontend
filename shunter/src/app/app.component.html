@@ -1,9 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="homeStyle">
-<div style="text-align:center">
   <h1>
-    Welcome to {{ title }} : Create account!
+    Welcome to {{ title }}
   </h1>
-  <router-outlet #routerOutlet="outlet"></router-outlet>
+<div class="app-container">
+	<app-nav></app-nav>
+	<div class="content">
+		<router-outlet></router-outlet>
+</div>
 </div>
 </div>

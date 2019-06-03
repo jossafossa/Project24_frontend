@@ -9,15 +9,23 @@ import { JwtModule} from '@auth0/angular-jwt';
 import { HttpClientModule} from '@angular/common/http';
 import {AccountService} from './account.service';
 
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { LoginComponent } from './login/login.component';
+
 export function tokenGetter(){
   return localStorage.getItem('access-token');
 }
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NavComponent,
+    LoginComponent
   ],
   imports: [
+// <<<<<<< HEAD
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
