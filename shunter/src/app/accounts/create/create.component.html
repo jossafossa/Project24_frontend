@@ -1,0 +1,5 @@
+<app-auth-info [accountForm]="accountForm"></app-auth-info>
+<app-basic-info [accountForm]="accountForm"></app-basic-info>
+<br>
+<button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(accountForm.controls['email'].value,
+ accountForm.controls['password'].value, accountForm.controls['username'].value, accountForm.controls['status'].value)">Click me!</button>

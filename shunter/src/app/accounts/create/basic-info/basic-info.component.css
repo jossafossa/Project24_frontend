@@ -1,0 +1,27 @@
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.inputfield {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+/*.error{*/
+/*padding-left: 150px;*/
+/*  padding-bottom: 100px;*/
+/*}*/
+
+.photo {
+  /*background-image: url("https://zoo.sandiegozoo.org/sites/default/files/styles/hero_mobile_560x670/public/2019-01/hero-short-pandacam_0.jpg?itok=Qdw5BiFz");*/
+  width: 200px;
+  height: 200px;
+}

@@ -1,0 +1,32 @@
+<h2>
+  Basic info
+</h2>
+This information will be shown on your account page <br>
+*Username:
+<mat-form-field class='inputfield'>
+  <input matInput name="username" [formControl]="username" required="true">
+  <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
+</mat-form-field>
+<br>
+*Status:
+<mat-form-field class='inputfield'>
+  <input matInput name="status" [formControl]="status" required="true">
+  <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
+
+</mat-form-field>
+<br>
+*Profile picture:
+<!--<mat-form-field class='inputfield'>-->
+<!--  <div class="photo"></div>-->
+
+<!--  <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture" required="true">-->
+<!--&lt;!&ndash;<mat-error *ngIf="profilePicture.invalid"> {{getProfilePictureError}} </mat-error>&ndash;&gt;-->
+<!--  <button type="button" class="btn btn-success btn-s"-->
+<!--          (click)="uploader.uploadAll()"-->
+<!--          [disabled]="!uploader.getNotUploadedItems().length" >-->
+<!--  Upload an Image-->
+<!--&lt;!&ndash;    preview image&ndash;&gt;-->
+
+<!--</button>-->
+<!--</mat-form-field>-->
+<br>

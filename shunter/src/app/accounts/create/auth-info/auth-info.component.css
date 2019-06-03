@@ -1,0 +1,21 @@
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.inputfield {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+/*.error{*/
+/*padding-left: 150px;*/
+/*  padding-bottom: 100px;*/
+/*}*/
