@@ -1,7 +1,20 @@
-:host {
-	display: flex;
+nav.main-menu {
+	display:flex;
+	justify-content: flex-end;
+	padding:1rem;
+	background-color:#292D3B;
 }
 
-:host > * {
-	margin-left:1rem;
+.menu_item {
+	padding:.5rem 1rem;
+	margin-right:.5rem;
+	text-decoration: none;
+	font-weight:700;
+	text-transform: uppercase;
+	color:white;
+	cursor:pointer;
+}
+
+.menu_item:hover {
+	box-shadow:0 0 0 100px rgba(0,0,0,0.2) inset;
 }

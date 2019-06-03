@@ -4,32 +4,45 @@
 body {
 	margin: 0;
 	padding: 0;
-
+	background-color:#171726;
 }
 
 * {
 	box-sizing: border-box;
 }
 
+
+/* page content */
 .app-container {
 	height:100vh;
 	display:flex;
 	flex-direction:column;
 }
 
-
-/* buttons */
-
-.button {
-	background-color: red;
-	color: white;
-	border-radius: 100px;
-	padding: 1rem;	
-}
-
-
 .content {
     flex: 1;
     overflow-y: auto;
     padding:1rem;
+}
+
+.card {	
+    background-color:white;
+    height:100%;
+    border-radius:.5rem;
+    display:block;
+    padding:1rem;
+}
+
+
+/* buttons */
+
+.button {
+	background-color: #FFA100;
+	color: white;
+	padding: .5rem 1rem;	
+	outline:none;
+	border:none;
+	font-size:1rem;
+	font-weight:800;
+	text-transform:uppercase;
 }
