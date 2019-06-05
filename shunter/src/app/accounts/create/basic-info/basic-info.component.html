@@ -1,18 +1,20 @@
-Account info <br><br>
-*Username:
-<mat-form-field class='inputfield'>
-  <input matInput name="username" [formControl]="username" required="true">
-  <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
-</mat-form-field>
-<br>
-*Status:
-<mat-form-field class='inputfield'>
-  <input matInput name="status" [formControl]="status" required="true">
-  <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
+<div class="form-field">
+  <label>Username</label>
+  <mat-form-field class='inputfield'>
+    <input matInput name="username" [formControl]="username" required="true">
+    <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
+  </mat-form-field>
+</div>
 
-</mat-form-field>
-<br>
-*Profile picture:
+<div class="form-field">
+  <label>Status</label>
+  <mat-form-field class='inputfield'>
+    <input matInput name="status" [formControl]="status" required="true">
+    <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
+  </mat-form-field>
+</div>
+
+<!--*Profile picture:-->
 <!--<mat-form-field class='inputfield'>-->
 <!--  <div class="photo"></div>-->
 
@@ -26,4 +28,3 @@ Account info <br><br>
 
 <!--</button>-->
 <!--</mat-form-field>-->
-<br>

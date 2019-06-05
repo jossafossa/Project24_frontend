@@ -1,0 +1,10 @@
+
+
+.form-field {
+  display: flex;
+}
+
+.form-field label {
+  text-align: right;
+  width: 50%;
+}

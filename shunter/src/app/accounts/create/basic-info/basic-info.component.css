@@ -25,3 +25,13 @@
   width: 200px;
   height: 200px;
 }
+
+
+.form-field {
+  display: flex;
+}
+
+.form-field label {
+  text-align: right;
+  width: 50%;
+}
