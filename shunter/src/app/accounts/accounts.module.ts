@@ -15,9 +15,10 @@ import { PhotosComponent } from './create/photos/photos.component';
 // import {Ng5SliderModule} from 'ng5-slider';
 // import {Angular2ImageGalleryModule} from 'angular2-image-gallery';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
-  declarations: [CreateComponent, AccountsComponent, AuthInfoComponent, BasicInfoComponent, EditComponent, InterestsComponent, PhotosComponent],
+  declarations: [CreateComponent, AccountsComponent, AuthInfoComponent, BasicInfoComponent, EditComponent, InterestsComponent, PhotosComponent, ViewComponent],
   imports: [
     CommonModule,
     AccountsRoutingModule,

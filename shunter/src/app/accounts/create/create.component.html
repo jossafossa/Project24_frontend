@@ -15,4 +15,4 @@
 <app-interests [accountForm]="accountForm" [values]="interests"></app-interests>
 <button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(accountForm.controls['email'].value,
  accountForm.controls['password'].value, accountForm.controls['username'].value, accountForm.controls['status'].value,
- accountForm.controls['profilePicture'].value)">Create account!</button>
+ accountForm.controls['profilePicture'].value, accountForm.controls['interests'].value)">Create account!</button>

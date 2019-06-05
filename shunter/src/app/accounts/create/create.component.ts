@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../../account.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -14,7 +15,7 @@ export class CreateComponent implements OnInit {
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
   ];
 
-  constructor(private as : AccountService, private fb : FormBuilder) {
+  constructor(private as : AccountService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       email : ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
       password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
@@ -22,27 +23,26 @@ export class CreateComponent implements OnInit {
       confirmPass : ['',[Validators.required]],
       profilePicture : ['', Validators.required],
       status : ['', [Validators.required, Validators.maxLength(120)]],
-      interests : fb.array(this.interests.map((value, i) => (
-        [i === 0]
-      ))),
-    }, { validators: [CreateComponent.checkIfMatchingPasswords
-        ]});// CreateComponent.maxInterests] });
+      interests : [''],
+    }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests]});
   }
 
   ngOnInit() {
   }
 
-  sendInfo(email, password, username, status, profilePicture){
-    console.log(email, password, username, status, profilePicture);
-    this.as.createAccount(email, password, username, status, profilePicture);
+  sendInfo(email, password, username, status, profilePicture, interests){
+    console.log(email, password, username, status, profilePicture, interests);
+    this.as.createAccount(email, password, username, status, profilePicture, interests);
+    this.router.navigate(['accounts', 'view']);
   }
 
-  // private static maxInterests(group: FormGroup){
-  //   const interestArray = group.controls.interest;
-  //   return interestArray.hasError('required') ? 'You must pick 5\n':
-  //
-  //     '';
-  // }
+  private static maxInterests(group: FormGroup){
+    if(group.controls.interests.value.length != 5){
+      return group.controls.interests.setErrors({notEnough : true});
+    } else {
+      return group.controls.interests.setErrors(null);
+    }
+  }
 
   private static checkIfMatchingPasswords(group: FormGroup) {
     const passwordInput = group.controls.password;

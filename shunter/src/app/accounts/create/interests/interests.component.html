@@ -2,11 +2,10 @@
 </p>
 <div class="checkboxes">
 <!--  <div class="checkbox" *ngFor="let i of values">-->
-    <mat-selection-list #l>
-      <mat-list-option *ngFor="let i of values">
+    <mat-selection-list [formControl]="interests">
+      <mat-list-option *ngFor="let i of values" [value]="i">
         {{ i }}
       </mat-list-option>
-      <mat-error *ngIf="l.selectedOptions.select.length < 5 || l.selectedOptions.select.length > 5"> {{getNotFiveErrorMessage()}} </mat-error>
     </mat-selection-list>
 <!--    <mat-error *ngIf="values.selectedOptions.select.length < 5 ||values.selectedOptions.select.length > 5"> {{getNotFiveErrorMessage()}} </mat-error>-->
 <!--    <mat-checkbox>{{ i }}</mat-checkbox>-->
@@ -18,5 +17,6 @@
 <!--  </p>-->
 </div>
 <p>
-  Options selected: {{l.selectedOptions.selected.length}}
+  Options selected: {{interests.value.length}}
+  <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>
 </p>

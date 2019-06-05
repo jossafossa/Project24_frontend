@@ -17,7 +17,7 @@ export class InterestsComponent implements OnInit {
   }
 
   getNotFiveErrorMessage() {
-    return this.interests.hasError('required') ? 'You must pick 5\n':
+    return this.interests.hasError('notEnough') ? 'You must pick 5\n':
         '';
   }
 }
