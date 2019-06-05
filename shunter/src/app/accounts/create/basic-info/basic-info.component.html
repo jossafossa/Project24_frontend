@@ -1,30 +1,29 @@
-<div class="form-field">
-  <label>Username</label>
-  <mat-form-field class='inputfield'>
-    <input matInput name="username" [formControl]="username" required="true">
-    <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
-  </mat-form-field>
-</div>
+<div class="basicInfo">
+  <div class="form-field">
+    <mat-form-field class='inputfield'>
+      <input matInput name="username" placeholder="Username" [formControl]="username" required="true">
+      <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
+    </mat-form-field>
+  </div>
 
-<div class="form-field">
-  <label>Status</label>
-  <mat-form-field class='inputfield'>
-    <input matInput name="status" [formControl]="status" required="true">
-    <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
-  </mat-form-field>
-</div>
+  <div class="form-field">
+    <mat-form-field class='inputfield'>
+      <input matInput name="status" placeholder="Status" [formControl]="status" required="true">
+      <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
+    </mat-form-field>
+  </div>
 
-<!--*Profile picture:-->
-<!--<mat-form-field class='inputfield'>-->
-<!--  <div class="photo"></div>-->
+    <div class="photo"></div>
 
-<!--  <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture" required="true">-->
-<!--&lt;!&ndash;<mat-error *ngIf="profilePicture.invalid"> {{getProfilePictureError}} </mat-error>&ndash;&gt;-->
-<!--  <button type="button" class="btn btn-success btn-s"-->
-<!--          (click)="uploader.uploadAll()"-->
-<!--          [disabled]="!uploader.getNotUploadedItems().length" >-->
-<!--  Upload an Image-->
-<!--&lt;!&ndash;    preview image&ndash;&gt;-->
+  <div class="form-field">
+    <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture"
+           required="true"><br />
+    <button type="button" class="btn btn-success btn-s"
+            (click)="uploader.uploadAll()"
+            [disabled]="!uploader.getNotUploadedItems().length">
+      Upload an Image
+      <!--    preview image-->
+    </button>
+    </div>
+  </div>
 
-<!--</button>-->
-<!--</mat-form-field>-->

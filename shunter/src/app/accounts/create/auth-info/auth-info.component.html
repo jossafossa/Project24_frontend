@@ -1,8 +1,8 @@
 <div class="auth">
   <div class="form-field">
-    <label>Email</label>
+<!--    <label>Email</label>-->
     <mat-form-field class='inputfield'>
-      <input matInput name="email" [formControl]="email" required="true">
+      <input matInput name="email" placeholder="Email" [formControl]="email" required="true">
       <mat-error *ngIf="email.invalid"> {{getEmailErrorMessage()}} </mat-error>
       <!--      <div class="error">-->
       <!--      </div>-->
@@ -11,18 +11,18 @@
   </div>
 
   <div class="form-field">
-    <label>Password</label>
+<!--    <label>Password</label>-->
     <mat-form-field class='inputfield'>
-      <input matInput type='password' name="password" [formControl]="password" required="true">
+      <input matInput type='password' placeholder="Password" name="password" [formControl]="password" required="true">
       <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
       <!--    <mat-hint>Hint</mat-hint>-->
     </mat-form-field>
   </div>
 
   <div class="form-field">
-    <label>Confirm password</label>
+<!--    <label>Confirm password</label>-->
     <mat-form-field class='inputfield'>
-      <input matInput name="confirmPass" type='password' [formControl]="confirmPass" required="true">
+      <input matInput name="confirmPass" type='password' placeholder="Confirm password" [formControl]="confirmPass" required="true">
       <mat-error *ngIf="confirmPass.invalid"> {{getNotSameErrorMessage()}} </mat-error>
     <!--  <mat-error *ngIf="confirmPass != password">{{getNotSameErrorMessage()}}</mat-error>-->
     </mat-form-field>
