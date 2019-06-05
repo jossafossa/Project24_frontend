@@ -11,11 +11,44 @@ body {
 	box-sizing: border-box;
 }
 
+/* margins */
+.p-1 {
+	padding:1rem;
+}
+
+.p-2 {
+	padding:2rem;
+}
+
+.p-3 {
+	padding:4rem;
+}
+
+
+
+/* typography */
+.center {
+	margin:auto;
+	text-align:center;
+}
+
 
 /* page content */
 .app-container {
 	height:100vh;
 	display:flex;
+	flex-direction:column;
+}
+
+.flex {
+	display:flex;
+}
+
+.flex > * {
+	flex:1;
+}
+
+.flex-col {
 	flex-direction:column;
 }
 
@@ -45,4 +78,5 @@ body {
 	font-size:1rem;
 	font-weight:800;
 	text-transform:uppercase;
+	text-decoration: none;
 }
