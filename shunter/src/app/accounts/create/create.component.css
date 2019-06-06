@@ -1,4 +1,6 @@
-
+.button {
+  padding-top: 50px;
+}
 
 .form-field {
   display: flex;
@@ -7,4 +9,8 @@
 .form-field label {
   text-align: right;
   width: 50%;
+}
+
+.columns {
+  display: flex;
 }

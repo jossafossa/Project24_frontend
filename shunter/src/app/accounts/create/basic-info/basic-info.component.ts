@@ -26,7 +26,7 @@ export class BasicInfoComponent implements OnInit {
   ngOnInit() {
     this.username = this.accountForm.controls['username'];
     this.status = this.accountForm.controls['status'];
-    // this.profilePicture = this.accountForm.controls['profilePicture'];
+    this.profilePicture = this.accountForm.controls['profilePicture'];
   }
 
   getUsernameErrorMessage() {

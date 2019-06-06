@@ -1,5 +1,18 @@
-<app-auth-info [accountForm]="accountForm"></app-auth-info>
-<app-basic-info [accountForm]="accountForm"></app-basic-info>
-<br>
+<mat-toolbar>
+  <span>Create account</span>
+</mat-toolbar>
+<div class="columns">
+  <div class="column">
+    <app-auth-info [accountForm]="accountForm"></app-auth-info>
+  </div>
+  <div class="column">
+    <app-basic-info [accountForm]="accountForm"></app-basic-info>
+  </div>
+<div class="column">
+  <app-photos></app-photos>
+</div>
+</div>
+<app-interests [accountForm]="accountForm" [values]="interests"></app-interests>
 <button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(accountForm.controls['email'].value,
- accountForm.controls['password'].value, accountForm.controls['username'].value, accountForm.controls['status'].value)">Click me!</button>
+ accountForm.controls['password'].value, accountForm.controls['username'].value, accountForm.controls['status'].value,
+ accountForm.controls['profilePicture'].value, accountForm.controls['interests'].value)">Create account!</button>

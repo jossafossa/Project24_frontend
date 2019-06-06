@@ -1,5 +1,3 @@
-/*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
-
 .example-container {
   display: flex;
   flex-direction: column;
@@ -9,28 +7,24 @@
   width: 100%;
 }
 
-.inputfield {
-  border: 1px solid black;
-  margin-bottom: 20px;
-  margin-left: 10px;
-}
-
-.auth {
-  padding-top: 50px;
-  padding-bottom: 60px;
-}
-
-/*.error{*/
-/*padding-left: 150px;*/
-/*  padding-bottom: 100px;*/
+/*.inputfield {*/
+/*  border: 1px solid black;*/
+/*  margin-bottom: 20px;*/
+/*  margin-left: 10px;*/
+/*  border-radius: 5px;*/
 /*}*/
 
-
-.form-field {
-  display: flex;
+.auth {
+  padding-top: 10px;
+  padding-left: 10px;
+  /*padding-bottom: 60px;*/
 }
 
-.form-field label {
-  text-align: right;
-  width: 50%;
-}
+/*.form-field {*/
+/*  display: flex;*/
+/*}*/
+
+/*.form-field label {*/
+/*  text-align: right;*/
+/*  width: 45%;*/
+/*}*/

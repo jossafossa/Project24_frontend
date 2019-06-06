@@ -1,0 +1,19 @@
+.checkboxes {
+  /*border: 1px solid black;*/
+  padding: 1rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: scroll;
+  height: 100px;
+  /*border-radius: 5px;*/
+}
+
+.checkbox {
+
+}
+
+p {
+ text-align: left;
+}

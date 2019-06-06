@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../../account.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-// import { MustMatch } from './_helpers/must-match.validator';
-// import { PasswordValidation } from './password-validation';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -12,28 +11,40 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CreateComponent implements OnInit {
   accountForm : FormGroup;
 
-  constructor(private as : AccountService, private fb : FormBuilder) {
+  interests: string [] = [
+    'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
+  ];
+
+  constructor(private as : AccountService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       email : ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
       password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
       username : ['',[Validators.required, Validators.maxLength(50)]],
       confirmPass : ['',[Validators.required]],
-      // profilePicture : ['', Validators.required],
+      profilePicture : ['', Validators.required],
       status : ['', [Validators.required, Validators.maxLength(120)]],
-    }, { validators: [this.checkIfMatchingPasswords] });
+      interests : [''],
+    }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests]});
   }
-
-  // this.accountForm.controls('password').value)]
 
   ngOnInit() {
   }
 
-  sendInfo(email, password, username, status){
-    console.log(email, password, username, status);
-    this.as.createAccount(email, password, username, status);
+  sendInfo(email, password, username, status, profilePicture, interests){
+    console.log(email, password, username, status, profilePicture, interests);
+    this.as.createAccount(email, password, username, status, profilePicture, interests);
+    this.router.navigate(['accounts', 'view']);
   }
 
-  private checkIfMatchingPasswords(group: FormGroup) {
+  private static maxInterests(group: FormGroup){
+    if(group.controls.interests.value.length != 5){
+      return group.controls.interests.setErrors({notEnough : true});
+    } else {
+      return group.controls.interests.setErrors(null);
+    }
+  }
+
+  private static checkIfMatchingPasswords(group: FormGroup) {
     const passwordInput = group.controls.password;
     const passwordInputConfirm = group.controls.confirmPass;
 
