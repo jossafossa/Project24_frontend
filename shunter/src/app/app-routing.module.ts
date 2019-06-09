@@ -9,6 +9,10 @@ const routes: Routes = [
     path: 'accounts',
     loadChildren: () => import('./accounts/accounts.module').then(mod => mod.AccountsModule),
   },
+  {
+    path: 'group-accounts',
+    loadChildren: () => import('./group-accounts/group-accounts.module').then(mod => mod.GroupAccountsModule),
+  },
 	{
 		path: '', 
 		component: HomeComponent,

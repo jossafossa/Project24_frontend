@@ -15,28 +15,28 @@ export class BasicInfoComponent implements OnInit {
   public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
   @Input() accountForm : FormGroup;
-  username;
-  status;
-  profilePicture;
+  nameOfGroup;
+  groupDescription;
+  groupPicture;
 
   constructor() { }
 
   ngOnInit() {
-    this.username = this.accountForm.controls['username'];
-    this.status = this.accountForm.controls['status'];
-    this.profilePicture = this.accountForm.controls['profilePicture'];
+    this.nameOfGroup = this.accountForm.controls['nameOfGroup'];
+    this.groupDescription = this.accountForm.controls['groupDescription'];
+    this.groupPicture = this.accountForm.controls['groupPicture'];
   }
 
-  getUsernameErrorMessage() {
-    return this.username.hasError('required') ? 'You must enter a value\n'
-      : this.username.hasError('maxLength') ? 'Youve succeeded the max length\n':
+  getGroupNameErrorMessage() {
+    return this.nameOfGroup.hasError('required') ? 'You must enter a value\n'
+      : this.nameOfGroup.hasError('maxLength') ? 'Youve succeeded the max length\n':
         '';
   //      suspecious characters
   }
 
-  getStatusErrorMessage() {
-    return this.status.hasError('required') ? 'You must enter a value\n'
-      : this.status.hasError('maxLength') ? 'Youve succeeded the max length\n':
+  getDescriptionErrorMessage() {
+    return this.groupDescription.hasError('required') ? 'You must enter a value\n'
+      : this.groupDescription.hasError('maxLength') ? 'Youve succeeded the max length\n':
         '';
   }
 }

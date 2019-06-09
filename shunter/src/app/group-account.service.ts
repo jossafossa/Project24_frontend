@@ -1,0 +1,15 @@
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GroupAccountService {
+
+  constructor(public http: HttpClient) { }
+
+  createGroupAccount(groupName, groupDescription, groupPicture, interests){
+    const data = {groupName, groupDescription, groupPicture, interests};
+    this.http.post('http://localhost', data);
+  }
+}
