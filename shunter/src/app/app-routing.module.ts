@@ -6,16 +6,18 @@ import {CreateComponent} from './accounts/create/create.component';
 
 const routes: Routes = [
   {
-    path: 'accounts',
-    loadChildren: () => import('./accounts/accounts.module').then(mod => mod.AccountsModule),
+    path: "",
+    component: HomeComponent,
   },
   {
     path: 'group-accounts',
     loadChildren: () => import('./group-accounts/group-accounts.module').then(mod => mod.GroupAccountsModule),
   },
 	{
-		path: '', 
-		component: HomeComponent,
+		path: 'accounts', 
+		// component: HomeComponent,
+    redirectTo: '/accounts',
+    pathMatch: 'full'
 	},
   {
     path: 'login', 
@@ -25,6 +27,16 @@ const routes: Routes = [
     path: 'logout', 
     component: HomeComponent,
   },
+  {
+    path: 'signup', 
+    component: HomeComponent,
+  },
+  {
+    path: 'swipe',
+    redirectTo: '/swipe',
+    pathMatch: 'full'
+  }
+
 ];
 
 @NgModule({
