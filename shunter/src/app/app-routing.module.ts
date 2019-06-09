@@ -13,12 +13,10 @@ const routes: Routes = [
     path: 'group-accounts',
     loadChildren: () => import('./group-accounts/group-accounts.module').then(mod => mod.GroupAccountsModule),
   },
-	{
-		path: 'accounts', 
-		// component: HomeComponent,
-    redirectTo: '/accounts',
-    pathMatch: 'full'
-	},
+  {
+    path: 'accounts',
+    loadChildren: () => import('./accounts/accounts.module').then(mod => mod.AccountsModule),
+  },
   {
     path: 'login', 
     component: LoginComponent,
