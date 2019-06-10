@@ -1,0 +1,29 @@
+.checkboxes {
+  padding: 1rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: scroll;
+  height: 100px;
+  /*display: inline-block;*/
+}
+
+.interests {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.checkbox {
+
+}
+
+p {
+ text-align: left;
+}

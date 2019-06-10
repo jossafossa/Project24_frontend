@@ -1,0 +1,29 @@
+.auth {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/*.auth {*/
+/*  display: flex;*/
+/*  float: left;*/
+/*  border: 1px solid black;*/
+/*  border-radius: 5px;*/
+/*  width: 700px;*/
+/*  height: 200px;*/
+/*  margin-top: 10px;*/
+/*  padding: 10px;*/
+/*}*/
+
+.basicInfo {
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
