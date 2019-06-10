@@ -1,17 +1,15 @@
 <div class="interests">
   <h1>Step 3:</h1>
-<p>What do you like, pick 5:
-</p>
-<div class="checkboxes">
-
+  <p>What do you like, pick 5:</p>
+  <div class="checkboxes">
     <mat-selection-list [formControl]="interests">
       <mat-list-option *ngFor="let i of values" [value]="i">
         {{ i }}
       </mat-list-option>
     </mat-selection-list>
-</div>
-<p>
-  Options selected: {{interests.value.length}}
-  <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>
-</p>
+  </div>
+  <p>
+    Options selected: {{interests.value.length}}
+    <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>
+  </p>
 </div>

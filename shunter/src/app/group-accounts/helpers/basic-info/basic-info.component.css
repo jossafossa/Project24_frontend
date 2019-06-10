@@ -16,22 +16,12 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  float: left;
+  /*float: left;*/
   border: 1px solid black;
   border-radius: 5px;
   margin-top: 10px;
+  height: 100%;
 }
-
-/*.info {*/
-/*  display: flex;*/
-/*  float: left;*/
-/*  border: 1px solid black;*/
-/*  border-radius: 5px;*/
-/*  width: 700px;*/
-/*  height: 200px;*/
-/*  margin-top: 10px;*/
-/*  padding: 10px;*/
-/*}*/
 
 .basicInfo {
   padding-top: 10px;
@@ -40,3 +30,4 @@
   flex-direction: column;
   float: left;
 }
+

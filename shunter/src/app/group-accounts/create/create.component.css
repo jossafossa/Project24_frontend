@@ -1,16 +1,13 @@
-.button {
-  padding-top: 50px;
+button {
+  margin-top: 50px;
 }
 
-.form-field {
+.formCards {
+  flex-flow: row wrap;
   display: flex;
 }
 
-.form-field label {
-  text-align: right;
+.formCard {
   width: 50%;
-}
-
-.columns {
-  display: flex;
+  flex: 0 0 50%;
 }
