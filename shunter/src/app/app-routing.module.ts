@@ -3,8 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {CreateComponent} from './accounts/create/create.component';
+// import { SwipeRoutingModule, SwipeModule } from './swipe/swipe.module'; 
 
-const routes: Routes = [
+const routes: Routes = [ 
+  {
+    path: 'swipe',
+    loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule)
+  },
   {
     path: "",
     component: HomeComponent,
@@ -26,11 +31,6 @@ const routes: Routes = [
   {
     path: 'signup', 
     component: HomeComponent,
-  },
-  {
-    path: 'swipe',
-    redirectTo: '/swipe',
-    pathMatch: 'full'
   }
 
 ];
