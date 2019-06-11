@@ -1,16 +1,14 @@
 <div class="auth">
-  <div class="form-field">
-<!--    <label>Email</label>-->
+  <h1>Step 2:</h1>
+
+  <div class="authInfo">
     <mat-form-field class='inputfield'>
       <input matInput name="email" placeholder="Email" [formControl]="email" required="true">
       <mat-error *ngIf="email.invalid"> {{getEmailErrorMessage()}} </mat-error>
-      <!--      <div class="error">-->
-      <!--      </div>-->
-      <!--    <mat-hint>Hint</mat-hint>-->
     </mat-form-field>
   </div>
 
-  <div class="form-field">
+  <div class="authInfo">
 <!--    <label>Password</label>-->
     <mat-form-field class='inputfield'>
       <input matInput type='password' placeholder="Password" name="password" [formControl]="password" required="true">
@@ -19,7 +17,7 @@
     </mat-form-field>
   </div>
 
-  <div class="form-field">
+  <div class="authInfo">
 <!--    <label>Confirm password</label>-->
     <mat-form-field class='inputfield'>
       <input matInput name="confirmPass" type='password' placeholder="Confirm password" [formControl]="confirmPass" required="true">

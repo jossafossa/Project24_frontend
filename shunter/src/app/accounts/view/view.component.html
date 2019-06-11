@@ -1,3 +1,24 @@
 <mat-toolbar>
   <span>Your account</span>
 </mat-toolbar>
+<div class="buttons">
+  <button mat-button (click)="toSwipe()">Swipe</button>
+  <button mat-button (click)="toEdit()">Edit account</button>
+  <button mat-button (click)="toNewGroupAccount()">Create new group</button>
+</div>
+<div class="personalInfo">
+<div class="photo"></div>
+<div class="bInfo">
+  <label>Username</label><br>
+  <label>Status</label><br>
+  <label>Interests</label><br>
+  <label>Owner of</label>
+</div>
+<div class="bInfo" id="infoSelf">
+  <label>Joyce0398</label><br>
+  <label>Sleeping.. zzz :3</label><br>
+  <label>Music, gaming, makeup, animals, festivals</label><br>
+  <a href="http://localhost:4200/group-accounts/view">Group1</a>
+</div>
+</div>
+<!--moet nog basic info worden-->

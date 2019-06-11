@@ -1,0 +1,28 @@
+.photo {
+  width: 100px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top:10px;
+  background-size: cover;
+  background-image: url(/assets/placeholder.png);
+}
+
+label {
+  /*padding: 10px;*/
+}
+
+.bInfo {
+  margin-top: 100px;
+  width: 50px;
+
+  /*padding-top: 10px;*/
+}
+
+button {
+
+}
+
+.buttons{
+  /*width: 100px;*/
+}

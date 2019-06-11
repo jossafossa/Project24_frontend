@@ -18,8 +18,6 @@ export class BasicInfoComponent implements OnInit {
   username;
   status;
   profilePicture;
-  // uploader;
-  // profilePicture;
 
   constructor() { }
 
@@ -40,10 +38,5 @@ export class BasicInfoComponent implements OnInit {
     return this.status.hasError('required') ? 'You must enter a value\n'
       : this.status.hasError('maxLength') ? 'Youve succeeded the max length\n':
         '';
-  }
-
-  getProfilePictureError(){
-    return this.status.hasError('required') ? 'You must enter a value\n'
-      : '';
   }
 }

@@ -22,6 +22,6 @@ export class ViewComponent implements OnInit {
   }
 
   toNewGroupAccount() {
-    this.router.navigate(['group-accounts', 'create']);
+    this.router.navigate(['groupaccounts', 'create']);
   }
 }

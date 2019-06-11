@@ -8,6 +8,6 @@ button {
 }
 
 .formCard {
-  width: 33.33333%;
-  flex: 0 0 33.33333%;
+  width: 50%;
+  flex: 0 0 50%;
 }

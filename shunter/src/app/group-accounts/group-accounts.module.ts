@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatListModule, MatToolbarModule} from '@angular/material';
 
-import { AccountsRoutingModule } from './accounts-routing.module';
+import { GroupAccountsRoutingModule } from './group-accounts-routing.module';
 import { CreateComponent } from './create/create.component';
-import { AccountsComponent } from './accounts/accounts.component';
-import { AuthInfoComponent } from './helpers/auth-info/auth-info.component';
+import { GroupAccountsComponent } from './group-accounts/group-accounts.component';
 import { BasicInfoComponent } from './helpers/basic-info/basic-info.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
@@ -18,10 +17,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ViewComponent } from './view/view.component';
 
 @NgModule({
-  declarations: [CreateComponent, AccountsComponent, AuthInfoComponent, BasicInfoComponent, EditComponent, InterestsComponent, PhotosComponent, ViewComponent],
+  declarations: [CreateComponent, GroupAccountsComponent, BasicInfoComponent, EditComponent, InterestsComponent, PhotosComponent, ViewComponent],
   imports: [
     CommonModule,
-    AccountsRoutingModule,
+    GroupAccountsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
@@ -35,4 +34,4 @@ import { ViewComponent } from './view/view.component';
     // Angular2ImageGalleryModule,
   ]
 })
-export class AccountsModule { }
+export class GroupAccountsModule { }
