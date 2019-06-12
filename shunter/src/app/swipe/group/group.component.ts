@@ -10,6 +10,16 @@ export class GroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	
+  }
+  
+
+  like() {
+  	console.log("like");
+  }
+
+  dislike() {
+  	console.log("dislike");
   }
 
 }

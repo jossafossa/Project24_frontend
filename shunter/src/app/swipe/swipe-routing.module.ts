@@ -5,15 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: 'swipe',
     	component: HubComponent,
-    	children: [
-	    	{
-	        	path: 'group',
-	        	component: GroupComponent,
-	      	},
-	    ]
-    }
+    },
+	{
+    	path: 'swipe/group',
+    	component: GroupComponent,
+  	}
 ];
 
 @NgModule({

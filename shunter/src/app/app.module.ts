@@ -12,6 +12,9 @@ import { AccountService } from './account.service';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
+
+import { SwipeModule } from './swipe/swipe.module';
+
 // import { Ng5SliderModule } from 'ng5-slider';
 // import { Angular2ImageGalleryModule } from 'angular2-image-gallery'
 // import { ReactiveFormsModule} from '@angular/forms';
@@ -33,6 +36,7 @@ export function tokenGetter(){
     // ReactiveFormsModule,
     // BrowserModule,
     BrowserAnimationsModule,
+    SwipeModule,
     AppRoutingModule,
     HttpClientModule,
     JwtModule.forRoot({
