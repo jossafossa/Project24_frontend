@@ -2,14 +2,27 @@
 	width:100%;
 	height:100%;
 	display:flex;
+	flex:1;
 }
 
 .dislike, .like {
 	flex:1;
 	background-color:red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:2rem;
+	cursor: pointer;
 }
 
-.swipe_content {
+.dislike > *, .like > * {
+	display:block;
+
+}
+
+group-display {
 	max-width:30rem;
 	width:100%;
+	height:100%;
+	overflow-y:auto;
 }
