@@ -5,10 +5,8 @@ import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, 
 import { GroupAccountsRoutingModule } from './group-accounts-routing.module';
 import { CreateComponent } from './create/create.component';
 import { GroupAccountsComponent } from './group-accounts/group-accounts.component';
-import { BasicInfoComponent } from './helpers/basic-info/basic-info.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
-import { InterestsComponent } from './helpers/interests/interests.component';
 import { PhotosComponent } from './helpers/photos/photos.component';
 
 // import {Ng5SliderModule} from 'ng5-slider';
@@ -17,7 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ViewComponent } from './view/view.component';
 
 @NgModule({
-  declarations: [CreateComponent, GroupAccountsComponent, BasicInfoComponent, EditComponent, InterestsComponent, PhotosComponent, ViewComponent],
+  declarations: [CreateComponent, GroupAccountsComponent, EditComponent, PhotosComponent, ViewComponent],
   imports: [
     CommonModule,
     GroupAccountsRoutingModule,

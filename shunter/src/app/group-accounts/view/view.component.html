@@ -1,14 +1,20 @@
 <mat-toolbar>
-  <span>Your new group account</span>
+  <span>Your group account</span>
 </mat-toolbar>
 <div class="buttons">
   <button mat-button (click)="toSwipe()">Swipe</button>
-  <button mat-button (click)="toEdit()">Edit group account</button>
+  <button mat-button (click)="toEdit()">Edit account</button>
 </div>
-<div class="photo"></div>
-<div class="bInfo">
-  <label>Name of group</label><br>
-  <label>Group description</label><br>
-  <label>Interests</label><br>
+<div class="personalInfo">
+  <div class="photo"></div>
+  <div class="bInfo">
+    <label>Name of group</label><br>
+    <label>Description</label><br>
+    <label>Interests</label><br>
+  </div>
+  <div class="bInfo" id="infoSelf">
+    <label>Group 1</label><br>
+    <label>Welcome to this group :3</label><br>
+    <label>Music, gaming, makeup, animals, festivals</label><br>
+  </div>
 </div>
-

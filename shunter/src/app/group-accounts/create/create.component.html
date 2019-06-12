@@ -3,10 +3,49 @@
 </mat-toolbar>
 <div class="formCards">
   <div class="formCard">
-    <app-basic-info [accountForm]="accountForm"></app-basic-info>
+    <div class="info">
+      <h1>Step 1:</h1>
+      <div class="photo"></div>
+      <div class="basicInfo">
+        <mat-form-field class='inputfield'>
+          <input matInput name="nameOfGroup" placeholder="Name of group" [formControl]="nameOfGroup" required="true">
+          <mat-error *ngIf="nameOfGroup.invalid"> {{getGroupNameErrorMessage()}} </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="basicInfo">
+        <mat-form-field class='inputfield'>
+          <input matInput name="status" placeholder="Status" [formControl]="groupDescription" required="true">
+          <mat-error *ngIf="groupDescription.invalid"> {{getDescriptionErrorMessage()}} </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="basicInfo">
+        <input name="groupPicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="groupPicture"
+               required="true"><br />
+        <button type="button" class="btn btn-success btn-s"
+                (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length">
+          Upload an Image
+          <!--    preview image-->
+        </button>
+      </div>
+    </div>
   </div>
   <div class="formCard">
-    <app-interests [accountForm]="accountForm" [values]="interests"></app-interests>
+    <div class="interests">
+      <h1>Step 2:</h1>
+      <p>What do you like, pick 5:</p>
+      <div class="checkboxes">
+        <mat-selection-list [formControl]="interests">
+          <mat-list-option *ngFor="let i of interestList" [value]="i">
+            {{ i }}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      <p>
+        Options selected: {{interests.value.length}}
+        <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>
+      </p>
+    </div>
   </div>
 </div>
 <!--  <app-photos></app-photos>-->

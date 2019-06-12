@@ -3,13 +3,83 @@
 </mat-toolbar>
 <div class="formCards">
   <div class="formCard">
-    <app-basic-info [accountForm]="accountForm"></app-basic-info>
+    <div class="info">
+      <h1>Step 1:</h1>
+      <div class="photo"></div>
+      <div class="basicInfo">
+        <mat-form-field class='inputfield'>
+          <input matInput name="username" placeholder="Username" [formControl]="username" required="true">
+          <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="basicInfo">
+        <mat-form-field class='inputfield'>
+          <input matInput name="status" placeholder="Status" [formControl]="status" required="true">
+          <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="basicInfo">
+        <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture"
+               required="true"><br />
+        <button type="button" class="btn btn-success btn-s"
+                (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length">
+          Upload an Image
+          <!--    preview image-->
+        </button>
+      </div>
+    </div>
   </div>
   <div class="formCard">
-    <app-auth-info [accountForm]="accountForm"></app-auth-info>
+    <div class="info">
+      <h1>Step 2:</h1>
+
+      <div class="authInfo">
+        <mat-form-field class='inputfield'>
+          <input matInput name="email" placeholder="Email" [formControl]="email" required="true">
+          <mat-error *ngIf="email.invalid"> {{getEmailErrorMessage()}} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="authInfo">
+        <!--    <label>Password</label>-->
+        <mat-form-field class='inputfield'>
+          <input matInput type='password' placeholder="Password" name="password" [formControl]="password" required="true">
+          <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
+          <!--    <mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+      </div>
+
+      <div class="authInfo">
+        <!--    <label>Confirm password</label>-->
+        <mat-form-field class='inputfield'>
+          <input matInput name="confirmPass" type='password' placeholder="Confirm password" [formControl]="confirmPass" required="true">
+          <mat-error *ngIf="confirmPass.invalid"> {{getNotSameErrorMessage()}} </mat-error>
+          <!--  <mat-error *ngIf="confirmPass != password">{{getNotSameErrorMessage()}}</mat-error>-->
+        </mat-form-field>
+      </div>
+      <!--"!confirmPassword.toString().equals(password.toString())"-->
+    </div>
   </div>
   <div class="formCard">
-    <app-interests [accountForm]="accountForm" [values]="interests"></app-interests>
+    <div class="interests">
+      <h1>Step 3:</h1>
+      <p>What do you like, pick 5:</p>
+      <div class="checkboxes">
+        <mat-selection-list [formControl]="interests">
+          <mat-list-option *ngFor="let i of interestList" [value]="i">
+            {{ i }}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      <p>
+        Options selected: {{interests.value.length}}
+        <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>
+      </p>
+    </div>
+
   </div>
 </div>
 <button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(accountForm.controls['email'].value,
