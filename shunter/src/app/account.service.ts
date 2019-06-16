@@ -9,8 +9,7 @@ export class AccountService {
   constructor(public http: HttpClient) {}
 
   createAccount(email, password, username, status, profilePicture, interests){
-    const data = {email, password, username, status, profilePicture, interests};
-    this.http.post('http://localhost', data);
+    const createData = {email, password, username, status, profilePicture, interests};
+    this.http.post('http://localhost', createData);
   }
-
 }

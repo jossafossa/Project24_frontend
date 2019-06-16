@@ -7,7 +7,6 @@ import { CreateComponent } from './create/create.component';
 import { GroupAccountsComponent } from './group-accounts/group-accounts.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
-import { PhotosComponent } from './helpers/photos/photos.component';
 
 // import {Ng5SliderModule} from 'ng5-slider';
 // import {Angular2ImageGalleryModule} from 'angular2-image-gallery';
@@ -15,7 +14,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ViewComponent } from './view/view.component';
 
 @NgModule({
-  declarations: [CreateComponent, GroupAccountsComponent, EditComponent, PhotosComponent, ViewComponent],
+  declarations: [CreateComponent, GroupAccountsComponent, EditComponent, ViewComponent],
   imports: [
     CommonModule,
     GroupAccountsRoutingModule,

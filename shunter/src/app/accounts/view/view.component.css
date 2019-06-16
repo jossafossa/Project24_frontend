@@ -1,3 +1,18 @@
+.formCards {
+  flex-flow: row wrap;
+  display: flex;
+}
+
+.formCard {
+  flex: 0 0 55%;
+  /*border: 1px solid black;*/
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  display: flex;
+}
+
 .photo {
   width: 100px;
   height: 120px;
@@ -7,42 +22,21 @@
   border: 1px solid white;
   border-radius: 5px;
   background-image: url(/assets/placeholder.png);
-  display: inline-block;
-  /*float: left;*/
+  display: flex;
 }
 
 label {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .bInfo {
-  display: flex;
-  flex-direction: column;
-  width: 50px;
-  margin: 10px;
-}
-
-#infoSelf {
-  width: 200px;
-  margin-left: 30px;
-}
-
-.personalInfo {
-  display: flex;
-  float: left;
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 500px;
-  height: 200px;
-  margin-top: 10px;
   padding: 10px;
+  text-align: left;
+  flex: 1;
 }
 
 .buttons {
   display: inline-block;
 
-}
-
-button {
-  /*display: inline-blockinline;*/
-  /*margin-top: 10px;*/
 }
