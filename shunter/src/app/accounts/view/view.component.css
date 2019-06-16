@@ -40,3 +40,41 @@ label {
   display: inline-block;
 
 }
+
+.photos{
+  display: flex;
+}
+
+.groups {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.picture {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.group{
+  /*border: 1px solid white;*/
+  /*border-radius: 5px;*/
+  width: 50%;
+  padding: 10px;
+}
+
+.box {
+
+}
+
+.emoContainer {
+  width: 300px;
+}
+
+.formContainer {
+  flex: 1;
+}
+
+.mContainer {
+ display: flex;
+}
