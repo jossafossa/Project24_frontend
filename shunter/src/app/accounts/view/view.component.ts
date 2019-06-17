@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
+  image;
 
   constructor(private router : Router) { }
 
@@ -23,5 +24,14 @@ export class ViewComponent implements OnInit {
 
   toNewGroupAccount() {
     this.router.navigate(['group-accounts', 'create']);
+  }
+
+  goToGroup(){
+    this.router.navigate(['group-accounts', 'view']);
+  }
+
+  maximizeImage(image) {
+    this.image = image;
+
   }
 }

@@ -24,6 +24,8 @@ export class EditComponent implements OnInit {
   confirmPass;
   interests;
 
+  picture1;
+
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
   ];
@@ -46,6 +48,8 @@ export class EditComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
+
+    this.picture1 = this.accountForm['picture1'];
   }
 
   ngOnInit() {

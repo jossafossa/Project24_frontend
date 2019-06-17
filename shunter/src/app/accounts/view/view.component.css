@@ -33,7 +33,7 @@ label {
 .bInfo {
   padding: 10px;
   text-align: left;
-  flex: 1;
+  /*flex: 1;*/
 }
 
 .buttons {
@@ -67,7 +67,7 @@ label {
 
 }
 
-.emoContainer {
+.groupContainer {
   width: 300px;
 }
 
