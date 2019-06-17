@@ -11,5 +11,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
   }
-
+public addnotice(){
+    return null
+}
 }

@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SwipeModule } from './swipe/swipe.module';
 
 
+
 // import { Ng5SliderModule } from 'ng5-slider';
 // import { Angular2ImageGalleryModule } from 'angular2-image-gallery'
 // import { ReactiveFormsModule} from '@angular/forms';
@@ -30,7 +31,6 @@ export function tokenGetter(){
     HomeComponent,
     NavComponent,
     LoginComponent,
-
   ],
   imports: [
     // Ng5SliderModule,
