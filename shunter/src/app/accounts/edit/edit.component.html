@@ -69,17 +69,23 @@
 
   <div class="formCard">
     <div class="info">
-    <div class="photos">
-      <h1>Add photos</h1>
-      <input name="picture1" type="file" ng2FileSelect [uploader]="uploader" [formControl]="picture1"
-             required="true"><br />
-      <button type="button" class="btn btn-success btn-s"
-              (click)="uploader.uploadAll()"
-              [disabled]="!uploader.getNotUploadedItems().length">
-        Upload an Image
-        <img src="https://picsum.photos/200">
-      </button>
-    </div>
+      <h1>Photos</h1>
+      <div class="addPhotos">
+        <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="200" height="200">
+      </div>
+      <input type="file" multiple (change)="detectFiles($event)">
+<!--    <div class="photos">-->
+<!--      <h1>Add photos</h1>-->
+<!--      <input name="picture1" type="file" ng2FileSelect [uploader]="uploader" [formControl]="picture1"-->
+<!--             required="true"><br />-->
+<!--      <button type="button" class="btn btn-success btn-s"-->
+<!--              (click)="uploader.uploadAll()"-->
+<!--              [disabled]="!uploader.getNotUploadedItems().length">-->
+<!--        Upload an Image-->
+<!--        <img src="https://picsum.photos/200">-->
+<!--      </button>-->
+<!--    </div>-->
+
     </div>
   </div>
 </div>
