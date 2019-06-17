@@ -15,6 +15,7 @@ button {
   margin-top: 10px;
   margin-left: 10px;
   display: flex;
+  height: 500px;
 }
 
 .authInfo {
@@ -63,13 +64,13 @@ button {
   margin-bottom: 50px;
 }
 
-/*.interests {*/
-/*  padding: 10px;*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  border: 1px solid black;*/
-/*  border-radius: 5px;*/
-/*  margin-top: 10px;*/
-/*  margin-left: 10px;*/
-/*  height: 100%;*/
-/*}*/
+.addPhotos {
+  /*flex-grow: 1;*/
+  overflow: scroll;
+  flex-shrink: 1;
+  padding: 10px;
+}
+
+image {
+  object-fit: scale-down;
+}

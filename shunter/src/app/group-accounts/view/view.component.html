@@ -5,18 +5,53 @@
   <button mat-button (click)="toSwipe()">Swipe</button>
   <button mat-button (click)="toEdit()">Edit account</button>
 </div>
-<div class="formCards">
-  <div class="formCard">
-  <div class="photo"></div>
-  <div class="bInfo">
-    <label>Name of group</label>
-    <label>Description</label>
-    <label>Interests</label>
+<div class="mContainer">
+  <div class="formContainer">
+    <div class="formCard">
+      <div class="photo"></div>
+      <div class="bInfo">
+        <label>Name of group</label>
+        <label>Description</label>
+        <label>Interests</label>
+      </div>
+      <div class="bInfo" id="infoSelf">
+        <label>Group1</label>
+        <label>Welcome to this group</label>
+        <label>Music, gaming, makeup, animals, festivals</label>
+      </div>
+    </div>
+    <div class="box">
+      <div class="photos">
+        <div class="picture">
+          <img src="https://picsum.photos/200" (click)="maximizeImage()">
+        </div>
+        <div class="picture">
+          <img src="https://picsum.photos/200" (click)="maximizeImage()">
+        </div>
+        <div class="picture">
+          <img src="https://picsum.photos/200" (click)="maximizeImage()">
+        </div>
+        <div class="picture">
+          <img src="https://picsum.photos/200" (click)="maximizeImage()">
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="bInfo" id="infoSelf">
-    <label>Group 1</label>
-    <label>Welcome to this group :3</label>
-    <label>Music, gaming, makeup, animals, festivals</label>
+  <div class="groupContainer">
+    <h1>Members</h1>
+    <div class="groups">
+      <div class="group">
+        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
+      </div>
+      <div class="group">
+        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
+      </div>
+      <div class="group">
+        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
+      </div>
+      <div class="group">
+        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
+      </div>
+    </div>
   </div>
 </div>
-  </div>
