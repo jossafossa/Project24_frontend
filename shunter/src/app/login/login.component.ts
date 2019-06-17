@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { APIService } from '../account.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { 
-
-  }
+  constructor(public api: APIService) { }
 
   ngOnInit() {
   }
 
   onSubmit(e) {
+    this.api.login("henk", "pietje");
   	console.log(e);
   }
 

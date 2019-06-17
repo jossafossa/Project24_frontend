@@ -6,12 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
 	{
 		path: 'swipe',
-    	component: HubComponent,
-    },
+  	component: HubComponent,
+  },
 	{
-    	path: 'swipe/group',
-    	component: GroupComponent,
-  	}
+  	path: 'swipe/group',
+  	component: GroupComponent,
+	}
 ];
 
 @NgModule({

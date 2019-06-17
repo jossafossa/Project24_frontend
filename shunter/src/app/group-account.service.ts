@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,3 +13,16 @@ export class GroupAccountService {
     this.http.post('http://localhost', data);
   }
 }
+
+// export class APIService {
+
+//   constructor(public http: HttpClient) {
+//   	this.root = "http://localhost";
+//   }
+
+//   swipeGroup(string: groupName, boolean: like) {
+//   	this.http.post('http://localhost', data);
+//   }
+
+
+// }

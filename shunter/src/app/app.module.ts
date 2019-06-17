@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { JwtModule} from '@auth0/angular-jwt';
 import { HttpClientModule} from '@angular/common/http';
-import { AccountService } from './account.service';
+import { AccountService, APIService } from './account.service';
 
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
@@ -45,7 +45,7 @@ export function tokenGetter(){
       }
     })
   ],
-  providers: [AccountService],
+  providers: [AccountService, APIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

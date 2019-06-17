@@ -14,3 +14,21 @@ export class AccountService {
   }
 
 }
+
+export class APIService {
+  	baseURL = "localhost:8000/";
+  	loggedIn = false;
+  	token = "";
+
+  	constructor(public http: HttpClient) {
+  	}
+
+	login(username, password) {
+		let data = {
+			"username": username,
+			"password": password,
+		}
+		let token = this.http.post(this.baseURL + "/api/v1/rest-auth/login/", data);
+		console.log(token);
+	}
+}
