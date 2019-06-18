@@ -15,9 +15,7 @@ import { LoginComponent } from './login/login.component';
 
 import { SwipeModule } from './swipe/swipe.module';
 
-// import { Ng5SliderModule } from 'ng5-slider';
-// import { Angular2ImageGalleryModule } from 'angular2-image-gallery'
-// import { ReactiveFormsModule} from '@angular/forms';
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 export function tokenGetter(){
   return localStorage.getItem('access-token');
@@ -31,10 +29,7 @@ export function tokenGetter(){
     LoginComponent
   ],
   imports: [
-    // Ng5SliderModule,
-    // Angular2ImageGalleryModule,
-    // ReactiveFormsModule,
-    // BrowserModule,
+    SlideshowModule,
     BrowserAnimationsModule,
     SwipeModule,
     AppRoutingModule,

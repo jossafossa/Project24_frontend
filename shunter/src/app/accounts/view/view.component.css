@@ -48,19 +48,27 @@ label {
 .groups {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .picture {
-  border: 1px solid white;
-  border-radius: 5px;
   padding: 10px;
 }
 
-.group{
-  /*border: 1px solid white;*/
-  /*border-radius: 5px;*/
-  width: 50%;
+.group {
   padding: 10px;
+}
+
+.group img {
+  width: 175px;
+  height: 175px;
+  display: block;
+}
+
+img {
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .box {
@@ -68,7 +76,7 @@ label {
 }
 
 .groupContainer {
-  width: 300px;
+  width: 400px;
 }
 
 .formContainer {
@@ -77,4 +85,26 @@ label {
 
 .mContainer {
  display: flex;
+}
+
+span {
+  font-size: 24px;
+}
+
+h1 {
+  background-color: #FFA100;
+  box-shadow: 1px 1px 10px 3px lightgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin: 10px;
+  box-shadow: 1px 1px 10px 3px lightgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #FFA100;
 }

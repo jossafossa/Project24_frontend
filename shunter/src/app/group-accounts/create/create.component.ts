@@ -44,7 +44,8 @@ export class CreateComponent implements OnInit {
   }
 
   sendInfo(nameOfGroup, groupDescription, groupPicture, interests){
-    console.log(nameOfGroup, groupDescription, groupPicture, interests, this.accountForm);
+    // console.log(nameOfGroup, groupDescription, groupPicture, interests, this.accountForm);
+    // return;
     this.as.createGroupAccount(nameOfGroup, groupDescription, groupPicture, interests);
     this.router.navigate(['group-accounts', 'view']);
   }

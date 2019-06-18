@@ -6,6 +6,7 @@ body {
 	--primary-color:#2300B4;
 	--primary-bg-color:#292D3B;
 	--secondary-bg-color:#171726;
+  color: black;
 
 	margin: 0;
 	padding: 0;
@@ -150,7 +151,7 @@ h1,h2,h3,h4,h5,h6 {
 .button {
 	background-color: #FFA100;
 	color: white;
-	padding: .5rem 1rem;	
+	padding: .5rem 1rem;
 	outline:none;
 	border:none;
 	font-size:1rem;
@@ -161,3 +162,25 @@ h1,h2,h3,h4,h5,h6 {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 {
+  background-color: #FFA100;
+  /*background-color: lightslategray;*/
+  box-shadow: 1px 1px 10px 3px lightgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.mat-toolbar span {
+  font-size: 24px;
+}
+
+button {
+  box-shadow: 1px 1px 10px 3px lightgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #FFA100;
+  margin-top: 50px;
+}

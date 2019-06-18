@@ -1,3 +1,5 @@
+
+
 /* You can add global styles to this file, and also import other style files */
 body {	
 	margin: 0;
@@ -14,3 +16,25 @@ body {
 //	color: white
 //	border-radius: 100px
 //	padding: 1rem
+
+h1 {
+  background-color: #FFA100;
+  /*background-color: lightslategray;*/
+  box-shadow: 1px 1px 10px 3px lightgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+span {
+  font-size: 24px;
+}
+
+button {
+  box-shadow: 1px 1px 10px 3px lightgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #FFA100;
+  margin-top: 50px;
+}
