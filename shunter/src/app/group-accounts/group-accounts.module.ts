@@ -8,10 +8,12 @@ import { GroupAccountsComponent } from './group-accounts/group-accounts.componen
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
 
+
 // import {Ng5SliderModule} from 'ng5-slider';
 // import {Angular2ImageGalleryModule} from 'angular2-image-gallery';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ViewComponent } from './view/view.component';
+
 
 @NgModule({
   declarations: [CreateComponent, GroupAccountsComponent, EditComponent, ViewComponent],

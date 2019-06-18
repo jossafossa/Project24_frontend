@@ -5,6 +5,8 @@ import {CreateComponent} from './create/create.component';
 import {EditComponent} from './edit/edit.component';
 import {ViewComponent} from './view/view.component';
 
+import {importExpr} from '@angular/compiler/src/output/output_ast';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +23,11 @@ const routes: Routes = [
       {
         path: 'view',
         component: ViewComponent,
+      }
+      ,
+      {
+        path: 'board',
+        loadChildren: () => import('./noticeboard/noticeboard.module').then(mod => mod.NoticeboardModule)
       }
     ]
   }
