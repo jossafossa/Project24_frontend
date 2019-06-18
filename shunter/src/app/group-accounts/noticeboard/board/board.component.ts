@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NOTICES } from '../notice/mock-notices';
 
 @Component({
   selector: 'app-board',
@@ -6,12 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-
+notices = NOTICES;
   constructor() { }
 
   ngOnInit() {
   }
-public addnotice(){
-    return null
-}
+
 }
