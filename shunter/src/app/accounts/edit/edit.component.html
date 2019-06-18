@@ -6,12 +6,11 @@
     <div class="info">
       <h1>General info</h1>
       <div class="photo"></div>
-      <div class="basicInfo">
+
         <mat-form-field class='inputfield'>
           <input matInput name="username" placeholder="Username" [formControl]="username" required="true">
           <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
         </mat-form-field>
-      </div>
 
       <div class="basicInfo">
         <mat-form-field class='inputfield'>
@@ -27,35 +26,29 @@
                 (click)="uploader.uploadAll()"
                 [disabled]="!uploader.getNotUploadedItems().length">
           Upload an Image
-          <!--    preview image-->
         </button>
       </div>
     </div>
+
   </div>
   <div class="formCard">
     <div class="info">
       <h1>Password</h1>
-      <div class="authInfo">
-        <!--    <label>Password</label>-->
+
         <mat-form-field class='inputfield'>
           <input matInput type='password' placeholder="Password" name="password" [formControl]="password" required="true">
           <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
-          <!--    <mat-hint>Hint</mat-hint>-->
         </mat-form-field>
-      </div>
 
-      <div class="authInfo">
-        <!--    <label>Confirm password</label>-->
         <mat-form-field class='inputfield'>
           <input matInput name="confirmPass" type='password' placeholder="Confirm password" [formControl]="confirmPass" required="true">
           <mat-error *ngIf="confirmPass.invalid"> {{getNotSameErrorMessage()}} </mat-error>
-          <!--  <mat-error *ngIf="confirmPass != password">{{getNotSameErrorMessage()}}</mat-error>-->
         </mat-form-field>
-      </div>
-      <!--"!confirmPassword.toString().equals(password.toString())"-->
+
     </div>
   </div>
   <div class="formCard">
+    <div class="info">
     <div class="interests">
       <h1>Interests</h1>
       <p>What do you like, pick 5:</p>
@@ -71,7 +64,29 @@
         <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>
       </p>
     </div>
+  </div>
+  </div>
 
+  <div class="formCard">
+    <div class="info">
+      <h1>Photos</h1>
+      <div class="addPhotos">
+        <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="200" height="200">
+      </div>
+      <input type="file" multiple (change)="detectFiles($event)">
+<!--    <div class="photos">-->
+<!--      <h1>Add photos</h1>-->
+<!--      <input name="picture1" type="file" ng2FileSelect [uploader]="uploader" [formControl]="picture1"-->
+<!--             required="true"><br />-->
+<!--      <button type="button" class="btn btn-success btn-s"-->
+<!--              (click)="uploader.uploadAll()"-->
+<!--              [disabled]="!uploader.getNotUploadedItems().length">-->
+<!--        Upload an Image-->
+<!--        <img src="https://picsum.photos/200">-->
+<!--      </button>-->
+<!--    </div>-->
+
+    </div>
   </div>
 </div>
 <button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(accountForm.controls['email'].value,

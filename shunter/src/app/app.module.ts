@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { SwipeModule } from './swipe/swipe.module';
 import { TestComponent } from './test/test.component';
 
+
+
 // import { Ng5SliderModule } from 'ng5-slider';
 // import { Angular2ImageGalleryModule } from 'angular2-image-gallery'
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';

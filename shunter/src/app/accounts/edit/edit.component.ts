@@ -24,6 +24,12 @@ export class EditComponent implements OnInit {
   confirmPass;
   interests;
 
+  picture1;
+
+  urls = new Array<String>();
+
+  pictures: string [] = [];
+
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
   ];
@@ -46,6 +52,9 @@ export class EditComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
+
+    this.picture1 = this.accountForm['picture1'];
+    this.pictures = this.accountForm['pictures'];
   }
 
   ngOnInit() {
@@ -110,5 +119,19 @@ export class EditComponent implements OnInit {
   getNotFiveErrorMessage() {
     return this.interests.hasError('notEnough') ? 'You must pick 5\n':
       '';
+  }
+
+  detectFiles(event) {
+    this.urls = [];
+    let files = event.target.files;
+    if (files) {
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+        }
+        reader.readAsDataURL(file);
+      }
+    }
   }
 }

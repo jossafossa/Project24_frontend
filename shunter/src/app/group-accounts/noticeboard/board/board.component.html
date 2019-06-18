@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <span>Group Noticeboard</span>
+</mat-toolbar>
+<div class="buttons">
+  <button mat-button (click)="addNotice()">Add Note</button>
+</div>
+<mat-grid-list cols="5" rowHeight="1:2">
+  <!-- Haal cards automatisch op -->
+  <mat-grid-tile>
+    <mat-card>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Titel gaat hier</mat-card-title>
+      <mat-card-subtitle>Auteur</mat-card-subtitle>
+      <mat-card-content>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit "
+
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+  <mat-grid-tile>5</mat-grid-tile>
+  <mat-grid-tile>6</mat-grid-tile>
+  <mat-grid-tile>7</mat-grid-tile>
+  <mat-grid-tile>8</mat-grid-tile>
+  <mat-grid-tile>9</mat-grid-tile>
+  <mat-grid-tile>10</mat-grid-tile>
+</mat-grid-list>

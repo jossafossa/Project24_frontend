@@ -24,4 +24,12 @@ export class ViewComponent implements OnInit {
   toNewGroupAccount() {
     this.router.navigate(['groupaccounts', 'create']);
   }
+
+  goToMember() {
+    this.router.navigate(['accounts', 'view']);
+  }
+
+  maximizeImage() {
+
+  }
 }

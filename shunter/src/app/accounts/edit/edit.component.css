@@ -8,12 +8,17 @@ button {
 }
 
 .formCard {
-  width: 33.33333%;
-  flex: 0 0 33.33333%;
+  width: 23%;
+  flex: 0 0 24%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  height: 500px;
 }
 
 .authInfo {
-
   padding-top: 10px;
   padding-left: 10px;
   display: flex;
@@ -36,19 +41,18 @@ button {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
   margin-top: 10px;
   height: 100%;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
+  width: 100%;
 }
 
-.basicInfo {
-  padding-top: 10px;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
-}
+/*.basicInfo {*/
+/*  padding-top: 10px;*/
+/*  padding-left: 10px;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
 
 .checkboxes {
   padding: 1rem;
@@ -60,13 +64,13 @@ button {
   margin-bottom: 50px;
 }
 
-.interests {
+.addPhotos {
+  /*flex-grow: 1;*/
+  overflow: scroll;
+  flex-shrink: 1;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin-top: 10px;
-  margin-left: 10px;
-  height: 100%;
+}
+
+image {
+  object-fit: scale-down;
 }
