@@ -13,7 +13,6 @@ export class GroupComponent implements OnInit {
   	
   }
   
-
   like() {
   	console.log("like");
   }
