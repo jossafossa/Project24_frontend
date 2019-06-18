@@ -12,6 +12,11 @@ export class GroupAccountService {
     const data = {groupName, groupDescription, groupPicture, interests};
     this.http.post('http://localhost', data);
   }
+
+  editGroupAccount(nameOfGroup, groupDescription, groupPicture, interests) {
+    const editData = {nameOfGroup, groupDescription, groupPicture, interests};
+    this.http.post('http://localhost', editData);
+  }
 }
 
 // export class APIService {

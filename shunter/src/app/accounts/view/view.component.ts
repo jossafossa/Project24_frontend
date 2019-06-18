@@ -14,11 +14,11 @@ export class ViewComponent implements OnInit {
   }
 
   toSwipe() {
-    this.router.navigate(['group-accounts', 'create']);
+
   }
 
   toEdit(){
-    this.router.navigate(['group-accounts', 'edit']);
+    this.router.navigate(['accounts', 'edit']);
   }
 
   toNewGroupAccount() {

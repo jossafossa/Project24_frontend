@@ -11,3 +11,62 @@ button {
   width: 33.33333%;
   flex: 0 0 33.33333%;
 }
+
+.authInfo {
+
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  width: 100px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-image: url(/assets/placeholder.png);
+  margin-top: 10px;
+}
+
+.info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.basicInfo {
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxes {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+.interests {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 100%;
+}
