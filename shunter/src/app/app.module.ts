@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SwipeModule } from './swipe/swipe.module';
 import { TestComponent } from './test/test.component';
 
-import {SlideshowModule} from 'ng-simple-slideshow';
+import { SlideshowModule } from 'ng-simple-slideshow';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 export function tokenGetter(){
