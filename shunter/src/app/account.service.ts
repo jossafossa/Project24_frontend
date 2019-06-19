@@ -87,12 +87,12 @@ export class APIService {
       let image = images[i];
 
       if (i < 5) {
-        data["pic" + (i+1)] = [image];
+        data["pic" + (i+1)] = image;
       }
     }
     console.log(data);
     let endpoint = "/api/v1/users/" + userID;
-    return this.http.patch(this.baseURL + endpoint, data, this.options)
+    return this.http.put(this.baseURL + endpoint, data, this.options)
   }
 
   readFile(event) {

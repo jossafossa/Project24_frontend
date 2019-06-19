@@ -3,6 +3,8 @@
 <button (click)="getInterests()">get interests</button>
 <button (click)="updateUser()">update user</button>
 <button (click)="getUser()">get user</button>
-<form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()">
-	<input type="file" name="files[]" (change)="uploadFile($event)" placeholder="upload pic1" multiple>
+<form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+	<fieldset>
+		<input type="file" name="files[]" (change)="uploadFile($event)" placeholder="upload pic1">		
+	</fieldset>
 </form>

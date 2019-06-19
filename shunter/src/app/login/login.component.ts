@@ -9,6 +9,9 @@ import { APIService } from '../account.service';
 })
 export class LoginComponent implements OnInit {
 
+  username = "";
+  password = "";
+
   constructor(public api: APIService) { }
 
   ngOnInit() {
@@ -16,24 +19,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(e) {
     this.api.login("admin", "admin");
-    setTimeout(
-      () => {
-        this.api.addInterest("huppelen");
-        this.api.addInterest("touwtje springen");
-        this.api.addInterest("gebruikers pesten");
-        this.api.addInterest("zeeegels verzamelen");
-
-        this.api.getInterests().subscribe((data) => {
-          console.log(data);
-        })
-
-        this.api.updateUser(
-          1,
-          [1,2,3,4], 
-          ["henk", "piet", "klaas", "jezus", "maria", "je moeder", "klaas", "hans"]
-        ).subscribe(data => console.log);
-      }, 2000
-    )
   }
 
-}
+} 
