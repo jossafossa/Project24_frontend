@@ -1,12 +1,15 @@
 slideshow {
   width: 700px;
-  height: 500px;
+  height: 80%;
   background-size: cover;
 }
 
-.small-container {
-  width: 100%;
-  height: 50%;
-  border: 1px solid white;
-  border-radius: 5px;
+.slideshow-container {
+  	width: 100%;
+  	height: 80%;
+  	border: 1px solid white;
+  	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
