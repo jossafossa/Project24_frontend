@@ -13,7 +13,10 @@
       <mat-card-subtitle>{{notice.user}}, {{notice.date}}</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>{{notice.message}}</mat-card-content>
-      <mat-card-footer>© Butje BV</mat-card-footer>
+      <mat-card-footer>
+        <button mat-button>Edit</button>
+        <button mat-button>Remove</button>
+      </mat-card-footer>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
