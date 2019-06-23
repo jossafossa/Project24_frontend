@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
 
   accountForm : FormGroup;
 
+  id;
   username;
   status;
   profilePicture;
@@ -33,12 +34,11 @@ export class EditComponent implements OnInit {
 
   constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
-      email : ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
-      password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
-      username : ['',[Validators.required, Validators.maxLength(50)]],
-      confirmPass : ['',[Validators.required]],
-      profilePicture : ['', Validators.required],
-      status : ['', [Validators.required, Validators.maxLength(120)]],
+      password : ['', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
+      username : ['', Validators.maxLength(50)],
+      confirmPass : [''],
+      profilePicture : [''],
+      status : ['', Validators.maxLength(120)],
       interests : [''],
       pictures : ['', Validators.maxLength(4)],
     }, { validators: [EditComponent.checkIfMatchingPasswords, EditComponent.maxInterests]});
@@ -50,6 +50,7 @@ export class EditComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
+    this.id = this.as.user.user_id;
 
     this.as.getLoggedInUser().subscribe((data: {username:string, status:string}) => {
       this.accountForm.controls['username'].setValue(data.username);
@@ -61,13 +62,14 @@ export class EditComponent implements OnInit {
   }
 
   // sendInfo(email, password, username, status, profilePicture, interests){
-    // console.log(email, password, username, status, profilePicture, interests);
-    // this.as.createAccount(email, password, username, status, profilePicture, interests);
-    // this.router.navigate(['accounts', 'view']);
+  //   console.log(email, password, username, status, profilePicture, interests);
+  //   this.as.createAccount(email, password, username, status, profilePicture, interests);
+  //   this.router.navigate(['accounts', 'view']);
   // }
 
-  updateUser(userId, interests, images){
-
+  sendInfo(pictures, interests){
+    this.as.updateUser(this.id, pictures, interests);
+    this.router.navigate(['accounts', 'view']);
   }
 
   private static maxInterests(group: FormGroup){

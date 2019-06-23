@@ -8,17 +8,17 @@
       <div class="photo"></div>
 
         <mat-form-field class='inputfield'>
-          <input matInput name="username" placeholder="Username" [formControl]="username" required="true">
+          <input matInput name="username" placeholder="Username" [formControl]="username">
           <mat-error *ngIf="username.invalid"> {{getUsernameErrorMessage()}} </mat-error>
         </mat-form-field>
 
         <mat-form-field class='inputfield'>
-          <input matInput name="status" placeholder="Status" [formControl]="status" required="true">
+          <input matInput name="status" placeholder="Status" [formControl]="status">
           <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
         </mat-form-field>
 
         <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture"
-               required="true"><br />
+               ><br />
         <button type="button" class="btn btn-success btn-s"
                 (click)="uploader.uploadAll()"
                 [disabled]="!uploader.getNotUploadedItems().length">
@@ -32,12 +32,12 @@
       <h1>Password</h1>
 
         <mat-form-field class='inputfield'>
-          <input matInput type='password' placeholder="Password" name="password" [formControl]="password" required="true">
+          <input matInput type='password' placeholder="Password" name="password" [formControl]="password">
           <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
         </mat-form-field>
 
         <mat-form-field class='inputfield'>
-          <input matInput name="confirmPass" type='password' placeholder="Confirm password" [formControl]="confirmPass" required="true">
+          <input matInput name="confirmPass" type='password' placeholder="Confirm password" [formControl]="confirmPass">
           <mat-error *ngIf="confirmPass.invalid"> {{getNotSameErrorMessage()}} </mat-error>
         </mat-form-field>
 
@@ -83,6 +83,5 @@
     </div>
   </div>
 </div>
-<!--<button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(accountForm.controls['email'].value,-->
-<!-- accountForm.controls['password'].value, accountForm.controls['username'].value, accountForm.controls['status'].value,-->
-<!-- accountForm.controls['profilePicture'].value, accountForm.controls['interests'].value)">Save edits!</button>-->
+<button mat-button [disabled]="accountForm.pristine || accountForm.invalid" (click)="sendInfo(
+ accountForm.controls['pictures'].value, accountForm.controls['interests'].value)">Save edits!</button>
