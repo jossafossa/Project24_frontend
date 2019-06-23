@@ -54,6 +54,11 @@ label {
 
 .picture {
   padding: 10px;
+  max-width: 200px;
+}
+
+.picture img {
+  height: 150px;
 }
 
 .group {
@@ -77,6 +82,7 @@ img {
 
 .groupContainer {
   width: 400px;
+  flex-shrink: 0;
 }
 
 .formContainer {
@@ -107,4 +113,10 @@ button {
   border: 1px solid white;
   border-radius: 5px;
   background-color: #FFA100;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 5px 25px;
 }

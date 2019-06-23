@@ -1,19 +1,20 @@
+button {
+  margin-top: 50px;
+}
+
 .formCards {
   flex-flow: row wrap;
   display: flex;
 }
 
 .formCard {
-  width: 33.33333%;
-  flex: 0 0 33.33333%;
-}
-
-.authInfo {
-
-  padding-top: 10px;
-  padding-left: 10px;
+  width: 23%;
+  flex: 0 0 24%;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
   display: flex;
-  flex-direction: column;
+  height: 500px;
 }
 
 .photo {
@@ -32,19 +33,9 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  /*border: 1px solid black;*/
-  /*border: 3px solid hotpink;*/
-  border-radius: 5px;
   margin-top: 10px;
   height: 100%;
-  margin-left: 10px;
-}
-
-.basicInfo {
-  padding-top: 10px;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
 .checkboxes {
@@ -57,45 +48,12 @@
   margin-bottom: 50px;
 }
 
-.interests {
+.addPhotos {
+  overflow: scroll;
+  flex-shrink: 1;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  /*border: 1px solid black;*/
-  border-radius: 5px;
-  margin-top: 10px;
-  margin-left: 10px;
-  height: 100%;
 }
 
-h1 {
-  /*background: #76b852;  !* fallback for old browsers *!*/
-  /*background: -webkit-linear-gradient(to right, #8DC26F, #76b852);  !* Chrome 10-25, Safari 5.1-6 *!*/
-  /*background: linear-gradient(to right, #8DC26F, #76b852); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
-
-  /*background: #6441A5;  !* fallback for old browsers *!*/
-  /*background: -webkit-linear-gradient(to right, #2a0845, #6441A5);  !* Chrome 10-25, Safari 5.1-6 *!*/
-  /*background: linear-gradient(to right, #2a0845, #6441A5); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
-
-  background-color: #FFA100;
-  /*background-color: lightslategray;*/
-  box-shadow: 1px 1px 10px 3px lightgrey;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-}
-
-span {
-  font-size: 24px;
-}
-
-button {
-   box-shadow: 1px 1px 10px 3px lightgrey;
-   color: white;
-   border: 1px solid white;
-   border-radius: 5px;
-   background-color: #FFA100;
-  margin-top: 50px;
- }
-
-
+/*image {*/
+/*  object-fit: scale-down;*/
+/*}*/

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../account.service';
+import {APIService} from '../../account.service';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FileUploader} from 'ng2-file-upload';
+import * as jwt_decode from "jwt-decode";
 
 const URL = 'http//localhost:4200/api/upload';
 
@@ -24,17 +25,13 @@ export class EditComponent implements OnInit {
   confirmPass;
   interests;
 
-  picture1;
-
   urls = new Array<String>();
-
-  pictures: string [] = [];
 
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
   ];
 
-  constructor(private as : AccountService, private fb : FormBuilder, private router : Router) {
+  constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       email : ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
       password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
@@ -43,6 +40,7 @@ export class EditComponent implements OnInit {
       profilePicture : ['', Validators.required],
       status : ['', [Validators.required, Validators.maxLength(120)]],
       interests : [''],
+      pictures : ['', Validators.maxLength(4)],
     }, { validators: [EditComponent.checkIfMatchingPasswords, EditComponent.maxInterests]});
 
     this.username = this.accountForm.controls['username'];
@@ -53,17 +51,23 @@ export class EditComponent implements OnInit {
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
 
-    this.picture1 = this.accountForm['picture1'];
-    this.pictures = this.accountForm['pictures'];
+    this.as.getLoggedInUser().subscribe((data: {username:string, status:string}) => {
+      this.accountForm.controls['username'].setValue(data.username);
+      this.accountForm.controls['status'].setValue(data.status);
+    });
   }
 
   ngOnInit() {
   }
 
-  sendInfo(email, password, username, status, profilePicture, interests){
-    console.log(email, password, username, status, profilePicture, interests);
-    this.as.createAccount(email, password, username, status, profilePicture, interests);
-    this.router.navigate(['accounts', 'view']);
+  // sendInfo(email, password, username, status, profilePicture, interests){
+    // console.log(email, password, username, status, profilePicture, interests);
+    // this.as.createAccount(email, password, username, status, profilePicture, interests);
+    // this.router.navigate(['accounts', 'view']);
+  // }
+
+  updateUser(userId, interests, images){
+
   }
 
   private static maxInterests(group: FormGroup){
@@ -120,6 +124,11 @@ export class EditComponent implements OnInit {
     return this.interests.hasError('notEnough') ? 'You must pick 5\n':
       '';
   }
+
+  // getNotFourErrorMessage(){
+  //   return this.urls.hasError('maxLength') ? 'You can only choose 4 photos\n':
+  //     '';
+  // }
 
   detectFiles(event) {
     this.urls = [];

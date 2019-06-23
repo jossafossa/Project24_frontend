@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../account.service';
+import { APIService} from '../../account.service';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FileUploader} from 'ng2-file-upload';
@@ -27,14 +27,15 @@ export class CreateComponent implements OnInit {
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
   ];
+  urls: any;
 
-  constructor(private as : AccountService, private fb : FormBuilder, private router : Router) {
+  constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       email : ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
       password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
       username : ['',[Validators.required, Validators.maxLength(50)]],
       confirmPass : ['',[Validators.required]],
-      profilePicture : ['', Validators.required],
+      profilePicture : [''],
       status : ['', [Validators.required, Validators.maxLength(120)]],
       interests : [''],
     }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests]});
@@ -51,9 +52,10 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendInfo(email, password, username, status, profilePicture, interests){
-    console.log(email, password, username, status, profilePicture, interests);
-    this.as.createAccount(email, password, username, status, profilePicture, interests);
+  sendInfo(email, username, password, confirmPass){
+    // console.log(email, password, username, status, profilePicture, interests);
+    // this.as.createAccount(email, password, username, status, profilePicture, interests);
+    this.as.signup(username, email, password, confirmPass);
     this.router.navigate(['accounts', 'view']);
   }
 
@@ -110,5 +112,19 @@ export class CreateComponent implements OnInit {
   getNotFiveErrorMessage() {
     return this.interests.hasError('notEnough') ? 'You must pick 5\n':
       '';
+  }
+
+  detectFiles(event) {
+    this.urls = [];
+    let files = event.target.files;
+    if (files) {
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+        }
+        reader.readAsDataURL(file);
+      }
+    }
   }
 }

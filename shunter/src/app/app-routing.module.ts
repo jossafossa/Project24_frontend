@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CreateComponent } from './accounts/create/create.component';
 import { TestComponent } from './test/test.component';
+import {AuthGuard} from './auth.guard';
+import {LogoutComponent} from './logout/logout.component';
 // import { SwipeRoutingModule, SwipeModule } from './swipe/swipe.module'; 
 
 const routes: Routes = [ 
@@ -22,6 +24,7 @@ const routes: Routes = [
   {
     path: 'accounts',
     loadChildren: () => import('./accounts/accounts.module').then(mod => mod.AccountsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login', 
@@ -29,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'logout', 
-    component: HomeComponent,
+    component: LogoutComponent,
   },
   {
     path: 'signup', 

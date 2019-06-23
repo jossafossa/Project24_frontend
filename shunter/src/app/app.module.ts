@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { JwtModule} from '@auth0/angular-jwt';
 import { HttpClientModule} from '@angular/common/http';
-import { AccountService, APIService } from './account.service';
+import { APIService } from './account.service';
 
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
@@ -18,6 +18,7 @@ import { TestComponent } from './test/test.component';
 
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component';
 
 export function tokenGetter(){
   return localStorage.getItem('access-token');
@@ -29,7 +30,8 @@ export function tokenGetter(){
     HomeComponent,
     NavComponent,
     LoginComponent,
-    TestComponent
+    TestComponent,
+    LogoutComponent
   ],
   imports: [
     SlideshowModule,
@@ -45,7 +47,7 @@ export function tokenGetter(){
       }
     })
   ],
-  providers: [AccountService, APIService],
+  providers: [APIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

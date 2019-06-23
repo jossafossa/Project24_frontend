@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../account.service';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {GroupAccountService} from '../../group-account.service';

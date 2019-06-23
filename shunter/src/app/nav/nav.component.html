@@ -4,11 +4,14 @@
 	</div>
 
 	<div class="menu_area">
-		<a class="menu_item login" routerLink="login">Login</a>	
-		<a class="menu_item logout">Logout</a>	
-		<a class="menu_item signup" routerLink="accounts/create">Signup</a>
-    <a class="menu_item view" routerLink="accounts/view">View</a>
-<!--		ik heb dit ff nodig xd-->
+    <div *ngIf="loggedIn; else loggedOut">
+      <a class="menu_item logout" routerLink="logout">Logout</a>
+      <a class="menu_item view" routerLink="accounts/view">My account</a>
+    </div>
+    <ng-template #loggedOut>
+    <a class="menu_item login" routerLink="login">Login</a>
+    <a class="menu_item signup" routerLink="accounts/create">Signup</a>
+    </ng-template>
 	</div>
 </nav>
 	

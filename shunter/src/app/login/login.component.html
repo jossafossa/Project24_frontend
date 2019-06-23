@@ -1,14 +1,14 @@
 <form>
 	<div class="row">
 		
-		<label for="email">email</label>
-		<input type="text" name="email">
+		<label for="username">username</label>
+		<input type="text" name="username" [(ngModel)]="username">
 	</div>
 	<div class="row">
 		<label for="password">password</label>	
-		<input type="password" name="password">
+		<input type="password" name="password" [(ngModel)]="password">
 	</div>
 	<div class="row">
-		<button type="button" class="button" (click)="onSubmit()">Login</button>
+		<button type="button" class="button" (click)="onSubmit($event)">Login</button>
 	</div>
 </form> 
