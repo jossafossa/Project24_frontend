@@ -9,6 +9,10 @@ export class AuthGuard implements CanActivate {
   constructor(private router : Router){}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log(state.url);
+    if(state.url == '/accounts/create'){
+      return true;
+    }
     return this.verifyLogin();
   }
 

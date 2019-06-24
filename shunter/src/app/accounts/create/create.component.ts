@@ -56,6 +56,7 @@ export class CreateComponent implements OnInit {
     // console.log(email, password, username, status, profilePicture, interests);
     // this.as.createAccount(email, password, username, status, profilePicture, interests);
     this.as.signup(username, email, password, confirmPass);
+    console.log(email, username, password, confirmPass);
     this.router.navigate(['accounts', 'view']);
   }
 
