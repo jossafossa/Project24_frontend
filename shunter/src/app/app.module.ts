@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 
-import { SwipeModule } from './swipe/swipe.module';
 import { TestComponent } from './test/test.component';
 
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -36,7 +35,6 @@ export function tokenGetter(){
   imports: [
     SlideshowModule,
     BrowserAnimationsModule,
-    SwipeModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule, 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from '../account.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -10,9 +13,12 @@ export class HomeComponent implements OnInit {
    "assets/img/cheese.jpg", "assets/groupOfNormies.jpg", "assets/groupOfEmos.jpg"
   ];
 
-  constructor() { }
+  constructor(private api: APIService, private router: Router) { }
 
   ngOnInit() {
+  	if (this.api.isLoggedIn()) {
+  		this.router.navigate(["/accounts/view"])
+  	}
   }
 
 }

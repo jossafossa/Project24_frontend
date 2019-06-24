@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'view',
         component: ViewComponent,
+      },
+      {
+        path: 'swipe',
+        loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule),
       }
     ]
   }

@@ -42,7 +42,7 @@ export class ViewComponent implements OnInit {
   }
 
   toSwipe() {
-
+    this.router.navigate(['accounts', 'swipe']);
   }
 
   toEdit(){

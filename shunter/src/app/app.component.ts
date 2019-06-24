@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { APIService } from './account.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Shunter';
   token = "";
+  constructor(public api: APIService ) {}
 }

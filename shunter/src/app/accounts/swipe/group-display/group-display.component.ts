@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'group-display',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupDisplayComponent implements OnInit {
 
-  constructor() { }
+	@Input() group: Object;
 
-  ngOnInit() {
-  }
+	constructor() { }
+
+	ngOnInit() {
+
+	}
 
 }

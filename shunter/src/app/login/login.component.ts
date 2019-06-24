@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(e) {
-    this.api.login(this.username, this.password);
-    this.router.navigate(['/']);
+    this.api.login(this.username, this.password).subscribe(
+      () => this.router.navigate(['/'])
+    );
   }
 
 } 

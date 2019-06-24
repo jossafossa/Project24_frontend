@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
-import { HubComponent } from './hub/hub.component';
-import { GroupComponent } from './group/group.component';
+// import { HubComponent } from './hub/hub.component';
+import { SwipeComponent } from './swipe.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 	{
-		path: 'swipe',
-  	component: HubComponent,
-  },
-	{
-  	path: 'swipe/group',
-  	component: GroupComponent,
+  	path: '',
+  	component: SwipeComponent,
 	}
 ];
 

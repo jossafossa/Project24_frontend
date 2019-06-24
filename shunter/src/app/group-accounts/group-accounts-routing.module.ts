@@ -23,8 +23,7 @@ const routes: Routes = [
       {
         path: 'view',
         component: ViewComponent,
-      }
-      ,
+      },
       {
         path: 'board',
         loadChildren: () => import('./noticeboard/noticeboard.module').then(mod => mod.NoticeboardModule)
