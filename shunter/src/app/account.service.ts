@@ -2,40 +2,45 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import * as jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
-
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AccountService {
-
-  constructor(public http: HttpClient) {}
-
-  createAccount(email, password, username, status, profilePicture, interests){
-    const createData = {email, password, username, status, profilePicture, interests};
-    this.http.post('http://localhost', createData);
-  }
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class APIService {
   baseURL = "http://localhost:8000";
-  loggedIn = false;
+  loggedIn: boolean;
   token = "";
   options = {};
+  user;
   form;
 
   constructor(
     public http: HttpClient, 
     private formBuilder: FormBuilder, 
     private router: Router
-  ) {}
+  ) {
+    this.loggedIn = localStorage.getItem('isLoggedIn') == 'true';
+    this.token = localStorage.getItem('token');
+
+    if (this.token) {
+      this.user = jwt_decode(this.token);
+      this.options = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': "JWT " + this.token,
+        })
+      };
+    }
+  }
 
   setToken(token) {
+    localStorage.setItem('isLoggedIn', 'true');
+    this.loggedIn = true;
+    localStorage.setItem('token', token);
     this.token = token;
+    this.user = jwt_decode(this.token);
     this.options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -82,13 +87,16 @@ export class APIService {
 	}
 
   isLoggedIn() {
+    console.log(this.token, this.loggedIn);
     return (this.token !== "" && this.loggedIn) ? true : false;
   }
 
   logout() {
     this.token = "";
     this.loggedIn = false;
-  }
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('token');
+	}
 
   signup(username, email, password1, password2) {
     let data = {
@@ -98,12 +106,19 @@ export class APIService {
       "password2": password2
     };
     let endpoint = "/api/v1/rest-auth/registration/";
-    return this.http.post(this.baseURL + endpoint, data)
+    let response = this.http.post(this.baseURL + endpoint, data);
+    response.subscribe((d) => {this.setToken(d["token"]);})
+    return response;
   };
 
   getUser(userID) {
     let endpoint = "/api/v1/users/" + userID;
     return this.request("get", endpoint);
+  }
+
+  getLoggedInUser() {
+    let endpoint = "/api/v1/users/" + this.user.user_id;
+    return this.http.get(this.baseURL + endpoint, this.options)
   }
 
   uploadFile(imageEvent, callback) {

@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   imageUrlArray: (string)[] = [
-   "assets/img/cheese.jpg", "assets/placeholder.png"
+   "assets/img/cheese.jpg", "assets/groupOfNormies.jpg", "assets/groupOfEmos.jpg"
   ];
 
   constructor(private api: APIService, private router: Router) { }

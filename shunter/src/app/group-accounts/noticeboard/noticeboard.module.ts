@@ -8,6 +8,9 @@ import { NoticeComponent } from './notice/notice.component';
 
 @NgModule({
   declarations: [BoardComponent, NoticeComponent],
+  exports: [
+    BoardComponent
+  ],
   imports: [
     CommonModule,
     NoticeboardRoutingModule,

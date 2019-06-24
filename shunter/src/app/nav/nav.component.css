@@ -17,7 +17,7 @@ nav.main-menu {
 	text-transform: uppercase;
 	color:white;
 	cursor:pointer;
-	display:block;
+	/*display:block;*/
 }
 
 .menu_item:hover {
