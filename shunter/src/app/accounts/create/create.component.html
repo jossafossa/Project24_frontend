@@ -17,13 +17,18 @@
         <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
       </mat-form-field>
 
+      <mat-form-field class='inputfield'>
+        <input matInput name="email" placeholder="Email" [formControl]="email" required="true">
+                <mat-error *ngIf="email.invalid"> {{getEmailErrorMessage()}} </mat-error>
+      </mat-form-field>
+
       <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture"
-             required="true"><br />
-      <button type="button" class="btn btn-success btn-s"
-              (click)="uploader.uploadAll()"
-              [disabled]="!uploader.getNotUploadedItems().length">
-        Upload an Image
-      </button>
+             ><br />
+<!--      <button type="button" class="btn btn-success btn-s"-->
+<!--              (click)="uploader.uploadAll()"-->
+<!--              [disabled]="!uploader.getNotUploadedItems().length">-->
+<!--        Upload an Image-->
+<!--      </button>-->
     </div>
 
   </div>

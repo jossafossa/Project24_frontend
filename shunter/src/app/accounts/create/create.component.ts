@@ -36,7 +36,7 @@ export class CreateComponent implements OnInit {
       username : ['',[Validators.required, Validators.maxLength(50)]],
       confirmPass : ['',[Validators.required]],
       profilePicture : [''],
-      status : ['', [Validators.required, Validators.maxLength(120)]],
+      status : ['', Validators.maxLength(120)],
       interests : [''],
     }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests]});
 
@@ -47,16 +47,14 @@ export class CreateComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
+
   }
 
   ngOnInit() {
   }
 
   sendInfo(email, username, password, confirmPass){
-    // console.log(email, password, username, status, profilePicture, interests);
-    // this.as.createAccount(email, password, username, status, profilePicture, interests);
     this.as.signup(username, email, password, confirmPass);
-    console.log(email, username, password, confirmPass);
     this.router.navigate(['accounts', 'view']);
   }
 
