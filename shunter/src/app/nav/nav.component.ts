@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from '../account.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: APIService) { }
 
   ngOnInit() {
+    console.log("nav logged in: " + this.api.isLoggedIn());
+  }
+
+  loggedIn() {
+  	return this.api.isLoggedIn();
+  }
+
+  logout() {
+  	this.api.logout();
   }
 
 }

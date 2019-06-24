@@ -7,6 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
+import {SwipeModule} from './swipe/swipe.module';
 
 // import {Ng5SliderModule} from 'ng5-slider';
 // import {Angular2ImageGalleryModule} from 'angular2-image-gallery';
@@ -16,7 +17,7 @@ import { ViewComponent } from './view/view.component';
 @NgModule({
   declarations: [CreateComponent, AccountsComponent, EditComponent, ViewComponent],
   imports: [
-    CommonModule,
+    CommonModule, 
     AccountsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
@@ -27,6 +28,7 @@ import { ViewComponent } from './view/view.component';
     MatListModule,
     FormsModule,
     MatButtonModule,
+    SwipeModule,
     // Ng5SliderModule,
     // Angular2ImageGalleryModule,
   ]

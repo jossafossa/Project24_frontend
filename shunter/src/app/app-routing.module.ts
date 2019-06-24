@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { CreateComponent } from './accounts/create/create.component';
 import { TestComponent } from './test/test.component';
@@ -8,12 +9,8 @@ import { TestComponent } from './test/test.component';
 
 const routes: Routes = [ 
   {
-    path: 'swipe',
-    loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule)
-  },
-  {
     path: "",
-    component: HomeComponent,
+    component: HomeComponent, 
   },
   {
     path: 'group-accounts',

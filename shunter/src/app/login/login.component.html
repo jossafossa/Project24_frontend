@@ -1,12 +1,12 @@
-<form>
+<form [formGroup]="loginForm">
 	<div class="row">
 		
 		<label for="email">email</label>
-		<input type="text" name="email">
+		<input formControlName="username"  type="text" name="email">
 	</div>
 	<div class="row">
 		<label for="password">password</label>	
-		<input type="password" name="password">
+		<input formControlName="password" type="password" name="password">
 	</div>
 	<div class="row">
 		<button type="button" class="button" (click)="onSubmit()">Login</button>

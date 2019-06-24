@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -27,7 +28,11 @@ export class APIService {
   options = {};
   form;
 
-  constructor(public http: HttpClient, private formBuilder: FormBuilder) {}
+  constructor(
+    public http: HttpClient, 
+    private formBuilder: FormBuilder, 
+    private router: Router
+  ) {}
 
   setToken(token) {
     this.token = token;
@@ -39,15 +44,51 @@ export class APIService {
     };
   }
 
+  request(method, endpoint, data = {}) {
+    let response;
+    console.log(this.isLoggedIn());
+    if (this.isLoggedIn()) {
+      switch(method) {
+        case "post":
+          response = this.http.post(this.baseURL + endpoint, data, this.options);
+          break;
+        case "get":          
+          response = this.http.get(this.baseURL + endpoint, this.options);
+          break;
+        case "put":          
+          response = this.http.put(this.baseURL + endpoint, data, this.options);
+          break;
+        case "patch":          
+          response = this.http.patch(this.baseURL + endpoint, data, this.options);
+          break;
+      }      
+    } else {
+      this.router.navigate(['login']);
+    } 
+    return response;
+  }
+
+
 	login(username, password) {
 		let data = {
 			"username": username,
 			"password": password,
 		}
     let endpoint = "/api/v1/rest-auth/login/";
-    this.http.post(this.baseURL + endpoint, data)
-      .subscribe((d) => {this.setToken(d["token"]); console.log(d)})
+    let response = this.http.post(this.baseURL + endpoint, data);
+    response.subscribe((d) => {this.setToken(d["token"]); this.loggedIn = true;})
+
+    return response;
 	}
+
+  isLoggedIn() {
+    return (this.token !== "" && this.loggedIn) ? true : false;
+  }
+
+  logout() {
+    this.token = "";
+    this.loggedIn = false;
+  }
 
   signup(username, email, password1, password2) {
     let data = {
@@ -62,7 +103,7 @@ export class APIService {
 
   getUser(userID) {
     let endpoint = "/api/v1/users/" + userID;
-    return this.http.get(this.baseURL + endpoint, this.options)
+    return this.request("get", endpoint);
   }
 
   uploadFile(imageEvent, callback) {
@@ -79,7 +120,7 @@ export class APIService {
     console.log(file);
   }
 
-  updateUser(userID, interests = [], images) {
+  updateUser(userID, interests: number[] = [], images = []) {
     let data = {
       "interests": interests
     }
@@ -92,7 +133,7 @@ export class APIService {
     }
     console.log(data);
     let endpoint = "/api/v1/users/" + userID;
-    return this.http.put(this.baseURL + endpoint, data, this.options)
+    return this.request("put", endpoint, data);
   }
 
   readFile(event) {
@@ -104,12 +145,37 @@ export class APIService {
       "name": interest
     };
     let endpoint = "/api/v1/interests/";
-    return this.http.post(this.baseURL + endpoint, data, this.options)
+    return this.request("post", endpoint, data);
   }
   
   getInterests() {   
     let endpoint = "/api/v1/interests/";
-    return this.http.get(this.baseURL + endpoint, this.options)
+    return this.request("get", endpoint);
+  }
+
+  getNextUser() {
+    let endpoint = "/api/v1/matcher/getUser/";
+    return this.request("get", endpoint);
+  }
+
+  like(userID) {
+    console.log("TODO: liked")
+    // let endpoint = "/api/v1/matcher/getUser/";
+    // let data = {
+    //   "userID": userID,
+    //   "like": true
+    // }
+    // return this.request("get", endpoint, data);
+  }
+
+  dislike(userID) {
+    console.log("TODO: disliked")
+    // let endpoint = "/api/v1/matcher/getUser/";
+    // let data = {
+    //   "userID": userID,
+    //   "like": false
+    // }
+    // return this.request("get", endpoint, data);
   }
 
 

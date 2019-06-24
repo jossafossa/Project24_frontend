@@ -148,7 +148,7 @@ h1,h2,h3,h4,h5,h6 {
 
 /* buttons */
 
-.button {
+.button, button {
 	background-color: #FFA100;
 	color: white;
 	padding: .5rem 1rem;
@@ -158,6 +158,7 @@ h1,h2,h3,h4,h5,h6 {
 	font-weight:800;
 	text-transform:uppercase;
 	text-decoration: none;
+	cursor:pointer;
 }
 
 html, body { height: 100%; }

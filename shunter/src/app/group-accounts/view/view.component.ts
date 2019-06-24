@@ -14,7 +14,7 @@ export class ViewComponent implements OnInit {
   }
 
   toSwipe() {
-    this.router.navigate(['group-accounts', 'create']);
+    this.router.navigate(['group-accounts', 'swipe']);
   }
 
   toEdit(){

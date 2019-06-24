@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../account.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css'],
-  providers: [APIService]
+  styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
 
   constructor(public api: APIService) { }
 
   ngOnInit() {
+    console.log("test logged in: " + this.api.isLoggedIn());
   }
 
   login() {
@@ -37,12 +38,21 @@ export class TestComponent implements OnInit {
   }
 
   uploadFile(event) {
-  //   let data = [
-  //     1,
-  //     []
-  //   ]
-  //   this.api.uploadFile(event,
-  //     (d) => {this.api.updateUser(data[0], data[1], [d] ).subscribe(e=>console.log) }
-  //   );
+    let data = [
+      1,
+      [],
+    ]
+    this.api.uploadFile(event,
+      (d) => {this.api.updateUser(data[0], [], d ).subscribe(e=>console.log) }
+    );
+  }
+
+  generateUsers() { 
+  console.log("generating users") 
+    for(let i = 0; i<10; i++) {
+      console.log("users" + (i+1)) 
+      let response = this.api.signup("user" + (i+1), "user" + (i+1) + "@user.nl", "asldn1348h##", "asldn1348h##")
+      response.subscribe((data)=>console.log);
+    } 
   }
 }
