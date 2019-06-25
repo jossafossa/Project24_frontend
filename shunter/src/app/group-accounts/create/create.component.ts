@@ -42,6 +42,11 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  onInterestsChange(event) {
+    console.log(event);
+    this.accountForm.controls['interests'].setValue(event);
+  }
+
   sendInfo(nameOfGroup, groupDescription, groupPicture, interests){
     // console.log(nameOfGroup, groupDescription, groupPicture, interests, this.accountForm);
     // return;

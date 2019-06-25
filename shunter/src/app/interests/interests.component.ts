@@ -9,32 +9,7 @@ import {APIService} from '../account.service';
 export class InterestsComponent implements OnInit {
 
 
-  interests: object [] = [
-    {
-    	id: 1,
-    	name: 'music'
-    },
-    {
-    	id: 2,
-    	name: 'photography' 
-    },
-    {
-    	id: 3,
-    	name: 'movies'
-    },
-    {
-    	id: 4,
-    	name: 'skateboarding' 
-    },
-    {
-    	id: 5,
-    	name: 'music' 
-    },
-    {
-    	id: 6,
-    	name: 'gaming' 
-    }
-  ];
+  interests: object [] = [];
 
   selected: number [] = [];
   @Output() valueChange = new EventEmitter();
@@ -44,7 +19,7 @@ export class InterestsComponent implements OnInit {
   ngOnInit() {
   	this.api.getInterests().subscribe((d) => {
   		console.log("interetss: ", d);
-  		this.interests = d;
+  		this.interests = d.sort((a, b) => {return a.name.localeCompare(b.name);});
   	});  	
   }
 
