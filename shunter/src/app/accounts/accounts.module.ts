@@ -8,6 +8,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
 import {SwipeModule} from './swipe/swipe.module';
+import { InterestsModule } from '../interests/interests.module';
 
 // import {Ng5SliderModule} from 'ng5-slider';
 // import {Angular2ImageGalleryModule} from 'angular2-image-gallery';
@@ -29,6 +30,7 @@ import { ViewComponent } from './view/view.component';
     FormsModule,
     MatButtonModule,
     SwipeModule,
+    InterestsModule,
     // Ng5SliderModule,
     // Angular2ImageGalleryModule,
   ]
