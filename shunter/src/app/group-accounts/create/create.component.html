@@ -18,6 +18,7 @@
       </mat-form-field>
     </div>
     <div class="basicInfo">
+      <h2>Does not work!</h2>
       <input name="groupPicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="groupPicture"
              required="true"><br/>
       <button type="button" class="btn btn-success btn-s"
@@ -29,7 +30,7 @@
   </div>
   <div class="formCard">
     <h1>Step 2:</h1>
-    <interests onChange='onInterestsChange()'></interests>
+    <interests (valueChange)='onInterestsChange($event)'></interests>
     <p>
       Options selected: {{interests.value.length}}
       <mat-error *ngIf="interests.invalid"> {{getNotFiveErrorMessage()}} </mat-error>

@@ -28,11 +28,9 @@ export class EditComponent implements OnInit {
 
   urls = new Array<String>();
 
-  interestList: string [] = [
-    'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
-  ];
+  interestList: string [] = [];
 
-  constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
+  constructor(private api : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       password : ['', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
       username : ['', Validators.maxLength(50)],
@@ -50,9 +48,9 @@ export class EditComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
-    this.id = this.as.user.user_id;
+    this.id = this.api.user.user_id;
 
-    this.as.getLoggedInUser().subscribe((data: {username:string, status:string}) => {
+    this.api.getLoggedInUser().subscribe((data: {username:string, status:string}) => {
       this.accountForm.controls['username'].setValue(data.username);
       this.accountForm.controls['status'].setValue(data.status);
     });
@@ -63,12 +61,12 @@ export class EditComponent implements OnInit {
 
   // sendInfo(email, password, username, status, profilePicture, interests){
   //   console.log(email, password, username, status, profilePicture, interests);
-  //   this.as.createAccount(email, password, username, status, profilePicture, interests);
+  //   this.api.createAccount(email, password, username, status, profilePicture, interests);
   //   this.router.navigate(['accounts', 'view']);
   // }
 
   sendInfo(pictures, interests){
-    this.as.updateUser(this.id, pictures, interests);
+    this.api.updateUser(this.id, pictures, interests);
     this.router.navigate(['accounts', 'view']);
   }
 

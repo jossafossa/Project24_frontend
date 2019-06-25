@@ -26,7 +26,7 @@ export class InterestsComponent implements OnInit {
   change(event) {
 
   	console.log(event);
-  	let id = event.target.id;
+  	let id = parseInt(event.target.id);
   	let checked = event.target.checked;
 
   	if (checked) {

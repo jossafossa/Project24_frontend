@@ -117,6 +117,31 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+  getGroup(groupID) {     
+    let endpoint = "/api/v1/friendcircle/" + groupID;
+    return this.request("get", endpoint);
+  }
+
+  editGroup(name, description, interests = []) {
+    let data = {
+      "name": name, 
+      "description": description,
+      "interests": interests
+    }
+    let endpoint = "/api/v1/friendcircle/";
+    return this.request("patch", endpoint, data);
+  }
+
+  createGroup(name, description, interests = []) {
+    let data = {
+      "name": name, 
+      "description": description,
+      "interests": interests
+    }
+    let endpoint = "/api/v1/friendcircle/";
+    return this.request("post", endpoint, data);
+  }
+
   getLoggedInUser() { console.log(this.user);
     let endpoint = "/api/v1/users/" + this.user.user_id;
     return this.http.get(this.baseURL + endpoint, this.options)
