@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class APIService {
   baseURL = "http://localhost:8000";
   loggedIn: boolean;
@@ -49,6 +50,7 @@ export class APIService {
     };
   }
 
+// Definities van Requests
   request(method, endpoint, data = {}) {
     let response;
     console.log(this.isLoggedIn());
@@ -73,7 +75,7 @@ export class APIService {
     return response;
   }
 
-
+// user-related stuff
 	login(username, password) {
 		let data = {
 			"username": username,
@@ -154,6 +156,7 @@ export class APIService {
     console.log(event.target.result);
   }
 
+// Interests
   addInterest(interest) {    
     let data = {
       "name": interest
@@ -167,10 +170,13 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+
+  // like/dislike stuff
   getNextUser() {
     let endpoint = "/api/v1/matcher/getUser/";
     return this.request("get", endpoint);
   }
+
 
   like(userID) {
     console.log("TODO: liked")
