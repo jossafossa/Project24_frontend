@@ -127,6 +127,12 @@ export class EditComponent implements OnInit {
       '';
   }
 
+  onInterestsChange(event) {
+    console.log(event);
+    this.accountForm.controls['interests'].setValue(event)
+    console.log(this.interests);
+  }
+
   // getNotFourErrorMessage(){
   //   return this.urls.hasError('maxLength') ? 'You can only choose 4 photos\n':
   //     '';
