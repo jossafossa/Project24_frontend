@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class APIService {
   baseURL = "http://localhost:8000";
   loggedIn: boolean;
@@ -40,7 +41,7 @@ export class APIService {
     this.loggedIn = true;
     localStorage.setItem('token', token);
     this.token = token;
-    this.user = jwt_decode(this.token);
+    this.user = jwt_decode(token);
     this.options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -49,6 +50,7 @@ export class APIService {
     };
   }
 
+// Definities van Requests
   request(method, endpoint, data = {}) {
     let response;
     console.log(this.isLoggedIn());
@@ -73,7 +75,7 @@ export class APIService {
     return response;
   }
 
-
+// user-related stuff
 	login(username, password) {
 		let data = {
 			"username": username,
@@ -87,8 +89,7 @@ export class APIService {
 	}
 
   isLoggedIn() {
-    console.log(this.token, this.loggedIn);
-    return (this.token !== "" && this.loggedIn) ? true : false;
+    return (this.token !== "" && this.loggedIn);
   }
 
   logout() {
@@ -103,8 +104,8 @@ export class APIService {
       "username": username,
       "email": email, 
       "password1": password1,
-      "password2": password2
-    };
+      "password2": password2}
+    ;
     let endpoint = "/api/v1/rest-auth/registration/";
     let response = this.http.post(this.baseURL + endpoint, data);
     response.subscribe((d) => {this.setToken(d["token"]);})
@@ -116,7 +117,7 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
-  getLoggedInUser() {
+  getLoggedInUser() { console.log(this.user);
     let endpoint = "/api/v1/users/" + this.user.user_id;
     return this.http.get(this.baseURL + endpoint, this.options)
   }
@@ -155,6 +156,7 @@ export class APIService {
     console.log(event.target.result);
   }
 
+// Interests
   addInterest(interest) {    
     let data = {
       "name": interest
@@ -168,10 +170,13 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+
+  // like/dislike stuff
   getNextUser() {
     let endpoint = "/api/v1/matcher/getUser/";
     return this.request("get", endpoint);
   }
+
 
   like(userID) {
     console.log("TODO: liked")
