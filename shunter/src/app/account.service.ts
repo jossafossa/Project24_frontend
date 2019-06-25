@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
-import * as jwt_decode from "jwt-decode";
+import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
 })
 
 export class APIService {
-  baseURL = "http://localhost:8000";
+  baseURL = 'http://localhost:8000';
   loggedIn: boolean;
-  token = "";
+  token = '';
   options = {};
   user;
   form;
 
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     private formBuilder: FormBuilder, 
     private router: Router
   ) {
@@ -198,5 +198,28 @@ export class APIService {
     // return this.request("get", endpoint, data);
   }
 
+  //Noticebaord stuff
+  // TODO: endpoints uitwerken, hoe doe ik per groep iets halen?
 
+  //
+  getNotices(){
+    let endpoint = '/api/v1/prikmuur/';
+    return this.request('get', endpoint);
+  }
+  addNotice(){
+    //   let data = ?
+    //   let endpoint = 'api/v1/prikmuur/';
+    //   return this.request("post", endpoint, data);
+  }
+  updateNotice(){
+ //   let data = ?
+ //   let endpoint = 'api/v1/prikmuur/' + noticeID;
+ //   return this.request("put", endpoint, data);
+  }
+  removeNotice(){
+    //   let data = ?
+    //   let endpoint = 'api/v1/prikmuur/' + noticeID;
+    //   return this.request("put", endpoint, data);
+}
+  
 }
