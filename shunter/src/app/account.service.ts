@@ -117,6 +117,7 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+  //Group stuff
   getGroup(groupID) {     
     let endpoint = "/api/v1/friendcircle/" + groupID;
     return this.request("get", endpoint);
@@ -127,7 +128,7 @@ export class APIService {
       "name": name, 
       "description": description,
       "interests": interests
-    }
+    };
     let endpoint = "/api/v1/friendcircle/";
     return this.request("patch", endpoint, data);
   }
@@ -137,7 +138,7 @@ export class APIService {
       "name": name, 
       "description": description,
       "interests": interests
-    }
+    };
     let endpoint = "/api/v1/friendcircle/";
     return this.request("post", endpoint, data);
   }
@@ -223,28 +224,32 @@ export class APIService {
     // return this.request("get", endpoint, data);
   }
 
-  //Noticebaord stuff
+  //Noticeboard stuff
   // TODO: endpoints uitwerken, hoe doe ik per groep iets halen?
 
-  //
-  getNotices(){
-    let endpoint = '/api/v1/prikmuur/';
+  getNotices(noticeID){
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
     return this.request('get', endpoint);
   }
-  addNotice(){
-    //   let data = ?
-    //   let endpoint = 'api/v1/prikmuur/';
-    //   return this.request("post", endpoint, data);
+  addNotice(subject, noticeText,postedBy) {
+    let data =
+      {
+        "subject": subject,
+        "notice_text": noticeText,
+        "postedBy": postedBy
+      };
+       let endpoint = 'api/v1/prikmuur/';
+       return this.request("post", endpoint, data);
   }
   updateNotice(){
  //   let data = ?
  //   let endpoint = 'api/v1/prikmuur/' + noticeID;
- //   return this.request("put", endpoint, data);
+ //   return this.request("patch", endpoint, data);
   }
   removeNotice(){
     //   let data = ?
     //   let endpoint = 'api/v1/prikmuur/' + noticeID;
-    //   return this.request("put", endpoint, data);
+    //   return this.request("delete", endpoint, data);
 }
   
 }
