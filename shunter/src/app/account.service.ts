@@ -144,6 +144,7 @@ export class APIService {
     let data = {
       "interests": interests
     }
+
     for(let i = 0; i < images.length; i++) {
       let image = images[i];
 
@@ -151,6 +152,7 @@ export class APIService {
         data["pic" + (i+1)] = image;
       }
     }
+
     console.log(data);
     let endpoint = "/api/v1/users/" + userID;
     return this.request("put", endpoint, data);

@@ -65,7 +65,12 @@
     <div class="info">
       <h1>Photos</h1>
       <div class="addPhotos">
-        <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="200" height="200">
+        <div *ngFor="let url of urls">
+          <div *ngIf="urls.length <= 4">
+            <img [src]="url" class="rounded mb-3" width="200" height="200">
+          </div>
+        </div>
+<!--        <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="200" height="200">-->
       </div>
       <input type="file" multiple (change)="detectFiles($event)">
 <!--    <div class="photos">-->

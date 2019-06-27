@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
 
   accountForm : FormGroup;
 
+  pic1;
   id;
   username;
   status;
@@ -25,8 +26,7 @@ export class EditComponent implements OnInit {
   password;
   confirmPass;
   interests;
-
-  urls = new Array<String>();
+  urls;
 
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
@@ -40,8 +40,8 @@ export class EditComponent implements OnInit {
       profilePicture : [''],
       status : ['', Validators.maxLength(120)],
       interests : [''],
-      pictures : ['', Validators.maxLength(4)],
-    }, { validators: [EditComponent.checkIfMatchingPasswords, EditComponent.maxInterests]});
+      urls : [[]],
+    }, { validators: [EditComponent.checkIfMatchingPasswords, EditComponent.maxInterests, EditComponent.maxPhotos]});
 
     this.username = this.accountForm.controls['username'];
     this.status = this.accountForm.controls['status'];
@@ -50,26 +50,40 @@ export class EditComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
+    this.urls = this.accountForm.controls['urls'];
     this.id = this.as.user.user_id;
 
-    this.as.getLoggedInUser().subscribe((data: {username:string, status:string}) => {
+    this.as.getLoggedInUser().subscribe((data: {username:string, status:string, interests:string[], pictures:string[]}) => {
       this.accountForm.controls['username'].setValue(data.username);
       this.accountForm.controls['status'].setValue(data.status);
+      this.accountForm.controls['interests'].setValue(data.interests);
+
+      this.accountForm.controls['urls'].setValue(data.pictures);
+
+    //   this.pictures = [
+    //     data.pic1,
+    //     data.pic2,
+    //     data.pic3,
+    //     data.pic4,
+    //     data.pic5,
     });
   }
 
   ngOnInit() {
   }
 
-  // sendInfo(email, password, username, status, profilePicture, interests){
-  //   console.log(email, password, username, status, profilePicture, interests);
-  //   this.as.createAccount(email, password, username, status, profilePicture, interests);
-  //   this.router.navigate(['accounts', 'view']);
-  // }
-
   sendInfo(pictures, interests){
-    this.as.updateUser(this.id, pictures, interests);
+    this.as.updateUser(this.id, interests, pictures);
+    console.log("pics: " + pictures + this.accountForm.controls['pictures']);
     this.router.navigate(['accounts', 'view']);
+  }
+
+  private static maxPhotos(group: FormGroup){
+    if(group.controls.urls.value.length > 5) {
+      return group.controls.urls.setErrors({tooMuch: true});
+    } else {
+      return group.controls.urls.setErrors(null);
+    }
   }
 
   private static maxInterests(group: FormGroup){
@@ -133,15 +147,16 @@ export class EditComponent implements OnInit {
   // }
 
   detectFiles(event) {
-    this.urls = [];
     let files = event.target.files;
+
+    this.urls.setValue([]);
+
     if (files) {
       for (let file of files) {
-        let reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
-        }
-        reader.readAsDataURL(file);
+        this.urls.setValue([
+          ...this.urls.value,
+          file
+        ])
       }
     }
   }

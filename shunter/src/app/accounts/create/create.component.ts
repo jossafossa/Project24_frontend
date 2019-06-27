@@ -135,17 +135,6 @@ export class CreateComponent implements OnInit {
           ...this.urls.value,
           file
         ])
-
-        // let reader = new FileReader();
-        //
-        // reader.onload = (e: any) => {
-        //   this.urls.setValue([
-        //     ...this.urls.value,
-        //     file
-        //   ])
-        // };
-        //
-        // reader.readAsDataURL(file);
       }
     }
   }
