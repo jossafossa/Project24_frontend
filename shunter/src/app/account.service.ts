@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
-import * as jwt_decode from "jwt-decode";
+import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class APIService {
-  baseURL = "http://localhost:8000";
+  baseURL = 'http://localhost:8000';
   loggedIn: boolean;
-  token = "";
+  token = '';
   options = {};
   user;
   form;
 
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     private formBuilder: FormBuilder, 
     private router: Router
   ) {
@@ -49,6 +50,7 @@ export class APIService {
     };
   }
 
+// Definities van Requests
   request(method, endpoint, data = {}) {
     let response;
     console.log(this.isLoggedIn());
@@ -73,7 +75,7 @@ export class APIService {
     return response;
   }
 
-
+// user-related stuff
 	login(username, password) {
 		let data = {
 			"username": username,
@@ -121,6 +123,32 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+  //Group stuff
+  getGroup(groupID) {     
+    let endpoint = "/api/v1/friendcircle/" + groupID;
+    return this.request("get", endpoint);
+  }
+
+  editGroup(name, description, interests = []) {
+    let data = {
+      "name": name, 
+      "description": description,
+      "interests": interests
+    };
+    let endpoint = "/api/v1/friendcircle/";
+    return this.request("patch", endpoint, data);
+  }
+
+  createGroup(name, description, interests = []) {
+    let data = {
+      "name": name, 
+      "description": description,
+      "interests": interests
+    };
+    let endpoint = "/api/v1/friendcircle/";
+    return this.request("post", endpoint, data);
+  }
+
   getLoggedInUser() { console.log(this.user);
     let endpoint = "/api/v1/users/" + this.user.user_id;
     return this.http.get(this.baseURL + endpoint, this.options)
@@ -162,6 +190,7 @@ export class APIService {
     console.log(event.target.result);
   }
 
+// Interests
   addInterest(interest) {    
     let data = {
       "name": interest
@@ -175,10 +204,13 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+
+  // like/dislike stuff
   getNextUser() {
     let endpoint = "/api/v1/matcher/getUser/";
     return this.request("get", endpoint);
   }
+
 
   like(userID) {
     console.log("TODO: liked")
@@ -200,5 +232,32 @@ export class APIService {
     // return this.request("get", endpoint, data);
   }
 
+  //Noticeboard stuff
+  // TODO: endpoints uitwerken, hoe doe ik per groep iets halen?
 
+  getNotices(noticeID){
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
+    return this.request('get', endpoint);
+  }
+  addNotice(subject, noticeText,postedBy) {
+    let data =
+      {
+        "subject": subject,
+        "notice_text": noticeText,
+        "postedBy": postedBy
+      };
+       let endpoint = 'api/v1/prikmuur/';
+       return this.request("post", endpoint, data);
+  }
+  updateNotice(){
+ //   let data = ?
+ //   let endpoint = 'api/v1/prikmuur/' + noticeID;
+ //   return this.request("patch", endpoint, data);
+  }
+  removeNotice(){
+    //   let data = ?
+    //   let endpoint = 'api/v1/prikmuur/' + noticeID;
+    //   return this.request("delete", endpoint, data);
+}
+  
 }

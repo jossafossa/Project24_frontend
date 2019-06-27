@@ -7,6 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { GroupAccountsComponent } from './group-accounts/group-accounts.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditComponent } from './edit/edit.component';
+import { InterestsModule } from '../interests/interests.module';
 
 
 // import {Ng5SliderModule} from 'ng5-slider';
@@ -31,6 +32,7 @@ import {NoticeboardModule} from './noticeboard/noticeboard.module';
     FormsModule,
     MatButtonModule,
     NoticeboardModule,
+    InterestsModule,
     // Ng5SliderModule,
     // Angular2ImageGalleryModule,
   ]

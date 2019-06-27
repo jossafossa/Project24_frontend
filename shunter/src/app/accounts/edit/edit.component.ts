@@ -28,11 +28,9 @@ export class EditComponent implements OnInit {
   interests;
   urls;
 
-  interestList: string [] = [
-    'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
-  ];
+  interestList: string [] = [];
 
-  constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
+  constructor(private api : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       password : ['', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
       username : ['', Validators.maxLength(50)],
@@ -51,9 +49,9 @@ export class EditComponent implements OnInit {
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
     this.urls = this.accountForm.controls['urls'];
-    this.id = this.as.user.user_id;
+    this.id = this.api.user.user_id;
 
-    this.as.getLoggedInUser().subscribe((data: {username:string, status:string, interests:string[], pictures:string[]}) => {
+    this.api.getLoggedInUser().subscribe((data: {username:string, status:string, interests:string[], pictures:string[]}) => {
       this.accountForm.controls['username'].setValue(data.username);
       this.accountForm.controls['status'].setValue(data.status);
       this.accountForm.controls['interests'].setValue(data.interests);
@@ -73,8 +71,7 @@ export class EditComponent implements OnInit {
   }
 
   sendInfo(pictures, interests){
-    this.as.updateUser(this.id, interests, pictures);
-    console.log("pics: " + pictures + this.accountForm.controls['pictures']);
+    this.api.updateUser(this.id, pictures, interests);
     this.router.navigate(['accounts', 'view']);
   }
 
@@ -139,6 +136,12 @@ export class EditComponent implements OnInit {
   getNotFiveErrorMessage() {
     return this.interests.hasError('notEnough') ? 'You must pick 5\n':
       '';
+  }
+
+  onInterestsChange(event) {
+    console.log(event);
+    this.accountForm.controls['interests'].setValue(event)
+    console.log(this.interests);
   }
 
   // getNotFourErrorMessage(){

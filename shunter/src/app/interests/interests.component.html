@@ -1,0 +1,11 @@
+
+	<div class="interests">
+	  <h1>Interests</h1>
+	  <p>What do you like, pick 5:</p>
+	  <div class="checkbox-container">
+	    <div class="checkbox-row" *ngFor="let interest of interests">
+	    	<input (change)="change($event)" type="checkbox" [id]="interest.id">
+				<label [for]="interest.id">{{ interest.name }}</label>
+	    </div>	    
+	  </div>
+	</div>

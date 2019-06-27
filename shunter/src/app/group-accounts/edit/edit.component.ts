@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {GroupAccountService} from '../../group-account.service';
+import {APIService} from '../../account.service';
 import {FileUploader} from 'ng2-file-upload';
 
 const URL = 'http//localhost:4200/api/upload';
@@ -19,12 +19,11 @@ export class EditComponent implements OnInit {
   groupDescription;
   groupPicture;
   interests;
+  groupID;
 
-  interestList: string [] = [
-    'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming',
-  ];
+  interestList: string [] = [];
 
-  constructor(private as : GroupAccountService, private fb : FormBuilder, private router : Router) {
+  constructor(private api : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       nameOfGroup : ['',[Validators.required, Validators.maxLength(50)]],
       groupPicture : ['', Validators.required],
@@ -40,11 +39,25 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.api.getGroup(1).subscribe(data => {
+      this.setInfo(data);
+    })
+  }
+
+   onInterestsChange(event) {
+    console.log(event);
+    this.accountForm.controls['interests'].setValue(event);
+  }
+
+  setInfo(data) {  
+    this.accountForm.controls['nameOfGroup'].setValue(data.name);  
+    this.accountForm.controls['groupDescription'].setValue(data.description);  
+    this.accountForm.controls['interests'].setValue(data.interests);  
   }
 
   sendInfo(nameOfGroup, groupDescription, groupPicture, interests){
     console.log(nameOfGroup, groupDescription, groupPicture, interests, this.accountForm);
-    this.as.editGroupAccount(nameOfGroup, groupDescription, groupPicture, interests);
+    this.api.editGroup(nameOfGroup, groupDescription, interests);
     this.router.navigate(['group-accounts', 'view']);
   }
 
