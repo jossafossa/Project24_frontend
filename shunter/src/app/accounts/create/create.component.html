@@ -70,9 +70,11 @@
     <div class="info">
       <h1>Photos</h1>
       <div class="addPhotos">
-        <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="200" height="200">
+<!--        <div *ngFor="let url of urls">-->
+<!--          <img [src]="url" class="rounded mb-3" width="200" height="200">-->
+<!--        </div>-->
       </div>
-      <input type="file" multiple (change)="detectFiles($event)">
+      <input type="file" multiple name="urls" (change)="detectFiles($event)">
       <!--    <div class="photos">-->
       <!--      <h1>Add photos</h1>-->
       <!--      <input name="picture1" type="file" ng2FileSelect [uploader]="uploader" [formControl]="picture1"-->
@@ -88,4 +90,4 @@
     </div>
   </div>
 </div>
-<button mat-button [disabled]="(accountForm.pristine || accountForm.invalid)" (click)="sendInfo(accountForm.controls['email'].value, accountForm.controls['username'].value,  accountForm.controls['password'].value, accountForm.controls['confirmPass'].value)">Create account!</button>
+<button mat-button [disabled]="(accountForm.pristine || accountForm.invalid)" (click)="sendInfo(accountForm.controls['email'].value, accountForm.controls['username'].value,  accountForm.controls['password'].value, accountForm.controls['confirmPass'].value, accountForm.controls['urls'].value)">Create account!</button>

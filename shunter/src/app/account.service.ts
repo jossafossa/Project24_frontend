@@ -97,15 +97,21 @@ export class APIService {
     localStorage.removeItem('token');
 	}
 
-  signup(username, email, password1, password2) {
-    let data = {
-      "username": username,
-      "email": email, 
-      "password1": password1,
-      "password2": password2}
-    ;
+  signup(username, email, password1, password2, pictures = []) {
+    let formData = new FormData();
+
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password1', password1);
+    formData.append('password2', password2);
+
+    for(let i = 0; i < pictures.length; i++) {
+      formData.append('pic' + (i + 1), pictures[i], pictures[1].name);
+    }
+
+    console.log(formData);
     let endpoint = "/api/v1/rest-auth/registration/";
-    let response = this.http.post(this.baseURL + endpoint, data);
+    let response = this.http.post(this.baseURL + endpoint, formData);
     response.subscribe((d) => {this.setToken(d["token"]);})
     return response;
   };
