@@ -122,13 +122,13 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
-  editGroup(name, description, interests = []) {
+  editGroup(groupID, name, description, interests = []) {
     let data = {
       "name": name, 
       "description": description,
       "interests": interests
     }
-    let endpoint = "/api/v1/friendcircle/";
+    let endpoint = "/api/v1/friendcircle/" + groupID;
     return this.request("patch", endpoint, data);
   }
 

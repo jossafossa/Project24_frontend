@@ -57,8 +57,10 @@ export class EditComponent implements OnInit {
 
   sendInfo(nameOfGroup, groupDescription, groupPicture, interests){
     console.log(nameOfGroup, groupDescription, groupPicture, interests, this.accountForm);
-    this.api.editGroup(nameOfGroup, groupDescription, interests);
-    this.router.navigate(['group-accounts', 'view']);
+    let response = this.api.editGroup(1, nameOfGroup, groupDescription, interests);
+    
+    response.subscribe( d => this.router.navigate(['group-accounts', 'view']) );
+    return response;
   }
 
   private static maxInterests(group: FormGroup){
