@@ -18,25 +18,17 @@ export class InterestsComponent implements OnInit {
 
   ngOnInit() {
   	this.api.getInterests().subscribe((d) => {
-  		console.log("interetss: ", d);
+  		console.log("interets: ", d);
   		this.interests = d.sort((a, b) => {return a.name.localeCompare(b.name);});
   	});  	
   }
 
-  change(event) {
+  change(event, options) {
+    const list = options.selected.map((item) => {
+      return item.value
+    });
 
-  	console.log(event);
-  	let id = parseInt(event.target.id);
-  	let checked = event.target.checked;
-
-  	if (checked) {
-  		this.selected.push(id);
-  	} else {
-  		var index = this.selected.indexOf(id);
-			if (index !== -1) this.selected.splice(index, 1)
-  	}
-
-  	this.valueChange.emit(this.selected);
+    this.valueChange.emit(list);
   }
 
 }

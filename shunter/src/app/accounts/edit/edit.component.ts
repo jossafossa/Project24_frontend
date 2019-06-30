@@ -37,7 +37,7 @@ export class EditComponent implements OnInit {
       confirmPass : [''],
       profilePicture : [''],
       status : ['', Validators.maxLength(120)],
-      interests : [''],
+      interests : [[]],
       urls : [[]],
     }, { validators: [EditComponent.checkIfMatchingPasswords, EditComponent.maxInterests, EditComponent.maxPhotos]});
 
@@ -76,7 +76,7 @@ export class EditComponent implements OnInit {
   }
 
   private static maxPhotos(group: FormGroup){
-    if(group.controls.urls.value.length > 5) {
+    if(group.controls.urls.value && group.controls.urls.value.length > 5) {
       return group.controls.urls.setErrors({tooMuch: true});
     } else {
       return group.controls.urls.setErrors(null);

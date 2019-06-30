@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'accounts',
     loadChildren: () => import('./accounts/accounts.module').then(mod => mod.AccountsModule),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'login', 

@@ -53,8 +53,6 @@ export class APIService {
 // Definities van Requests
   request(method, endpoint, data = {}) {
     let response;
-    console.log(this.isLoggedIn());
-    if (this.isLoggedIn()) {
       switch(method) {
         case "post":
           response = this.http.post(this.baseURL + endpoint, data, this.options);
@@ -68,10 +66,7 @@ export class APIService {
         case "patch":          
           response = this.http.patch(this.baseURL + endpoint, data, this.options);
           break;
-      }      
-    } else {
-      this.router.navigate(['login']);
-    } 
+      }
     return response;
   }
 

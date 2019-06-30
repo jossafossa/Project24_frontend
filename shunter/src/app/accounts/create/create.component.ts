@@ -124,6 +124,12 @@ export class CreateComponent implements OnInit {
       '';
   }
 
+  onInterestsChange(event) {
+    console.log(event);
+    this.accountForm.controls['interests'].setValue(event);
+    console.log(this.interests);
+  }
+
   detectFiles(event) {
     let files = event.target.files;
 
