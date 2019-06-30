@@ -51,22 +51,28 @@ export class APIService {
   }
 
 // Definities van Requests
-  request(method, endpoint, data = {}) {
+  request(method, endpoint, data = {}, loginRequired = true) {
     let response;
-      switch(method) {
-        case "post":
-          response = this.http.post(this.baseURL + endpoint, data, this.options);
-          break;
-        case "get":          
-          response = this.http.get(this.baseURL + endpoint, this.options);
-          break;
-        case "put":          
-          response = this.http.put(this.baseURL + endpoint, data, this.options);
-          break;
-        case "patch":          
-          response = this.http.patch(this.baseURL + endpoint, data, this.options);
-          break;
+    if (loginRequired) {
+      if (!this.isLoggedIn()) {
+        this.router.navigate(['login']);
+        return;
       }
+    }
+    switch(method) {
+      case "post":
+        response = this.http.post(this.baseURL + endpoint, data, this.options);
+        break;
+      case "get":          
+        response = this.http.get(this.baseURL + endpoint, this.options);
+        break;
+      case "put":          
+        response = this.http.put(this.baseURL + endpoint, data, this.options);
+        break;
+      case "patch":          
+        response = this.http.patch(this.baseURL + endpoint, data, this.options);
+        break;
+    }
     return response;
   }
 
@@ -124,13 +130,13 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
-  editGroup(name, description, interests = []) {
+  editGroup(groupID, name, description, interests = []) {
     let data = {
       "name": name, 
       "description": description,
       "interests": interests
-    };
-    let endpoint = "/api/v1/friendcircle/";
+    }
+    let endpoint = "/api/v1/friendcircle/" + groupID;
     return this.request("patch", endpoint, data);
   }
 
@@ -196,7 +202,7 @@ export class APIService {
   
   getInterests() {   
     let endpoint = "/api/v1/interests/";
-    return this.request("get", endpoint);
+    return this.request("get", endpoint, {}, false);
   }
 
 
