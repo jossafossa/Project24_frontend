@@ -51,27 +51,29 @@ export class APIService {
   }
 
 // Definities van Requests
-  request(method, endpoint, data = {}) {
+  request(method, endpoint, data = {}, loginRequired = true) {
     let response;
     console.log(this.isLoggedIn());
-    if (this.isLoggedIn()) {
-      switch(method) {
-        case "post":
-          response = this.http.post(this.baseURL + endpoint, data, this.options);
-          break;
-        case "get":          
-          response = this.http.get(this.baseURL + endpoint, this.options);
-          break;
-        case "put":          
-          response = this.http.put(this.baseURL + endpoint, data, this.options);
-          break;
-        case "patch":          
-          response = this.http.patch(this.baseURL + endpoint, data, this.options);
-          break;
-      }      
-    } else {
-      this.router.navigate(['login']);
-    } 
+    if (loginRequired) {
+      if (!this.isLoggedIn()) {
+        this.router.navigate(['login']);
+        return;
+      }
+    }
+    switch(method) {
+      case "post":
+        response = this.http.post(this.baseURL + endpoint, data, this.options);
+        break;
+      case "get":          
+        response = this.http.get(this.baseURL + endpoint, this.options);
+        break;
+      case "put":          
+        response = this.http.put(this.baseURL + endpoint, data, this.options);
+        break;
+      case "patch":          
+        response = this.http.patch(this.baseURL + endpoint, data, this.options);
+        break;
+    }      
     return response;
   }
 
@@ -201,7 +203,7 @@ export class APIService {
   
   getInterests() {   
     let endpoint = "/api/v1/interests/";
-    return this.request("get", endpoint);
+    return this.request("get", endpoint, {}, false);
   }
 
 
