@@ -33,7 +33,7 @@ export class EditComponent implements OnInit {
   constructor(private api : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
       password : ['', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
-      username : ['', Validators.maxLength(50)],
+      username : ['', [Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9 \\\'\\-]+$')]],
       confirmPass : [''],
       profilePicture : [''],
       status : ['', Validators.maxLength(120)],
@@ -49,9 +49,10 @@ export class EditComponent implements OnInit {
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
     this.urls = this.accountForm.controls['urls'];
-    this.id = this.api.user.user_id;
+    // this.id = APIService.user.user_id;
 
-    this.api.getLoggedInUser().subscribe((data: {username:string, status:string, interests:string[], pictures:string[]}) => {
+    this.api.getLoggedInUser().subscribe((data: any) => {
+      this.id = data.user_id;
       this.accountForm.controls['username'].setValue(data.username);
       this.accountForm.controls['status'].setValue(data.status);
       this.accountForm.controls['interests'].setValue(data.interests);
@@ -105,8 +106,8 @@ export class EditComponent implements OnInit {
   getUsernameErrorMessage() {
     return this.username.hasError('required') ? 'You must enter a value\n'
       : this.username.hasError('maxLength') ? 'Youve succeeded the max length\n':
+        this.username.hasError('pattern') ? 'Username cant contain special characters':
         '';
-    //      suspecious characters
   }
 
   getStatusErrorMessage() {

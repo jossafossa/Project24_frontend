@@ -23,9 +23,7 @@ export class CreateComponent implements OnInit {
   password;
   confirmPass;
   interests;
-  urls;
-
-  pictures: string[];
+  pictures;
 
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
@@ -35,12 +33,12 @@ export class CreateComponent implements OnInit {
     this.accountForm = fb.group({
       email : ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
       password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
-      username : ['',[Validators.required, Validators.maxLength(50)]],
+      username : ['', [Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9 \\\'\\-]+$')]],
       confirmPass : ['',[Validators.required]],
       profilePicture : [''],
       status : ['', Validators.maxLength(120)],
       interests : [[]],
-      urls: [[]],
+      pictures: [[]],
     }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests, CreateComponent.maxPhotos]});
 
     this.username = this.accountForm.controls['username'];
@@ -50,22 +48,27 @@ export class CreateComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
-    this.urls = this.accountForm.controls['urls'];
+    this.pictures = this.accountForm.controls['pictures'];
   }
 
   ngOnInit() {
   }
 
-  sendInfo(email, username, password, confirmPass, pictures){
-    this.as.signup(username, email, password, confirmPass, pictures);
-    this.router.navigate(['accounts', 'view']);
+  sendInfo(email, username, password, confirmPass, interests, pictures){
+    console.log("hier" + pictures);
+    this.as.signup(username, email, password, confirmPass, interests, pictures, () => {
+      this.router.navigate(['accounts', 'view'])
+    });
+    // .pipe(() => {
+    //   this.router.navigate(['accounts', 'view']);
+    // });
   }
 
   private static maxPhotos(group: FormGroup){
-    if(group.controls.urls.value.length > 5) {
-      return group.controls.urls.setErrors({tooMuch: true});
+    if(group.controls.pictures.value.length > 5) {
+      return group.controls.pictures.setErrors({tooMuch: true});
     } else {
-      return group.controls.urls.setErrors(null);
+      return group.controls.pictures.setErrors(null);
     }
   }
 
@@ -91,8 +94,8 @@ export class CreateComponent implements OnInit {
   getUsernameErrorMessage() {
     return this.username.hasError('required') ? 'You must enter a value\n'
       : this.username.hasError('maxLength') ? 'Youve succeeded the max length\n':
+        this.username.hasError('pattern') ? 'Username cant contain special characters':
         '';
-    //      suspecious characters
   }
 
   getStatusErrorMessage() {
@@ -133,12 +136,12 @@ export class CreateComponent implements OnInit {
   detectFiles(event) {
     let files = event.target.files;
 
-    this.urls.setValue([]);
+    this.pictures.setValue([]);
 
     if (files) {
       for (let file of files) {
-        this.urls.setValue([
-          ...this.urls.value,
+        this.pictures.setValue([
+          ...this.pictures.value,
           file
         ])
       }

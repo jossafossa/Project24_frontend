@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 
 export class APIService {
   baseURL = 'http://localhost:8000';
-  loggedIn: boolean;
-  token = '';
-  options = {};
-  user;
+  static loggedIn: boolean;
+  static token = '';
+  static options = {};
+  static user;
   form;
 
   constructor(
@@ -22,15 +22,15 @@ export class APIService {
     private formBuilder: FormBuilder, 
     private router: Router
   ) {
-    this.loggedIn = localStorage.getItem('isLoggedIn') == 'true';
-    this.token = localStorage.getItem('token');
+    APIService.loggedIn = localStorage.getItem('isLoggedIn') == 'true';
+    APIService.token = localStorage.getItem('token');
 
-    if (this.token) {
-      this.user = jwt_decode(this.token);
-      this.options = {
+    if (APIService.token) {
+      APIService.user = jwt_decode(APIService.token);
+      APIService.options = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
-          'Authorization': "JWT " + this.token,
+          'Authorization': "JWT " + APIService.token,
         })
       };
     }
@@ -38,11 +38,11 @@ export class APIService {
 
   setToken(token) {
     localStorage.setItem('isLoggedIn', 'true');
-    this.loggedIn = true;
+    APIService.loggedIn = true;
     localStorage.setItem('token', token);
-    this.token = token;
-    this.user = jwt_decode(token);
-    this.options = {
+    APIService.token = token;
+    APIService.user = jwt_decode(token);
+    APIService.options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': "JWT " + token,
@@ -61,16 +61,16 @@ export class APIService {
     }
     switch(method) {
       case "post":
-        response = this.http.post(this.baseURL + endpoint, data, this.options);
+        response = this.http.post(this.baseURL + endpoint, data, APIService.options);
         break;
       case "get":          
-        response = this.http.get(this.baseURL + endpoint, this.options);
+        response = this.http.get(this.baseURL + endpoint, APIService.options);
         break;
       case "put":          
-        response = this.http.put(this.baseURL + endpoint, data, this.options);
+        response = this.http.put(this.baseURL + endpoint, data, APIService.options);
         break;
       case "patch":          
-        response = this.http.patch(this.baseURL + endpoint, data, this.options);
+        response = this.http.patch(this.baseURL + endpoint, data, APIService.options);
         break;
     }
     return response;
@@ -84,23 +84,23 @@ export class APIService {
 		}
     let endpoint = "/api/v1/rest-auth/login/";
     let response = this.http.post(this.baseURL + endpoint, data);
-    response.subscribe((d) => {this.setToken(d["token"]); this.loggedIn = true;})
+    response.subscribe((d) => {this.setToken(d["token"]); APIService.loggedIn = true;})
 
     return response;
 	}
 
   isLoggedIn() {
-    return (this.token !== "" && this.loggedIn);
+    return (APIService.token !== "" && APIService.loggedIn);
   }
 
   logout() {
-    this.token = "";
-    this.loggedIn = false;
+    APIService.token = "";
+    APIService.loggedIn = false;
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('token');
 	}
 
-  signup(username, email, password1, password2, pictures = []) {
+  signup(username, email, password1, password2, interests = [], pictures = [], callback) {
     let formData = new FormData();
 
     formData.append('username', username);
@@ -108,14 +108,21 @@ export class APIService {
     formData.append('password1', password1);
     formData.append('password2', password2);
 
+    for(let i = 0; i < interests.length; i++) {
+      formData.append('interests', interests[i]);
+    }
+
     for(let i = 0; i < pictures.length; i++) {
-      formData.append('pic' + (i + 1), pictures[i], pictures[1].name);
+      formData.append('pic' + (i + 1), pictures[i], pictures[i].name);
     }
 
     console.log(formData);
     let endpoint = "/api/v1/rest-auth/registration/";
     let response = this.http.post(this.baseURL + endpoint, formData);
-    response.subscribe((d) => {this.setToken(d["token"]);})
+    response.subscribe((d) => {
+      this.setToken(d["token"]);
+      callback();
+    })
     return response;
   };
 
@@ -150,9 +157,9 @@ export class APIService {
     return this.request("post", endpoint, data);
   }
 
-  getLoggedInUser() { console.log(this.user);
-    let endpoint = "/api/v1/users/" + this.user.user_id;
-    return this.http.get(this.baseURL + endpoint, this.options)
+  getLoggedInUser() {
+    let endpoint = "/api/v1/users/" + APIService.user.user_id;
+    return this.http.get(this.baseURL + endpoint, APIService.options)
   }
 
   uploadFile(imageEvent, callback) {

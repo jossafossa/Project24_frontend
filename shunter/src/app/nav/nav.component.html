@@ -5,7 +5,7 @@
 
 	<div class="menu_area">
 		<a class="menu_item login" *ngIf="!loggedIn()" routerLink="login">Login</a>	
-		<a class="menu_item logout" *ngIf="loggedIn()" (click)="logout()">Logout</a>	
+		<a class="menu_item logout" *ngIf="loggedIn()" routerLink="logout">Logout</a>
 		<a class="menu_item logout" routerLink="test">Debug page</a>	
 		<a class="menu_item signup" *ngIf="!loggedIn()" routerLink="accounts/create">Signup</a>
     	<a class="menu_item view" *ngIf="loggedIn()" routerLink="accounts/view">My account</a>
