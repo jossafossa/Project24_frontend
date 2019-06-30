@@ -99,15 +99,21 @@ export class APIService {
     localStorage.removeItem('token');
 	}
 
-  signup(username, email, password1, password2) {
-    let data = {
-      "username": username,
-      "email": email, 
-      "password1": password1,
-      "password2": password2}
-    ;
+  signup(username, email, password1, password2, pictures = []) {
+    let formData = new FormData();
+
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password1', password1);
+    formData.append('password2', password2);
+
+    for(let i = 0; i < pictures.length; i++) {
+      formData.append('pic' + (i + 1), pictures[i], pictures[1].name);
+    }
+
+    console.log(formData);
     let endpoint = "/api/v1/rest-auth/registration/";
-    let response = this.http.post(this.baseURL + endpoint, data);
+    let response = this.http.post(this.baseURL + endpoint, formData);
     response.subscribe((d) => {this.setToken(d["token"]);})
     return response;
   };
@@ -117,6 +123,7 @@ export class APIService {
     return this.request("get", endpoint);
   }
 
+  //Group stuff
   getGroup(groupID) {     
     let endpoint = "/api/v1/friendcircle/" + groupID;
     return this.request("get", endpoint);
@@ -137,7 +144,7 @@ export class APIService {
       "name": name, 
       "description": description,
       "interests": interests
-    }
+    };
     let endpoint = "/api/v1/friendcircle/";
     return this.request("post", endpoint, data);
   }
@@ -165,6 +172,7 @@ export class APIService {
     let data = {
       "interests": interests
     }
+
     for(let i = 0; i < images.length; i++) {
       let image = images[i];
 
@@ -172,6 +180,7 @@ export class APIService {
         data["pic" + (i+1)] = image;
       }
     }
+
     console.log(data);
     let endpoint = "/api/v1/users/" + userID;
     return this.request("put", endpoint, data);
@@ -223,28 +232,32 @@ export class APIService {
     // return this.request("get", endpoint, data);
   }
 
-  //Noticebaord stuff
+  //Noticeboard stuff
   // TODO: endpoints uitwerken, hoe doe ik per groep iets halen?
 
-  //
-  getNotices(){
-    let endpoint = '/api/v1/prikmuur/';
+  getNotices(noticeID){
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
     return this.request('get', endpoint);
   }
-  addNotice(){
-    //   let data = ?
-    //   let endpoint = 'api/v1/prikmuur/';
-    //   return this.request("post", endpoint, data);
+  addNotice(subject, noticeText,postedBy) {
+    let data =
+      {
+        "subject": subject,
+        "notice_text": noticeText,
+        "postedBy": postedBy
+      };
+       let endpoint = 'api/v1/prikmuur/';
+       return this.request("post", endpoint, data);
   }
   updateNotice(){
  //   let data = ?
  //   let endpoint = 'api/v1/prikmuur/' + noticeID;
- //   return this.request("put", endpoint, data);
+ //   return this.request("patch", endpoint, data);
   }
   removeNotice(){
     //   let data = ?
     //   let endpoint = 'api/v1/prikmuur/' + noticeID;
-    //   return this.request("put", endpoint, data);
+    //   return this.request("delete", endpoint, data);
 }
   
 }

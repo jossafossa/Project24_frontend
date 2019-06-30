@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService} from '../../account.service';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import {FileUploader} from 'ng2-file-upload';
 
@@ -23,11 +23,13 @@ export class CreateComponent implements OnInit {
   password;
   confirmPass;
   interests;
+  urls;
+
+  pictures: string[];
 
   interestList: string [] = [
     'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
   ];
-  urls: any;
 
   constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
@@ -37,8 +39,9 @@ export class CreateComponent implements OnInit {
       confirmPass : ['',[Validators.required]],
       profilePicture : [''],
       status : ['', Validators.maxLength(120)],
-      interests : [''],
-    }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests]});
+      interests : [[]],
+      urls: [[]],
+    }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests, CreateComponent.maxPhotos]});
 
     this.username = this.accountForm.controls['username'];
     this.status = this.accountForm.controls['status'];
@@ -47,15 +50,23 @@ export class CreateComponent implements OnInit {
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
-
+    this.urls = this.accountForm.controls['urls'];
   }
 
   ngOnInit() {
   }
 
-  sendInfo(email, username, password, confirmPass){
-    this.as.signup(username, email, password, confirmPass);
+  sendInfo(email, username, password, confirmPass, pictures){
+    this.as.signup(username, email, password, confirmPass, pictures);
     this.router.navigate(['accounts', 'view']);
+  }
+
+  private static maxPhotos(group: FormGroup){
+    if(group.controls.urls.value.length > 5) {
+      return group.controls.urls.setErrors({tooMuch: true});
+    } else {
+      return group.controls.urls.setErrors(null);
+    }
   }
 
   private static maxInterests(group: FormGroup){
@@ -114,15 +125,16 @@ export class CreateComponent implements OnInit {
   }
 
   detectFiles(event) {
-    this.urls = [];
     let files = event.target.files;
+
+    this.urls.setValue([]);
+
     if (files) {
       for (let file of files) {
-        let reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
-        }
-        reader.readAsDataURL(file);
+        this.urls.setValue([
+          ...this.urls.value,
+          file
+        ])
       }
     }
   }
