@@ -56,6 +56,6 @@ export class NoticeComponent implements OnInit {
 
   updateNotice(){
     console.log("update notice", this.subject.value, this.noticeText.value, this.postedBy);
-    this.api.updateNotice(this.noticeID, this.noticeText.value, this.noticeText.value).subscribe(data => {console.log(data);});
+    this.api.updateNotice(this.noticeID, this.subject.value, this.noticeText.value).subscribe(data => {console.log(data);});
   }
 }
