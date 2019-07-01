@@ -13,9 +13,9 @@
     <mat-card>
       <mat-card-title-group>
         <mat-card-title>{{notice.subject}}</mat-card-title>
-        <mat-card-subtitle>{{notice.postedBy}}</mat-card-subtitle>
+        <mat-card-subtitle>{{notice.postedBy}}, {{notice.created}}</mat-card-subtitle>
       </mat-card-title-group>
-      <mat-card-content>{{notice.notice_text}}</mat-card-content>
+      <mat-card-content>{{notice.noticeText}}</mat-card-content>
       <mat-card-footer>
         <button mat-button>Edit</button>
         <button mat-button>Remove</button>

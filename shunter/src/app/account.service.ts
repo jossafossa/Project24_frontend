@@ -252,14 +252,16 @@ export class APIService {
     let endpoint = '/api/v1/prikmuur/';
     return this.request('get', endpoint);
   }
-  addNotice(subject, noticeText, postedBy) {
+  addNotice(subject, noticeText, postedBy, group) {
     let data =
       {
         "subject": subject,
-        "notice_text": noticeText,
-        "postedBy": postedBy
+        "noticeText": noticeText,
+        "postedBy": postedBy,
+        "group": 1,
+
       };
-       let endpoint = 'api/v1/prikmuur/';
+       let endpoint = '/api/v1/prikmuur/';
        return this.request("post", endpoint, data);
   }
   updateNotice(){
