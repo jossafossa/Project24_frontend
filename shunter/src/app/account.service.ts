@@ -71,8 +71,11 @@ export class APIService {
       case "put":          
         response = this.http.put(this.baseURL + endpoint, data, APIService.options);
         break;
-      case "patch":          
+      case "patch":
         response = this.http.patch(this.baseURL + endpoint, data, APIService.options);
+        break;
+      case "delete":
+        response = this.http.delete(this.baseURL + endpoint, APIService.options);
         break;
     }
     return response;
@@ -274,6 +277,7 @@ export class APIService {
        return this.request("post", endpoint, data);
   }
 
+
   updateNotice(noticeID){
  //   let data =
     //   {
@@ -285,8 +289,8 @@ export class APIService {
   }
 
   removeNotice(noticeID){
-    //   let endpoint = 'api/v1/prikmuur/' + noticeID;
-    //   return this.request("delete", endpoint);
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
+    return this.request("delete", endpoint);
 }
   
 }

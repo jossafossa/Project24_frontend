@@ -7,12 +7,12 @@
   <div class="notices">  
     <div class="notice" *ngFor="let notice of notices">
       <h2 class="notice_title">{{notice.subject}}</h2>
-      <i class="notice_byline">By: {{notice.postedBy}}</i>
+      <i class="notice_byline">By: {{notice.postedBy}}, {{notice.created}}</i>
       <hr>
       <div class="notice_content">{{notice.noticeText}}</div>
       <div class="notice_menu">
         <button>edit</button>
-        <button>remove</button>
+        <button (click)="removeNotice(notice.id)">remove</button>
       </div>
     </div>
   </div>
