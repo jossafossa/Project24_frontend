@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NoticeboardRoutingModule } from './noticeboard-routing.module';
 import { BoardComponent } from './board/board.component';
-import {MatButtonModule, MatCardModule, MatGridListModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatGridListModule, MatToolbarModule} from '@angular/material';
 import { NoticeComponent } from './notice/notice.component';
 
 @NgModule({
@@ -17,7 +17,8 @@ import { NoticeComponent } from './notice/notice.component';
     MatCardModule,
     MatGridListModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule
   ]
 })
 export class NoticeboardModule { }

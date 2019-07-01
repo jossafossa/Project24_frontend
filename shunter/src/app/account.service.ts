@@ -248,11 +248,11 @@ export class APIService {
   //Noticeboard stuff
   // TODO: endpoints uitwerken, hoe doe ik per groep iets halen?
 
-  getNotices(noticeID){
-    let endpoint = '/api/v1/prikmuur/' + noticeID;
+  getNotices(){
+    let endpoint = '/api/v1/prikmuur/';
     return this.request('get', endpoint);
   }
-  addNotice(subject, noticeText,postedBy) {
+  addNotice(subject, noticeText, postedBy) {
     let data =
       {
         "subject": subject,

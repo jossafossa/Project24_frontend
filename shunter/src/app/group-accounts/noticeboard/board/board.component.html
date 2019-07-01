@@ -2,7 +2,9 @@
   <span>Group Noticeboard</span>
 </mat-toolbar>
 <div class="buttons">
-  <button mat-button>Add Note</button>
+  <button mat-button >
+    <a [routerLink]="['../board/addnotice']" >Add note</a>
+  </button>
 </div>
 <mat-grid-list cols="5" rowHeight="1:2">
 
@@ -10,10 +12,10 @@
   <mat-grid-tile *ngFor="let notice of notices">
     <mat-card>
       <mat-card-title-group>
-      <mat-card-title>{{notice.title}}</mat-card-title>
-      <mat-card-subtitle>{{notice.user}}, {{notice.date}}</mat-card-subtitle>
+        <mat-card-title>{{notice.subject}}</mat-card-title>
+        <mat-card-subtitle>{{notice.postedBy}}</mat-card-subtitle>
       </mat-card-title-group>
-      <mat-card-content>{{notice.message}}</mat-card-content>
+      <mat-card-content>{{notice.notice_text}}</mat-card-content>
       <mat-card-footer>
         <button mat-button>Edit</button>
         <button mat-button>Remove</button>

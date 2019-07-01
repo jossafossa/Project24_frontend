@@ -4,12 +4,17 @@ import {BoardComponent} from './board/board.component';
 import {CreateComponent} from '../create/create.component';
 import {EditComponent} from '../edit/edit.component';
 import {ViewComponent} from '../view/view.component';
+import {NoticeComponent} from './notice/notice.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BoardComponent,
-  }
+  },
+  {
+    path: 'board/addnotice',
+    component: NoticeComponent,
+  },
 ];
 
 @NgModule({
