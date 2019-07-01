@@ -14,9 +14,11 @@
       </div>
       <!-- automatiseer dit alles! -->
       <div class="bInfo" id="infoSelf">
-        <label>Group1</label>
-        <label>Welcome to this group</label>
-        <label>Music, gaming, makeup, animals, festivals</label>
+        <label>{{name}}</label>
+        <label>{{description}}</label>
+        <label>
+          <span *ngFor="let interest of interests" class="label">{{interest.name}}</span>
+        </label>
       </div>
     </div>
     <div class="box">

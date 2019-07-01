@@ -14,6 +14,7 @@ export class APIService {
   static loggedIn: boolean;
   static token = '';
   static options = {};
+  userID: string;
   static user;
   form;
 
@@ -33,6 +34,7 @@ export class APIService {
           'Authorization': "JWT " + APIService.token,
         })
       };
+      this.getUserID();
     }
   }
 
@@ -84,7 +86,7 @@ export class APIService {
 		}
     let endpoint = "/api/v1/rest-auth/login/";
     let response = this.http.post(this.baseURL + endpoint, data);
-    response.subscribe((d) => {this.setToken(d["token"]); APIService.loggedIn = true;})
+    response.subscribe((d) => {this.setToken(d["token"]); APIService.loggedIn = true; this.getUserID()})
 
     return response;
 	}
@@ -99,6 +101,14 @@ export class APIService {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('token');
 	}
+
+  getUserID() { 
+    let endpoint = "/api/v1/users/GetMyUser";
+    this.request("get", endpoint).subscribe(data => {
+      console.log(data);
+      this.userID = data[0]["id"];
+    });
+  }
 
   signup(username, email, password1, password2, interests = [], pictures = [], callback) {
     let formData = new FormData();

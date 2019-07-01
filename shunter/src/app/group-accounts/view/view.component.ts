@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {APIService} from '../../account.service';
 
 @Component({
   selector: 'app-view',
@@ -8,9 +9,19 @@ import {Router} from '@angular/router';
 })
 export class ViewComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  interests: array;
+  name: string;
+  description: string;
+
+  constructor(
+    private router : Router,
+    public api: APIService
+  ) { }
 
   ngOnInit() {
+    this.api.getGroup(this.api.userID).subscribe(data => {
+      console.log(data);
+    })
   }
 
   toSwipe() {
