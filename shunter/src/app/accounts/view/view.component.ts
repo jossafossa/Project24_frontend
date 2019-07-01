@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {APIService} from '../../account.service';
 
 type User = {
@@ -25,11 +25,30 @@ export class ViewComponent implements OnInit {
   status;
   interests;
   pictures;
-  groups = [];
+  groups: {};
 
-  constructor(private api: APIService, private router : Router) {
+  constructor(
+    private api: APIService, 
+    private router : Router, 
+    private route : ActivatedRoute) {
+    
+  }
 
-    this.api.getLoggedInUser().subscribe((data: User) => {
+  ngOnInit() {
+    let userID = this.route.snapshot.paramMap.get("id");
+    if (userID) {
+      this.api.getUser(userID).subscribe((data) => {
+        this.setData(data);
+      });
+    } else {
+      this.api.getLoggedInUser().subscribe((data) => {
+        this.setData(data);
+      });
+    }
+    // this.getGroups();
+  }
+
+  setData(data) {   
       this.username = data.username;
       this.interests = data.interests;
       this.status = data.status;
@@ -39,17 +58,17 @@ export class ViewComponent implements OnInit {
         data.pic3,
         data.pic4,
         data.pic5,
-      ].filter(x => !!x)
-    });
+      ].filter(x => !!x);     
+      this.api.getGroupsByID(data.memberships).then(groups => {
+        console.log("groups: ", groups);
+        this.groups = groups;
+      })
   }
 
-  getGroups() {
-    this.api.getGroups().subscribe(e => {/*this.groups = e; */console.log(e)});
-  }
+  // getGroups() {
+  //   this.api.getGroups().subscribe(e => {this.groups = e; console.log(e)});
+  // }
 
-  ngOnInit() {
-    this.getGroups();
-  }
 
   toSwipe() {
     this.router.navigate(['accounts', 'swipe']);
@@ -63,8 +82,8 @@ export class ViewComponent implements OnInit {
     this.router.navigate(['group-accounts', 'create']);
   }
 
-  goToGroup(){
-    this.router.navigate(['group-accounts', 'view']);
+  goToGroup(id){
+    this.router.navigate(['group-accounts', 'view', id]);
   }
 
   maximizeImage(image) {

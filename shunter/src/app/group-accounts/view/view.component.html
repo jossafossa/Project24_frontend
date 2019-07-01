@@ -17,7 +17,7 @@
         <label>{{name}}</label>
         <label>{{description}}</label>
         <label>
-          <span *ngFor="let interest of interests" class="label">{{interest.name}}</span>
+          <span *ngFor="let interest of interests" class="label">{{interest}}</span>
         </label>
       </div>
     </div>
@@ -40,18 +40,10 @@
   </div>
   <div class="groupContainer">
     <h1>Members</h1>
-    <div class="groups">
-      <div class="group">
-        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
-      </div>
-      <div class="group">
-        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
-      </div>
-      <div class="group">
-        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
-      </div>
-      <div class="group">
-        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" (click)="goToMember()">
+    <div class="block-list">
+      <div class="block-list_item" *ngFor="let member of members" (click)="goToMember(member.id)">        
+        <h3>{{member.username}}</h3>
+        <img src="https://cdn4.iconfinder.com/data/icons/user-15/164/3-512.png" >
       </div>
     </div>
   </div>

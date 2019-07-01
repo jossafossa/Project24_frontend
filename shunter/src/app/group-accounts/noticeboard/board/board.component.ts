@@ -7,7 +7,7 @@ import { APIService } from '../../../account.service';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  notices ;
+  notices = [];
 
   constructor(
     public api: APIService,
@@ -19,7 +19,26 @@ export class BoardComponent implements OnInit {
   }
 
   getNotices() {
-    this.api.getNotices().subscribe(data => this.notices = data);
+    this.api.getNotices().subscribe(data => {
+      for(let notice of data) {
+        notice.created = this.calcTime(notice.created);
+        this.notices.push(notice);
+      }
+      // this.notices = data
+    });
+  }
+
+  calcTime(date) {
+    var dateFirst = new Date(date);
+    var dateSecond = new Date();
+
+    // time difference
+    var timeDiff = Math.abs(dateSecond.getTime() - dateFirst.getTime());
+
+    // days difference
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    return diffDays == 1 ? "posted today" : "posted " + diffDays + " days ago";
   }
 
   removeNotice(noticeID){

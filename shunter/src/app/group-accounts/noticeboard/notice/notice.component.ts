@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {APIService} from '../../../account.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {CreateComponent} from '../../create/create.component';
 import {Router, ActivatedRoute} from '@angular/router';
-import {not} from 'rxjs/internal-compatibility';
+
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-notice',
@@ -17,7 +17,14 @@ export class NoticeComponent implements OnInit {
   postedBy;
   group=1;
   noticeID;
-  constructor(public api: APIService, private fb : FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    public api: APIService,
+    private fb : FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  )
+  {
     this.noticeForm = fb.group({
       subject : ['', [Validators.required,  Validators.maxLength(45)]],
       noticeText : ['', [Validators.required, Validators.maxLength(255)]],
@@ -35,9 +42,7 @@ export class NoticeComponent implements OnInit {
   addNotice() {
     console.log("Adding notice", this.subject.value, this.noticeText.value, this.postedBy);
    this.api.addNotice(this.subject.value, this.noticeText.value, this.postedBy, this.group)
-     .subscribe(data => {
-       this.router.navigate(['']);
-     });
+     .subscribe(this.location.back());
   }
 
   //get noticeID
@@ -56,6 +61,7 @@ export class NoticeComponent implements OnInit {
 
   updateNotice(){
     console.log("update notice", this.subject.value, this.noticeText.value, this.postedBy);
-    this.api.updateNotice(this.noticeID, this.subject.value, this.noticeText.value).subscribe(data => {console.log(data);});
+    this.api.updateNotice(this.noticeID, this.subject.value, this.noticeText.value).
+    subscribe(this.location.back());
   }
 }

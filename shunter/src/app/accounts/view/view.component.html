@@ -44,8 +44,12 @@
   </div>
   <div class="groupContainer">
     <h1>Groups</h1>
-    <div class="groups">
-      <div class="group">
+    <div class="block-list">
+      <div class="block-list_item" *ngFor="let group of groups" (click)="goToGroup(group.id)">
+        <h3>{{group.name}}</h3>
+        <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1701/sudowoodo170100036/70805674-diverse-group-of-people-students-or-workplace-cute-and-simple-flat-cartoon-style-isolated-vector-ill.jpg">
+      </div>
+      <!-- <div class="group">
         <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1701/sudowoodo170100036/70805674-diverse-group-of-people-students-or-workplace-cute-and-simple-flat-cartoon-style-isolated-vector-ill.jpg" (click)="goToGroup()">
       </div>
       <div class="group">
@@ -53,10 +57,7 @@
       </div>
       <div class="group">
         <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1701/sudowoodo170100036/70805674-diverse-group-of-people-students-or-workplace-cute-and-simple-flat-cartoon-style-isolated-vector-ill.jpg" (click)="goToGroup()">
-      </div>
-      <div class="group">
-        <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1701/sudowoodo170100036/70805674-diverse-group-of-people-students-or-workplace-cute-and-simple-flat-cartoon-style-isolated-vector-ill.jpg" (click)="goToGroup()">
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
