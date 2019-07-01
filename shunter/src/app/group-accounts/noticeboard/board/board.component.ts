@@ -22,12 +22,6 @@ export class BoardComponent implements OnInit {
     this.api.getNotices().subscribe(data => this.notices = data);
   }
 
-  // hele object meegeven
-
-  updateNotice(){
-   // this.api.updateNotice().subscribe(data => this.notice = data);
-  }
-
   removeNotice(noticeID){
     this.api.removeNotice(noticeID).subscribe(response => {this.getNotices()});
   }

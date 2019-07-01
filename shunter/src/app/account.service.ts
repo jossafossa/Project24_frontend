@@ -109,7 +109,7 @@ export class APIService {
     let endpoint = "/api/v1/users/GetMyUser";
     this.request("get", endpoint).subscribe(data => {
       console.log(data);
-      this.userID = data[0]["id"];
+      this.userID = data.id;
     });
   }
 
@@ -265,6 +265,12 @@ export class APIService {
     let endpoint = '/api/v1/prikmuur/';
     return this.request('get', endpoint);
   }
+
+  getNotice(noticeID){
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
+    return this.request('get', endpoint);
+  }
+
   addNotice(subject, noticeText, postedBy, group) {
     let data =
       {
@@ -281,10 +287,11 @@ export class APIService {
   updateNotice(noticeID, subject, noticeText) {
     let data =
       {
-           "subject": subject,
-           "noticeText": noticeText,
+        "subject": subject,
+        "noticeText": noticeText,
+        "id": noticeID,
       };
-           let endpoint = 'api/v1/prikmuur/' + noticeID;
+           let endpoint = '/api/v1/prikmuur/' + noticeID;
            return this.request("patch", endpoint, data);
       }
 
