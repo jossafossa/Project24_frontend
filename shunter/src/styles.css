@@ -97,6 +97,18 @@ hr.large {
 	margin:2rem 0;
 }
 
+.label {
+	padding:.2rem .5rem;
+	border-radius: 100px;
+	background-color:#FF003A;
+	color: white;
+	font-weight:700;
+	font-size:.8rem;
+	margin-right:.5rem;
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+
 
 /* page content */
 .app-container {
@@ -182,6 +194,28 @@ hr.large {
     display:block;
     padding:1rem;
     overflow-y: auto;
+}
+
+.block-list {
+	display:flex;
+	justify-content: stretch;
+	flex-wrap: wrap;
+	padding:.5rem;
+}
+
+.block-list > * {
+	flex:1;
+	width:100%;
+	min-width:8rem;
+	padding:.5rem;
+	cursor: pointer;
+	background-color:rgba(0,0,0,0);
+	transition: .5s;
+}
+
+.block-list > *:hover {
+	background-color:rgba(0,0,0,0.1);
+	transition: 0s;
 }
 
 .buttons {

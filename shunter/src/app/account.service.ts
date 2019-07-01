@@ -109,7 +109,7 @@ export class APIService {
     let endpoint = "/api/v1/users/GetMyUser";
     this.request("get", endpoint).subscribe(data => {
       console.log(data);
-      this.userID = data[0]["id"];
+      this.userID = data["id"];
     });
   }
 
@@ -142,6 +142,49 @@ export class APIService {
   getUser(userID) {
     let endpoint = "/api/v1/users/" + userID;
     return this.request("get", endpoint);
+  }
+
+  getMembersByID(members) {
+    console.log(members);
+    return new Promise((resolve, reject) => {
+      let resolved = [];
+      for (let userID of members) {      
+        this.getUser(userID).subscribe(
+          member => {
+            resolved.push(member);
+            if (resolved.length == members.length ) {
+              resolve(resolved);
+            }
+          }, 
+          error => {
+            reject(error);
+          }
+        )
+      }  
+    });
+  }
+
+  getGroupsByID(groups) {
+    console.log("getting groups:", groups);
+    return new Promise((resolve, reject) => {
+      let resolved = [];
+      for (let groupID of groups) {      
+        this.getGroup(groupID).subscribe(
+          group => {
+            console.log(group);
+            resolved.push(group);
+              console.log(resolved);
+            if (resolved.length == groups.length ) {
+              resolve(resolved);
+            }
+          }, 
+          error => {
+            reject(error);
+          }
+        )
+      }  
+    });
+      
   }
 
   //Group stuff

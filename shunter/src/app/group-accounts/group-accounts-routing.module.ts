@@ -23,6 +23,10 @@ const routes: Routes = [
       {
         path: 'view',
         component: ViewComponent,
+      },     
+      {
+        path: 'view/:id',
+        component: ViewComponent,
       },
       {
         path: 'board',

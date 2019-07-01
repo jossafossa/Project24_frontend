@@ -26,6 +26,11 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
       },
       {
+        path: 'view/:id',
+        component: ViewComponent,
+        // canActivate: [AuthGuard],
+      },
+      {
         path: 'swipe',
         loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule),
         // canActivate: [AuthGuard],
