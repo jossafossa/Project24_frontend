@@ -1,17 +1,17 @@
 <mat-toolbar>
   <span>Add notice</span>
 </mat-toolbar>
-<div class="buttons">
-  <button mat-button>Add Note</button>
-</div>
+
 <div class="example-container">
   <mat-form-field>
-    <input matInput placeholder="Titel">
+    <mat-label>Titel</mat-label>
+    <input matInput name="subject" placeholder="Subject" [formControl]="subject" >
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="Bericht"></textarea>
+    <mat-label>Message</mat-label>
+    <textarea matInput name="noticeText" placeholder="Message" [formControl]="noticeText"></textarea>
   </mat-form-field>
 
-  <button mat-button(click)="onClickMe()">Click me!</button>
+  <button mat-button (click)="addNotice()">Add notice</button>
 </div>

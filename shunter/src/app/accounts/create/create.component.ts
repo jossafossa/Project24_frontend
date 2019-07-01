@@ -55,7 +55,7 @@ export class CreateComponent implements OnInit {
   }
 
   sendInfo(email, username, password, confirmPass, interests, pictures){
-    console.log("hier" + pictures);
+    console.log('hier' + pictures);
     this.as.signup(username, email, password, confirmPass, interests, pictures, () => {
       this.router.navigate(['accounts', 'view'])
     });
