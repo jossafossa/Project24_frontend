@@ -12,6 +12,7 @@ type User = {
   pic5: string;
 }
 
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -22,10 +23,11 @@ export class ViewComponent implements OnInit {
   username;
   status;
   pictures;
+  groups = [];
 
-  constructor(private as: APIService, private router : Router) {
+  constructor(private api: APIService, private router : Router) {
 
-    this.as.getLoggedInUser().subscribe((data: User) => {
+    this.api.getLoggedInUser().subscribe((data: User) => {
       this.username = data.username;
       this.status = data.status;
       this.pictures = [
@@ -38,7 +40,12 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  getGroups() {
+    this.api.getGroups().subscribe(e => {/*this.groups = e; */console.log(e)});
+  }
+
   ngOnInit() {
+    this.getGroups();
   }
 
   toSwipe() {

@@ -29,7 +29,7 @@ export class SwipeComponent implements OnInit {
     next.subscribe((data) => {this.setGroup(data[0]); console.log(data)});
   }
 
-  setGroup(data) {
+  setGroup(data) {  
     this.group = {
       "id": data["id"],
       "image": data["pic1"],

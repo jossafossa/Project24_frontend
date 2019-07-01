@@ -198,6 +198,11 @@ export class APIService {
     console.log(event.target.result);
   }
 
+  getGroups() {
+    let endpoint = "/api/v1/friendcircle/GetMyMemberships";
+    return this.request("get", endpoint);
+  }
+
 // Interests
   addInterest(interest) {    
     let data = {
@@ -215,7 +220,7 @@ export class APIService {
 
   // like/dislike stuff
   getNextUser() {
-    let endpoint = "/api/v1/matcher/getUser/";
+    let endpoint = "/api/v1/friendcircle/getCandidate"; // endpoint is wrong
     return this.request("get", endpoint);
   }
 
