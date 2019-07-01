@@ -41,12 +41,6 @@ export class BoardComponent implements OnInit {
     return diffDays == 1 ? "posted today" : "posted " + diffDays + " days ago";
   }
 
-  //hele object meegeven
-
-  updateNotice(){
-   // this.api.updateNotice().subscribe(data => this.notice = data);
-  }
-
   removeNotice(noticeID){
     this.api.removeNotice(noticeID).subscribe(response => {this.getNotices()});
   }

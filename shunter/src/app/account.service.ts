@@ -109,7 +109,7 @@ export class APIService {
     let endpoint = "/api/v1/users/GetMyUser";
     this.request("get", endpoint).subscribe(data => {
       console.log(data);
-      this.userID = data["id"];
+      this.userID = data.id;
     });
   }
 
@@ -308,6 +308,12 @@ export class APIService {
     let endpoint = '/api/v1/prikmuur/';
     return this.request('get', endpoint);
   }
+
+  getNotice(noticeID){
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
+    return this.request('get', endpoint);
+  }
+
   addNotice(subject, noticeText, postedBy, group) {
     let data =
       {
@@ -321,15 +327,16 @@ export class APIService {
   }
 
 
-  updateNotice(noticeID){
- //   let data =
-    //   {
-    //   "subject": subject,
-    //   "noticeText": noticeText,
-    //   };
- //   let endpoint = 'api/v1/prikmuur/' + noticeID;
- //   return this.request("patch", endpoint, data);
-  }
+  updateNotice(noticeID, subject, noticeText) {
+    let data =
+      {
+        "subject": subject,
+        "noticeText": noticeText,
+        "id": noticeID,
+      };
+           let endpoint = '/api/v1/prikmuur/' + noticeID;
+           return this.request("patch", endpoint, data);
+      }
 
   removeNotice(noticeID){
     let endpoint = '/api/v1/prikmuur/' + noticeID;

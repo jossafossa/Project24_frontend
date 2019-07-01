@@ -6,13 +6,22 @@ import {EditComponent} from '../edit/edit.component';
 import {ViewComponent} from '../view/view.component';
 import {NoticeComponent} from './notice/notice.component';
 
+
 const routes: Routes = [
   {
     path: '',
     component: BoardComponent,
   },
   {
+    path: 'board',
+    component: BoardComponent,
+  },
+  {
     path: 'board/addnotice',
+    component: NoticeComponent,
+  },
+  {
+    path: 'board/notice/:id',
     component: NoticeComponent,
   },
 ];
