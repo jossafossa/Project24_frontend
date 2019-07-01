@@ -4,6 +4,20 @@
 <div class="buttons">
   <button mat-button>Add Note</button>
 </div>
+
+<div class="notices">  
+  <div class="notice" *ngFor="let notice of notices">
+    <h2 class="notice_title">{{notice.title}}</h2>
+    <i class="notice_byline">By: {{notice.user}}</i>
+    <hr>
+    <p class="notice_content">{{notice.message}}</p>
+    <div class="notice_menu">
+      <button>edit</button>
+      <button>remove</button>
+    </div>
+  </div>
+</div>
+
 <mat-grid-list cols="5" rowHeight="1:2">
 
   <!-- Haal cards automatisch op -->
