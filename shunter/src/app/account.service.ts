@@ -278,15 +278,15 @@ export class APIService {
   }
 
 
-  updateNotice(noticeID){
- //   let data =
-    //   {
-    //   "subject": subject,
-    //   "noticeText": noticeText,
-    //   };
- //   let endpoint = 'api/v1/prikmuur/' + noticeID;
- //   return this.request("patch", endpoint, data);
-  }
+  updateNotice(noticeID, subject, noticeText) {
+    let data =
+      {
+           "subject": subject,
+           "noticeText": noticeText,
+      };
+           let endpoint = 'api/v1/prikmuur/' + noticeID;
+           return this.request("patch", endpoint, data);
+      }
 
   removeNotice(noticeID){
     let endpoint = '/api/v1/prikmuur/' + noticeID;

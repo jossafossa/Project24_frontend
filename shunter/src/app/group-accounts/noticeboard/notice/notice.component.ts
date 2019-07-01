@@ -30,4 +30,5 @@ export class NoticeComponent implements OnInit {
     console.log("adding notice", this.subject.value, this.noticeText.value, this.postedBy);
    this.api.addNotice(this.subject.value, this.noticeText.value, this.postedBy, this.group).subscribe(data => {console.log(data)});
   }
+
 }

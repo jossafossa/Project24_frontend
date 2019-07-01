@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit {
     this.api.getNotices().subscribe(data => this.notices = data);
   }
 
-  //hele object meegeven
+  // hele object meegeven
 
   updateNotice(){
    // this.api.updateNotice().subscribe(data => this.notice = data);

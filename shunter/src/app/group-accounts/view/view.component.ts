@@ -9,7 +9,7 @@ import {APIService} from '../../account.service';
 })
 export class ViewComponent implements OnInit {
 
-  interests: array;
+  interests: Array<Object>;
   name: string;
   description: string;
 
