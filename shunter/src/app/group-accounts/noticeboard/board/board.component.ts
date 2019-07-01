@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NOTICES } from '../notice/mock-notices';
-import { APIService} from '../../../account.service';
+import { APIService } from '../../../account.service';
 
 @Component({
   selector: 'app-board',
@@ -8,13 +7,19 @@ import { APIService} from '../../../account.service';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  notices = NOTICES;
+  notices ;
 
-  constructor() {
-
+  constructor(
+    public api: APIService,
+    ) {
   }
 
   ngOnInit() {
+    this.getNotices();
+  }
+
+  getNotices() {
+    this.api.getNotices().subscribe(data => this.notices = data);
   }
 
 

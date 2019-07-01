@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {APIService} from '../../../account.service';
 
 @Component({
   selector: 'app-notice',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public api: APIService,
+  ) { }
 
   ngOnInit() {
+    this.addNotice();
   }
-
+  addNotice() {
+   // this.api.addNotice()
+  }
 }
