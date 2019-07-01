@@ -17,17 +17,9 @@ export class CreateComponent implements OnInit {
   accountForm : FormGroup;
 
   username;
-  status;
-  profilePicture;
   email;
   password;
   confirmPass;
-  interests;
-  pictures;
-
-  interestList: string [] = [
-    'music', 'photography', 'movies', 'skateboarding', 'makeup', 'gaming'
-  ];
 
   constructor(private as : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
@@ -35,49 +27,24 @@ export class CreateComponent implements OnInit {
       password : ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
       username : ['', [Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9 \\\'\\-]+$')]],
       confirmPass : ['',[Validators.required]],
-      profilePicture : [''],
-      status : ['', Validators.maxLength(120)],
-      interests : [[]],
-      pictures: [[]],
-    }, { validators: [CreateComponent.checkIfMatchingPasswords, CreateComponent.maxInterests, CreateComponent.maxPhotos]});
+    }, { validators: [CreateComponent.checkIfMatchingPasswords]});
 
     this.username = this.accountForm.controls['username'];
-    this.status = this.accountForm.controls['status'];
-    this.profilePicture = this.accountForm.controls['profilePicture'];
     this.email = this.accountForm.controls['email'];
     this.password = this.accountForm.controls['password'];
     this.confirmPass = this.accountForm.controls['confirmPass'];
-    this.interests = this.accountForm.controls['interests'];
-    this.pictures = this.accountForm.controls['pictures'];
   }
 
   ngOnInit() {
   }
 
-  sendInfo(email, username, password, confirmPass, interests, pictures){
-    console.log('hier' + pictures);
-    this.as.signup(username, email, password, confirmPass, interests, pictures, () => {
+  sendInfo(email, username, password, confirmPass){
+    this.as.signup(username, email, password, confirmPass, () => {
       this.router.navigate(['accounts', 'view'])
     });
     // .pipe(() => {
     //   this.router.navigate(['accounts', 'view']);
     // });
-  }
-
-  private static maxPhotos(group: FormGroup){
-    if(group.controls.pictures.value.length > 5) {
-      return group.controls.pictures.setErrors({tooMuch: true});
-    } else {
-      return group.controls.pictures.setErrors(null);
-    }
-  }
-
-  private static maxInterests(group: FormGroup){
-    if(group.controls.interests.value.length != 5){
-      return group.controls.interests.setErrors({notEnough : true});
-    } else {
-      return group.controls.interests.setErrors(null);
-    }
   }
 
   private static checkIfMatchingPasswords(group: FormGroup) {
@@ -98,12 +65,6 @@ export class CreateComponent implements OnInit {
         '';
   }
 
-  getStatusErrorMessage() {
-    return this.status.hasError('required') ? 'You must enter a value\n'
-      : this.status.hasError('maxLength') ? 'Youve succeeded the max length\n':
-        '';
-  }
-
   getEmailErrorMessage(){
     return this.email.hasError('required') ? 'You must enter a value\n'
       : this.email.hasError('email') ? 'Not a valid email\n':
@@ -120,31 +81,5 @@ export class CreateComponent implements OnInit {
     return this.confirmPass.hasError('required') ? 'You must enter a value\n'
       :  this.confirmPass.hasError('pattern') ? 'Doesnt match \n':
         '';
-  }
-
-  getNotFiveErrorMessage() {
-    return this.interests.hasError('notEnough') ? 'You must pick 5\n':
-      '';
-  }
-
-  onInterestsChange(event) {
-    console.log(event);
-    this.accountForm.controls['interests'].setValue(event);
-    console.log(this.interests);
-  }
-
-  detectFiles(event) {
-    let files = event.target.files;
-
-    this.pictures.setValue([]);
-
-    if (files) {
-      for (let file of files) {
-        this.pictures.setValue([
-          ...this.pictures.value,
-          file
-        ])
-      }
-    }
   }
 }

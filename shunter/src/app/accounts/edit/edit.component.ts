@@ -20,43 +20,23 @@ export class EditComponent implements OnInit {
   pic1;
   id;
   username;
-  status;
-  profilePicture;
-  email;
-  password;
-  confirmPass;
   interests;
   urls;
 
-  interestList: string [] = [];
-
   constructor(private api : APIService, private fb : FormBuilder, private router : Router) {
     this.accountForm = fb.group({
-      password : ['', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(50)]],
-      username : ['', [Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9 \\\'\\-]+$')]],
-      confirmPass : [''],
-      profilePicture : [''],
-      status : ['', Validators.maxLength(120)],
       interests : [[]],
       urls : [[]],
-    }, { validators: [EditComponent.checkIfMatchingPasswords, EditComponent.maxInterests, EditComponent.maxPhotos]});
+    }, { validators: [EditComponent.maxInterests, EditComponent.maxPhotos]});
 
-    this.username = this.accountForm.controls['username'];
-    this.status = this.accountForm.controls['status'];
-    this.profilePicture = this.accountForm.controls['profilePicture'];
-    this.email = this.accountForm.controls['email'];
-    this.password = this.accountForm.controls['password'];
-    this.confirmPass = this.accountForm.controls['confirmPass'];
     this.interests = this.accountForm.controls['interests'];
     this.urls = this.accountForm.controls['urls'];
     // this.id = APIService.user.user_id;
 
     this.api.getLoggedInUser().subscribe((data: any) => {
-      this.id = data.user_id;
-      this.accountForm.controls['username'].setValue(data.username);
-      this.accountForm.controls['status'].setValue(data.status);
+      this.id = data.id;
+      this.username = data.username;
       this.accountForm.controls['interests'].setValue(data.interests);
-
       this.accountForm.controls['urls'].setValue(data.pictures);
 
     //   this.pictures = [
@@ -72,8 +52,9 @@ export class EditComponent implements OnInit {
   }
 
   sendInfo(pictures, interests){
-    this.api.updateUser(this.id, pictures, interests);
-    this.router.navigate(['accounts', 'view']);
+    this.api.updateUser(this.id, this.username, interests, pictures).subscribe(() => {
+      this.router.navigate(['accounts', 'view']);
+    });
   }
 
   private static maxPhotos(group: FormGroup){
@@ -90,48 +71,6 @@ export class EditComponent implements OnInit {
     } else {
       return group.controls.interests.setErrors(null);
     }
-  }
-
-  private static checkIfMatchingPasswords(group: FormGroup) {
-    const passwordInput = group.controls.password;
-    const passwordInputConfirm = group.controls.confirmPass;
-
-    if (passwordInput.value !== passwordInputConfirm.value) {
-      return passwordInputConfirm.setErrors({notEquivalent: true});
-    } else {
-      return passwordInputConfirm.setErrors(null);
-    }
-  }
-
-  getUsernameErrorMessage() {
-    return this.username.hasError('required') ? 'You must enter a value\n'
-      : this.username.hasError('maxLength') ? 'Youve succeeded the max length\n':
-        this.username.hasError('pattern') ? 'Username cant contain special characters':
-        '';
-  }
-
-  getStatusErrorMessage() {
-    return this.status.hasError('required') ? 'You must enter a value\n'
-      : this.status.hasError('maxLength') ? 'Youve succeeded the max length\n':
-        '';
-  }
-
-  getEmailErrorMessage(){
-    return this.email.hasError('required') ? 'You must enter a value\n'
-      : this.email.hasError('email') ? 'Not a valid email\n':
-        '';
-  }
-
-  getPasswordErrorMessage(){
-    return this.password.hasError('required') ? 'You must enter a value\n'
-      : this.password.hasError('pattern') ? 'Weak password\n':
-        '';
-  }
-
-  getNotSameErrorMessage(){
-    return this.confirmPass.hasError('required') ? 'You must enter a value\n'
-      :  this.confirmPass.hasError('pattern') ? 'Doesnt match \n':
-        '';
   }
 
   getNotFiveErrorMessage() {

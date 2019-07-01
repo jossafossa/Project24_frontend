@@ -5,6 +5,7 @@ import {APIService} from '../../account.service';
 type User = {
   username: string;
   status: string;
+  interests: [];
   pic1: string;
   pic2: string;
   pic3: string;
@@ -22,6 +23,7 @@ export class ViewComponent implements OnInit {
   image;
   username;
   status;
+  interests;
   pictures;
   groups: {};
 
@@ -48,6 +50,7 @@ export class ViewComponent implements OnInit {
 
   setData(data) {   
       this.username = data.username;
+      this.interests = data.interests;
       this.status = data.status;
       this.pictures = [
         data.pic1,
