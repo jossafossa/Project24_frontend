@@ -24,7 +24,7 @@ export class BoardComponent implements OnInit {
         notice.created = this.calcTime(notice.created);
         this.notices.push(notice);
       }
-      // this.notices = data
+      this.notices = data
     });
   }
 

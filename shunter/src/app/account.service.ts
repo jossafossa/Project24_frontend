@@ -276,29 +276,56 @@ export class APIService {
 
   // like/dislike stuff
   getNextUser() {
+    let endpoint = "/api/v1/users/getCandidate"; // endpoint is wrong
+    return this.request("get", endpoint);
+  }
+
+  likeUser(userID) {
+    console.log("user liked")
+    let endpoint = "/api/v1/users/SwipeCandidateFriendCircle";
+    let data = {
+        "friendcircle": userID,
+        "swipe_choice": "V"
+    }
+    return this.request("post", endpoint, data);
+  }
+
+  dislikeUser(userID) {
+    console.log("user liked")
+    let endpoint = "/api/v1/users/SwipeCandidateFriendCircle";
+    let data = {
+        "friendcircle": userID,
+        "swipe_choice": "X"
+    }
+    return this.request("post", endpoint, data);
+  }
+
+
+   // like/dislike stuff
+  getNextGroup() {
     let endpoint = "/api/v1/friendcircle/getCandidate"; // endpoint is wrong
     return this.request("get", endpoint);
   }
 
 
-  like(userID) {
-    console.log("TODO: liked")
-    // let endpoint = "/api/v1/matcher/getUser/";
-    // let data = {
-    //   "userID": userID,
-    //   "like": true
-    // }
-    // return this.request("get", endpoint, data);
+  likeGroup(groupID) {
+    console.log("group liked")
+    let endpoint = "/api/v1/friendcircle/SwipeCandidateFriendCircle";
+    let data = {
+        "user": groupID,
+        "swipe_choice": "V"
+    }
+    return this.request("post", endpoint, data);
   }
 
-  dislike(userID) {
-    console.log("TODO: disliked")
-    // let endpoint = "/api/v1/matcher/getUser/";
-    // let data = {
-    //   "userID": userID,
-    //   "like": false
-    // }
-    // return this.request("get", endpoint, data);
+  dislikeGroup(groupID) {
+    console.log("group disliked")
+    let endpoint = "/api/v1/friendcircle/SwipeCandidateFriendCircle";
+    let data = {
+        "user": groupID,
+        "swipe_choice": "X"
+    }
+    return this.request("post", endpoint, data);
   }
 
   //Noticeboard stuff

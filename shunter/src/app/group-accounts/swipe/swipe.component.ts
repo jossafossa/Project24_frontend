@@ -18,18 +18,21 @@ export class SwipeComponent implements OnInit {
   constructor(public api: APIService) { }
 
   ngOnInit() { 
-    let next = this.api.getNextGroup(); 	
-    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
+    let next = this.api.getNextUser(); 	
+    next.subscribe((data) => {
+      console.log(data); 
+      this.setGroup(data[0]);
+    });
   }
   
   like() {
-    this.api.likeGroup(this.group["id"]).subscribe(d => console.log(d));
+    this.api.likeUser(this.group["id"]).subscribe(d => console.log(d));
 
-    let next = this.api.getNextGroup();
-    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
+    let next = this.api.getNextUser();
+    next.subscribe((data) => {this.setGroup(data[0]); console.log(data)});
   }
 
-  setData(data) {  
+  setGroup(data) {  
     console.log("data:", data);
     this.group = {
       "id": data["id"],
@@ -40,10 +43,10 @@ export class SwipeComponent implements OnInit {
   }
 
   dislike() {
-    this.api.dislikeGroup(this.group["id"]);
+    this.api.dislikeUser(this.group["id"]);
 
-    let next = this.api.getNextGroup();
-    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
+    let next = this.api.getNextUser();
+    next.subscribe((data) => {this.setGroup(data[0]); console.log(data)});
   }
 
 }
