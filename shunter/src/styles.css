@@ -218,6 +218,10 @@ hr.large {
 	transition: 0s;
 }
 
+.block-list img {
+	width:100%;
+}
+
 .buttons {
 	padding:1rem;
 	text-align:left;
