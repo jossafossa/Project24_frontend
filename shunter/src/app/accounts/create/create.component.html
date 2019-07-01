@@ -13,22 +13,9 @@
       </mat-form-field>
 
       <mat-form-field class='inputfield'>
-        <input matInput name="status" placeholder="Status" [formControl]="status" required="true">
-        <mat-error *ngIf="status.invalid"> {{getStatusErrorMessage()}} </mat-error>
-      </mat-form-field>
-
-      <mat-form-field class='inputfield'>
         <input matInput name="email" placeholder="Email" [formControl]="email" required="true">
                 <mat-error *ngIf="email.invalid"> {{getEmailErrorMessage()}} </mat-error>
       </mat-form-field>
-
-      <input name="profilePicture" type="file" ng2FileSelect [uploader]="uploader" [formControl]="profilePicture"
-             ><br />
-<!--      <button type="button" class="btn btn-success btn-s"-->
-<!--              (click)="uploader.uploadAll()"-->
-<!--              [disabled]="!uploader.getNotUploadedItems().length">-->
-<!--        Upload an Image-->
-<!--      </button>-->
     </div>
 
   </div>
@@ -48,37 +35,5 @@
 
     </div>
   </div>
-  <div class="formCard">
-    <div class="info">
-      <interests (valueChange)='onInterestsChange($event)'></interests>
-      <p>
-        Options selected: {{interests.value.length}}
-      </p>
-    </div>
-    </div>
-
-  <div class="formCard">
-    <div class="info">
-      <h1>Photos</h1>
-      <div class="addPhotos">
-<!--        <div *ngFor="let picture of pictures">-->
-<!--          <img [src]="pictures" class="rounded mb-3" width="200" height="200">-->
-<!--        </div>-->
-      </div>
-      <input type="file" multiple name="pictures" (change)="detectFiles($event)">
-      <!--    <div class="photos">-->
-      <!--      <h1>Add photos</h1>-->
-      <!--      <input name="picture1" type="file" ng2FileSelect [uploader]="uploader" [formControl]="picture1"-->
-      <!--             required="true"><br />-->
-      <!--      <button type="button" class="btn btn-success btn-s"-->
-      <!--              (click)="uploader.uploadAll()"-->
-      <!--              [disabled]="!uploader.getNotUploadedItems().length">-->
-      <!--        Upload an Image-->
-      <!--        <img src="https://picsum.photos/200">-->
-      <!--      </button>-->
-      <!--    </div>-->
-
-    </div>
-  </div>
 </div>
-<button mat-button [disabled]="(accountForm.pristine || accountForm.invalid)" (click)="sendInfo(accountForm.controls['email'].value, accountForm.controls['username'].value,  accountForm.controls['password'].value, accountForm.controls['confirmPass'].value, accountForm.controls['interests'].value, accountForm.controls['pictures'].value)">Create account!</button>
+<button mat-button [disabled]="(accountForm.pristine || accountForm.invalid)" (click)="sendInfo(accountForm.controls['email'].value, accountForm.controls['username'].value,  accountForm.controls['password'].value, accountForm.controls['confirmPass'].value)">Create account!</button>

@@ -53,7 +53,7 @@ export class APIService {
   }
 
 // Definities van Requests
-  request(method, endpoint, data = {}, loginRequired = true) {
+  request(method, endpoint, data = {}, loginRequired = true, options = null) {
     let response;
     if (loginRequired) {
       if (!this.isLoggedIn()) {
@@ -69,7 +69,7 @@ export class APIService {
         response = this.http.get(this.baseURL + endpoint, APIService.options);
         break;
       case "put":          
-        response = this.http.put(this.baseURL + endpoint, data, APIService.options);
+        response = this.http.put(this.baseURL + endpoint, data, options || APIService.options);
         break;
       case "patch":
         response = this.http.patch(this.baseURL + endpoint, data, APIService.options);
@@ -113,21 +113,13 @@ export class APIService {
     });
   }
 
-  signup(username, email, password1, password2, interests = [], pictures = [], callback) {
+  signup(username, email, password1, password2, callback) {
     let formData = new FormData();
 
     formData.append('username', username);
     formData.append('email', email);
     formData.append('password1', password1);
     formData.append('password2', password2);
-
-    for(let i = 0; i < interests.length; i++) {
-      formData.append('interests', interests[i]);
-    }
-
-    for(let i = 0; i < pictures.length; i++) {
-      formData.append('pic' + (i + 1), pictures[i], pictures[i].name);
-    }
 
     console.log(formData);
     let endpoint = "/api/v1/rest-auth/registration/";
@@ -189,22 +181,32 @@ export class APIService {
     console.log(file);
   }
 
-  updateUser(userID, interests: number[] = [], images = []) {
-    let data = {
-      "interests": interests
-    }
+  updateUser(userID, username, interests = [], images = []) {
+    // let data = {
+    //   "interests": interests
+    // }
+
+    let formData = new FormData();
+    formData.append('username', username)
+
+    interests.forEach((interest) => {
+      formData.append('interests', interest);
+    });
 
     for(let i = 0; i < images.length; i++) {
       let image = images[i];
 
       if (i < 5) {
-        data["pic" + (i+1)] = image;
+        formData.append("pic" + (i+1), image);
       }
     }
 
-    console.log(data);
     let endpoint = "/api/v1/users/" + userID;
-    return this.request("put", endpoint, data);
+    return this.request("put", endpoint, formData, true, {
+      headers: new HttpHeaders({
+        'Authorization': "JWT " + APIService.token,
+      })
+    });
   }
 
   readFile(event) {

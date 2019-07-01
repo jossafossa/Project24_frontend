@@ -19,7 +19,7 @@ body {
 }
 
 img {
-	width:100%;
+	/*width:100%;*/
 }
 
 /* margins */
@@ -201,11 +201,11 @@ hr.large {
 
 
 /* form */
-input:not([type="submit"]) {
-  padding:.5rem 1rem;
-  border:1px solid rgba(0,0,0,0.1);
-  border-radius:.5rem;
-}
+/*input:not([type="submit"]) {*/
+/*  padding:.5rem 1rem;*/
+/*  border:1px solid rgba(0,0,0,0.1);*/
+/*  border-radius:.5rem;*/
+/*}*/
 
 label[for] {
   margin-right:1rem;
@@ -237,10 +237,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 h1 {
   background-color: #FFA100;
   /*background-color: lightslategray;*/
-  /*box-shadow: 1px 1px 10px 3px lightgrey;*/
+  box-shadow: 1px 1px 10px 3px lightgrey;
   color: white;
-  /*border: 1px solid white;*/
-  /*border-radius: 5px;*/
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .mat-toolbar span {

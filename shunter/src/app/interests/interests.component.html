@@ -2,7 +2,7 @@
 	<div class="interests">
 	  <div class="checkbox-container">
       <mat-selection-list #list (selectionChange)="change($event, list.selectedOptions)">
-        <mat-list-option *ngFor="let i of interests" [value]="i.id">
+        <mat-list-option *ngFor="let i of interests" [value]="i.name">
           {{ i.name }}
         </mat-list-option>
       </mat-selection-list>
