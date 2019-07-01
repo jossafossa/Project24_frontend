@@ -258,21 +258,25 @@ export class APIService {
         "subject": subject,
         "noticeText": noticeText,
         "postedBy": postedBy,
-        "group": 1,
-
+        "group": group,
       };
        let endpoint = '/api/v1/prikmuur/';
        return this.request("post", endpoint, data);
   }
-  updateNotice(){
- //   let data = ?
+
+  updateNotice(noticeID){
+ //   let data =
+    //   {
+    //   "subject": subject,
+    //   "noticeText": noticeText,
+    //   };
  //   let endpoint = 'api/v1/prikmuur/' + noticeID;
  //   return this.request("patch", endpoint, data);
   }
-  removeNotice(){
-    //   let data = ?
+
+  removeNotice(noticeID){
     //   let endpoint = 'api/v1/prikmuur/' + noticeID;
-    //   return this.request("delete", endpoint, data);
+    //   return this.request("delete", endpoint);
 }
   
 }
