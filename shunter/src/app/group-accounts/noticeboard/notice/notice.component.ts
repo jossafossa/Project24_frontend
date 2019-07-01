@@ -26,6 +26,7 @@ export class NoticeComponent implements OnInit {
   ngOnInit() {
     this.addNotice();
   }
+  
   addNotice() {
     console.log("adding notice", this.subject.value, this.noticeText.value, this.postedBy);
    this.api.addNotice(this.subject.value, this.noticeText.value, this.postedBy).subscribe(data => {console.log(data)});

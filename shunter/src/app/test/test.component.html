@@ -1,11 +1,16 @@
-<button (click)="login()">Login test</button>
-<button (click)="addInterests()">Add interests</button>
-<button (click)="getInterests()">get interests</button>
-<button (click)="updateUser()">update user</button>
-<button (click)="getUser()">get user</button>
-<button (click)="generateUsers()">Generate 100 users</button>
+<h1>Debug page</h1>
+
+<div class="buttons">
+	<button (click)="login()">Login test</button>
+	<button (click)="addInterests()">Add interests</button>
+	<button (click)="getInterests()">get interests</button>
+	<button (click)="updateUser()">update user</button>
+	<button (click)="getUser()">get user</button>
+	<button (click)="generateUsers()">Generate 100 users</button>
+	
+</div>
 <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-	<fieldset>
-		<input type="file" name="files[]" (change)="uploadFile($event)" placeholder="upload pic1">		
-	</fieldset>
-</form>
+		<fieldset>
+			<input type="file" name="files[]" (change)="uploadFile($event)" placeholder="upload pic1">		
+		</fieldset>
+	</form>

@@ -73,8 +73,10 @@ label {
 
 .formContainer {
   flex: 1;
+  margin-right:1rem;
 }
 
 .mContainer {
   display: flex;
+  padding:1rem;
 }
