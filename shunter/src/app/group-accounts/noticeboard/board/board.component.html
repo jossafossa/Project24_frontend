@@ -1,39 +1,21 @@
-<mat-toolbar>
-  <span>Group Noticeboard</span>
-</mat-toolbar>
-<div class="buttons">
-  <button mat-button >
-    <a [routerLink]="['../board/addnotice']" >Add note</a>
-  </button>
-</div>
+<div class="noticeboard">
+  <h1 class="">Noticeboard</h1>
+  <div class="buttons">
+    <button [routerLink]="['../board/addnotice']" >Add note</button>
+  </div>
 
-<div class="notices">  
-  <div class="notice" *ngFor="let notice of notices">
-    <h2 class="notice_title">{{notice.title}}</h2>
-    <i class="notice_byline">By: {{notice.user}}</i>
-    <hr>
-    <p class="notice_content">{{notice.message}}</p>
-    <div class="notice_menu">
-      <button>edit</button>
-      <button>remove</button>
+  <div class="notices">  
+    <div class="notice" *ngFor="let notice of notices">
+      <h2 class="notice_title">{{notice.subject}}</h2>
+      <i class="notice_byline">By: {{notice.postedBy}}</i>
+      <hr>
+      <div class="notice_content">{{notice.notice_text}}</div>
+      <div class="notice_menu">
+        <button>edit</button>
+        <button>remove</button>
+      </div>
     </div>
   </div>
 </div>
 
-<mat-grid-list cols="5" rowHeight="1:2">
 
-  <!-- Haal cards automatisch op -->
-  <mat-grid-tile *ngFor="let notice of notices">
-    <mat-card>
-      <mat-card-title-group>
-        <mat-card-title>{{notice.subject}}</mat-card-title>
-        <mat-card-subtitle>{{notice.postedBy}}</mat-card-subtitle>
-      </mat-card-title-group>
-      <mat-card-content>{{notice.notice_text}}</mat-card-content>
-      <mat-card-footer>
-        <button mat-button>Edit</button>
-        <button mat-button>Remove</button>
-      </mat-card-footer>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>

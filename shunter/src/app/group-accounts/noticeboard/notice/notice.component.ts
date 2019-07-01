@@ -15,6 +15,7 @@ export class NoticeComponent implements OnInit {
   ngOnInit() {
     this.addNotice();
   }
+  
   addNotice() {
    // this.api.addNotice()
   }

@@ -1,3 +1,12 @@
+.noticeboard {
+  background-color:whitesmoke;
+}
+
+.noticeboard_menu {
+  padding:1rem;
+  text-align:left;
+}
+
 .notices {
   display:flex;
   background-color:whitesmoke;
@@ -10,6 +19,7 @@
   flex:1;
   margin:.5rem;
   min-width:400px;
+  width:100%;
   background-color:white;
   text-align:left;
   display:flex;
@@ -21,10 +31,7 @@
   text-align:center;
 }
 
-hr {
-  border:none;
-  border-bottom:1px solid rgba(0,0,0,0.2);
-}
+
 
 .notice_byline {  
   padding:1rem;
@@ -34,12 +41,22 @@ hr {
 .notice_content {  
   padding:1rem;
   flex:1;
+  margin:0;
 }
 
 .notice_menu {
   display:flex;
   padding:.5rem;
   justify-content:stretch;
+  opacity: 0;
+  transform:translateY(1rem);
+  transition:.2s;
+}
+
+.notice:hover .notice_menu {
+  opacity: 1;
+  transform:translateY(0rem);
+
 }
 
 .notice_menu > * {

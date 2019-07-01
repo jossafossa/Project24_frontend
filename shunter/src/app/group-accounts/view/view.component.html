@@ -1,18 +1,16 @@
-<mat-toolbar>
-  <span>Group account</span>
-</mat-toolbar>
+<h1 class="">Group details</h1>
 <div class="buttons">
-  <button mat-button (click)="toSwipe()">Swipe</button>
-  <button mat-button (click)="toEdit()">Edit account</button>
+  <button (click)="toSwipe()">Swipe</button>
+  <button (click)="toEdit()">Edit account</button>
 </div>
 <div class="mContainer">
   <div class="formContainer">
     <div class="formCard">
       <div class="photo"></div>
       <div class="bInfo">
-        <label>Name of group</label>
-        <label>Description</label>
-        <label>Interests</label>
+        <label><b>Name</b></label>
+        <label><b>Description</b></label>
+        <label><b>Interests</b></label>
       </div>
       <!-- automatiseer dit alles! -->
       <div class="bInfo" id="infoSelf">
@@ -56,4 +54,5 @@
     </div>
   </div>
 </div>
+<hr class="large">
 <app-board></app-board>

@@ -1,14 +1,20 @@
-<form>
-	<div class="row">
-		
-		<label for="username">username</label>
-		<input type="text" name="username" [(ngModel)]="username">
+<div class="full-height flex full-center">
+	<div class="login-form">
+		<h1 class="fancy">Login</h1>
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<div class="row">
+				
+				<label for="username">username</label>
+				<input type="text" name="username" formControlName="username">
+			</div>
+			<div class="row">
+				<label for="password">password</label>	
+				<input type="password" name="password" formControlName="password">
+			</div>
+			<div class="row">
+				<input type="submit" class="button" value="submit">
+			</div>
+		</form> 
 	</div>
-	<div class="row">
-		<label for="password">password</label>	
-		<input type="password" name="password" [(ngModel)]="password">
-	</div>
-	<div class="row">
-		<button type="button" class="button" (click)="onSubmit($event)">Login</button>
-	</div>
-</form> 
+	
+</div>
