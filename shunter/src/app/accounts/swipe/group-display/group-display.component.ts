@@ -43,8 +43,10 @@ export class GroupDisplayComponent implements OnInit {
 		this.returnElement();
 		console.log(this.relPos.x, this.offset);
 		if (this.relPos.x > this.offset) {
+			console.log("like")
       		this.onLike.emit(null);
 		} else if (this.relPos.x < -this.offset) {
+			console.log("dislike")
       		this.onDislike.emit(null);
 		}
 	}

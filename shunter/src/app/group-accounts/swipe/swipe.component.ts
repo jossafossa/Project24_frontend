@@ -21,7 +21,7 @@ export class SwipeComponent implements OnInit {
     let next = this.api.getNextUser(); 	
     next.subscribe((data) => {
       console.log(data); 
-      this.setGroup(data[0]);
+      this.setData(data[0]); 
     });
   }
   
@@ -29,16 +29,20 @@ export class SwipeComponent implements OnInit {
     this.api.likeUser(this.group["id"]).subscribe(d => console.log(d));
 
     let next = this.api.getNextUser();
-    next.subscribe((data) => {this.setGroup(data[0]); console.log(data)});
+    next.subscribe((data) => {console.log("data hiero:", data); this.setData(data[0]); });
   }
 
-  setGroup(data) {  
-    console.log("data:", data);
-    this.group = {
-      "id": data["id"],
-      "image": data["pic1"],
-      "name": data["name"],
-      "text": data["description"],
+  setData(data) {  
+    if (data != []) {
+      console.log("data:", data);
+      this.group = {
+        "id": data["id"],
+        "image": data["pic1"],
+        "name": data["name"],
+        "text": data["description"],
+      }
+    } else {
+      this.empty();
     }
   }
 
@@ -46,7 +50,7 @@ export class SwipeComponent implements OnInit {
     this.api.dislikeUser(this.group["id"]);
 
     let next = this.api.getNextUser();
-    next.subscribe((data) => {this.setGroup(data[0]); console.log(data)});
+    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
   }
 
 }

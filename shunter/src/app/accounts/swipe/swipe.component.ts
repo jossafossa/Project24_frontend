@@ -19,14 +19,17 @@ export class SwipeComponent implements OnInit {
 
   ngOnInit() { 
     let next = this.api.getNextGroup(); 	
-    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
+    next.subscribe((data) => {
+      console.log(data); 
+      this.setData(data[0]); 
+    });
   }
   
   like() {
     this.api.likeGroup(this.group["id"]).subscribe(d => console.log(d));
 
     let next = this.api.getNextGroup();
-    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
+    next.subscribe((data) => {console.log("data hiero:", data); this.setData(data[0]); });
   }
 
   setData(data) {  

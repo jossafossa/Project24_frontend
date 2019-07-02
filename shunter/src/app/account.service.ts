@@ -278,13 +278,13 @@ export class APIService {
 
   // like/dislike stuff
   getNextUser() {
-    let endpoint = "/api/v1/users/getCandidate"; // endpoint is wrong
+    let endpoint = "/api/v1/friendcircle/getCandidateUser"; // endpoint is wrong
     return this.request("get", endpoint);
   }
 
   likeUser(userID) {
     console.log("user liked")
-    let endpoint = "/api/v1/users/SwipeCandidateFriendCircle";
+    let endpoint = "/api/v1/friendcircle/SwipeCandidateUser";
     let data = {
         "friendcircle": userID,
         "swipe_choice": "V"
@@ -294,7 +294,7 @@ export class APIService {
 
   dislikeUser(userID) {
     console.log("user liked")
-    let endpoint = "/api/v1/users/SwipeCandidateFriendCircle";
+    let endpoint = "/api/v1/friendcircle/SwipeCandidateUser";
     let data = {
         "friendcircle": userID,
         "swipe_choice": "X"
@@ -305,7 +305,7 @@ export class APIService {
 
    // like/dislike stuff
   getNextGroup() {
-    let endpoint = "/api/v1/friendcircle/getCandidate"; // endpoint is wrong
+    let endpoint = "/api/v1/friendcircle/getCandidateFriendCircle"; // endpoint is wrong
     return this.request("get", endpoint);
   }
 
@@ -314,7 +314,7 @@ export class APIService {
     console.log("group liked")
     let endpoint = "/api/v1/friendcircle/SwipeCandidateFriendCircle";
     let data = {
-        "user": groupID,
+        "friendcircle": groupID,
         "swipe_choice": "V"
     }
     return this.request("post", endpoint, data);
@@ -324,7 +324,7 @@ export class APIService {
     console.log("group disliked")
     let endpoint = "/api/v1/friendcircle/SwipeCandidateFriendCircle";
     let data = {
-        "user": groupID,
+        "friendcircle": groupID,
         "swipe_choice": "X"
     }
     return this.request("post", endpoint, data);
@@ -333,8 +333,8 @@ export class APIService {
   //Noticeboard stuff
   // TODO: endpoints uitwerken, hoe doe ik per groep iets halen?
 
-  getNotices(){
-    let endpoint = '/api/v1/prikmuur/';
+  getNotices(groupID){
+    let endpoint = '/api/v1/prikmuur/getGroup/' + groupID;
     return this.request('get', endpoint);
   }
 
@@ -344,28 +344,28 @@ export class APIService {
   }
 
   addNotice(subject, noticeText, postedBy, group) {
-    let data =
-      {
+    let data = {
         "subject": subject,
         "noticeText": noticeText,
         "postedBy": postedBy,
         "group": group,
       };
-       let endpoint = '/api/v1/prikmuur/';
+       let endpoint = '/api/v1/prikmuur/getGroup/' + group;
        return this.request("post", endpoint, data);
   }
 
 
   updateNotice(noticeID, subject, noticeText) {
-    let data =
-      {
+    let data = {
         "subject": subject,
-        "noticeText": noticeText,
-        "id": noticeID,
-      };
-           let endpoint = '/api/v1/prikmuur/' + noticeID;
-           return this.request("patch", endpoint, data);
-      }
+        "noticeText": noticeText
+    };
+    let endpoint = '/api/v1/prikmuur/' + noticeID;
+    console.log("///////////////");
+    console.log(data);
+    console.log("///////////////");
+    return this.request("patch", endpoint, data);
+  }
 
   removeNotice(noticeID){
     let endpoint = '/api/v1/prikmuur/' + noticeID;

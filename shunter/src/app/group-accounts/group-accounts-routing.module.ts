@@ -33,6 +33,10 @@ const routes: Routes = [
         loadChildren: () => import('./noticeboard/noticeboard.module').then(mod => mod.NoticeboardModule)
       },
       {
+        path: 'board/:id',
+        loadChildren: () => import('./noticeboard/noticeboard.module').then(mod => mod.NoticeboardModule)
+      },
+      {
         path: 'swipe',
         loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule),
       }

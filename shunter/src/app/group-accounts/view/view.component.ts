@@ -13,6 +13,7 @@ export class ViewComponent implements OnInit {
   name: string;
   description: string;
   members: {};
+  groupID;
 
   constructor(
     private router : Router,
@@ -21,9 +22,9 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {    
-    let groupID = this.route.snapshot.paramMap.get("id");
-    if (groupID) {
-      this.api.getGroup(groupID).subscribe(data => {
+    this.groupID = this.route.snapshot.paramMap.get("id");
+    if (this.groupID) {
+      this.api.getGroup(this.groupID).subscribe(data => {
         this.setData(data);
       })
     } else {

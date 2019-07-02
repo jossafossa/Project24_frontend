@@ -2,7 +2,7 @@
 	<div class="dislike" (click)="dislike()">
 		<span>dislike</span>
 	</div>
-	<group-display [group]="group"></group-display>
+	<group-display (onLike)="like()" (onDislike)="dislike()" [group]="group"></group-display>
 	<div class="like" (click)="like()">
 		<span>like</span>
 	</div>

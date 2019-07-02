@@ -1,4 +1,4 @@
-<div class="swipe_content">
+<div class="swipe_content" *ngIf="group != []" (mousedown)="startDrag($event)">
 			
 	<img [src]="group.image" alt="">
 	<h1 class="title">{{group.name}}</h1>

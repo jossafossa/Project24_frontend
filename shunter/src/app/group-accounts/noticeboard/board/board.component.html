@@ -1,7 +1,7 @@
 <div class="noticeboard">
   <h1 class="">Noticeboard</h1>
   <div class="buttons">
-    <button [routerLink]="['/group-accounts/board/addnotice']" >Add note</button>
+    <button [routerLink]="['/group-accounts/board/' + groupID + '/addnotice']" >Add note</button>
   </div>
 
   <div class="notices">  
@@ -10,7 +10,7 @@
       <i class="notice_byline">By: {{notice.postedBy}}, {{notice.created}}</i>
       <div class="notice_content">{{notice.noticeText}}</div>
       <div class="notice_menu">
-        <button [routerLink]="['/group-accounts', notice.group, 'board', 'notice', notice.id]" >edit</button>
+        <button (click)="editNotice(notice.id)">edit</button>
         <button (click)="removeNotice(notice.id)">remove</button>
       </div>
     </div>

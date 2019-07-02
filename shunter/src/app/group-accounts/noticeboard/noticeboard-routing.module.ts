@@ -17,11 +17,11 @@ const routes: Routes = [
     component: BoardComponent,
   },
   {
-    path: 'board/addnotice',
+    path: 'addnotice',
     component: NoticeComponent,
   },
   {
-    path: 'board/notice/:id',
+    path: 'notice/:noticeID',
     component: NoticeComponent,
   },
 ];

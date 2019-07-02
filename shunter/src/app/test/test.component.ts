@@ -363,7 +363,7 @@ export class TestComponent implements OnInit {
   console.log("generating users") 
     for(let i = 0; i<10; i++) {
       console.log("users" + (i+1)) 
-      let response = this.api.signup("user" + (i+1), "user" + (i+1) + "@user.nl", "asldn1348h##", "asldn1348h##", [], [], false);
+      let response = this.api.signup("user" + (i+1), "user" + (i+1) + "@user.nl", "asldn1348h##", "asldn1348h##", []);
       response.subscribe((data)=>console.log);
     } 
   }

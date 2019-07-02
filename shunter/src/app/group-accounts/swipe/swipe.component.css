@@ -3,17 +3,20 @@
 	height:100%;
 	display:flex;
 	flex:1;
+
 }
 
 .dislike, .like {
 	flex:1;
-	background-color:red;
 	display: flex;
+	text-transform: uppercase;
 	justify-content: center;
 	align-items: center;
 	font-size:2rem;
 	cursor: pointer;
 	user-select:none;
+	background-color:whitesmoke;
+	color:rgba(0,0,0,0.3);
 }
 
 .dislike > *, .like > * {
@@ -26,4 +29,6 @@ group-display {
 	width:100%;
 	height:100%;
 	overflow-y:auto;
+	padding:0 1rem;
+	cursor: pointer;
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { APIService } from '../../../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -8,9 +9,11 @@ import { APIService } from '../../../account.service';
 })
 export class BoardComponent implements OnInit {
   notices = [];
+  @Input() groupID: number;
 
   constructor(
     public api: APIService,
+    public router : Router
     ) {
   }
 
@@ -19,13 +22,18 @@ export class BoardComponent implements OnInit {
   }
 
   getNotices() {
-    this.api.getNotices().subscribe(data => {
+    this.api.getNotices(this.groupID).subscribe(data => {
       for(let notice of data) {
         notice.created = this.calcTime(notice.created);
         this.notices.push(notice);
       }
       this.notices = data
     });
+  }
+
+  editNotice(noticeID) {
+    console.log(noticeID);
+    this.router.navigate(["/group-accounts", "board", this.groupID, "notice", noticeID])
   }
 
   calcTime(date) {

@@ -15,7 +15,7 @@ export class NoticeComponent implements OnInit {
   subject;
   noticeText;
   postedBy;
-  group=1;
+  groupID;
   noticeID;
   constructor(
     public api: APIService,
@@ -35,13 +35,18 @@ export class NoticeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.noticeID = this.route.snapshot.paramMap.get('id');
+    this.noticeID = this.route.snapshot.paramMap.get('noticeID');
+    this.groupID = this.route.snapshot.paramMap.get('id');
+    this.api.getLoggedInUser().subscribe(d => {
+      this.postedBy = d.username;
+    })
+    console.log(this.groupID);
     this.getNoticeID();
   }
   
   addNotice() {
     console.log("Adding notice", this.subject.value, this.noticeText.value, this.postedBy);
-   this.api.addNotice(this.subject.value, this.noticeText.value, this.postedBy, this.group)
+   this.api.addNotice(this.subject.value, this.noticeText.value, this.postedBy, this.groupID)
      .subscribe(this.location.back());
   }
 
