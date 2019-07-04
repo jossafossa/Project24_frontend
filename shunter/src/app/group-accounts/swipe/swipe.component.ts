@@ -42,7 +42,7 @@ export class SwipeComponent implements OnInit {
         "text": data["description"],
       }
     } else {
-      this.empty();
+      //this.empty();
     }
   }
 
