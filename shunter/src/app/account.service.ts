@@ -283,7 +283,6 @@ export class APIService {
   }
 
   likeUser(groupID, userID) {
-    console.log("user liked")
     let endpoint = "/api/v1/friendcircle/SwipeCandidateUser/" + groupID;
     let data = {
         "user": userID,
@@ -293,7 +292,6 @@ export class APIService {
   }
 
   dislikeUser(groupID, userID) {
-    console.log("user liked")
     let endpoint = "/api/v1/friendcircle/SwipeCandidateUser/" + groupID;
     let data = {
         "user": userID,

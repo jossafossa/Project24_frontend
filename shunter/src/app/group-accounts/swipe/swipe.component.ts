@@ -31,7 +31,7 @@ export class SwipeComponent implements OnInit {
   
   like() {
     console.log("liking jo");
-    this.api.likeUser(this.id, this.group["id"]);
+    this.api.likeUser(this.id, this.group["id"]).subscribe(e => console.log(e));
     let next = this.api.getNextUser(this.id);
     next.subscribe((data) => {this.setData(data); });
   }
@@ -56,7 +56,7 @@ export class SwipeComponent implements OnInit {
 
   dislike() {
     console.log("disliking jo");
-    this.api.dislikeUser(this.id, this.group["id"]);
+    this.api.dislikeUser(this.id, this.group["id"]).subscribe(e => console.log(e));
 
     let next = this.api.getNextUser(this.id);
     next.subscribe((data) => {this.setData(data)});

@@ -18,6 +18,8 @@ import { TestComponent } from './test/test.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function tokenGetter(){
   return localStorage.getItem('access-token');
@@ -43,7 +45,8 @@ export function tokenGetter(){
       config: {
         tokenGetter: tokenGetter,
       }
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [APIService],
   bootstrap: [AppComponent]
