@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from '@ang
 })
 export class GroupDisplayComponent implements OnInit {
 
-	@Input() group: Object;	
+	@Input() group;	
 	@Output() onLike: EventEmitter<any> = new EventEmitter();
 	@Output() onDislike: EventEmitter<any> = new EventEmitter();
 	root;

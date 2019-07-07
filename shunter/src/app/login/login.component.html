@@ -1,7 +1,7 @@
 <div class="full-height flex full-center">
 	<div class="login-form">
 		<h1 class="fancy">Login</h1>
-		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
 			<div class="row">
 				
 				<label for="username">username</label>

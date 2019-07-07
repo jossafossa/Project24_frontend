@@ -46,6 +46,10 @@ export class SwipeComponent implements OnInit {
     }
   }
 
+  empty() {
+    console.log("youre all out");
+  }
+
   dislike() {
     this.api.dislikeUser(this.group["id"]);
 
