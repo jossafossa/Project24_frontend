@@ -21,7 +21,7 @@ export class SwipeComponent implements OnInit {
     let next = this.api.getNextGroup(); 	
     next.subscribe((data) => {
       console.log(data); 
-      this.setData(data[0]); 
+      this.setData(data); 
     });
   }
   
@@ -29,24 +29,32 @@ export class SwipeComponent implements OnInit {
     this.api.likeGroup(this.group["id"]).subscribe(d => console.log(d));
 
     let next = this.api.getNextGroup();
-    next.subscribe((data) => {console.log("data hiero:", data); this.setData(data[0]); });
+    next.subscribe((data) => {console.log("data hiero:", data); this.setData(data); });
   }
 
   setData(data) {  
-    console.log("data:", data);
-    this.group = {
-      "id": data["id"],
-      "image": data["pic1"],
-      "name": data["name"],
-      "text": data["description"],
+    if (data.name != "") {
+      console.log("data:", data);
+      this.group = {
+        "id": data["id"],
+        "image": data["pic1"],
+        "name": data["name"],
+        "text": data["description"],
+      }
+    } else {
+      this.empty();
     }
+  }
+
+  empty() {
+    console.log("youre all out");
   }
 
   dislike() {
     this.api.dislikeGroup(this.group["id"]);
 
     let next = this.api.getNextGroup();
-    next.subscribe((data) => {this.setData(data[0]); console.log(data)});
+    next.subscribe((data) => {this.setData(data); console.log(data)});
   }
 
 }

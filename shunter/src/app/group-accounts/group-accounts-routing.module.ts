@@ -39,6 +39,10 @@ const routes: Routes = [
       {
         path: 'swipe',
         loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule),
+      },
+      {
+        path: 'swipe/:id',
+        loadChildren: () => import('./swipe/swipe.module').then(mod => mod.SwipeModule),
       }
     ]
   }

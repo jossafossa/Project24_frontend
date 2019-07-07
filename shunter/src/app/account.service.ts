@@ -277,26 +277,26 @@ export class APIService {
 
 
   // like/dislike stuff
-  getNextUser() {
-    let endpoint = "/api/v1/friendcircle/getCandidateUser"; // endpoint is wrong
+  getNextUser(groupID) {
+    let endpoint = "/api/v1/friendcircle/getCandidateUser/" + groupID; // endpoint is wrong
     return this.request("get", endpoint);
   }
 
-  likeUser(userID) {
+  likeUser(groupID, userID) {
     console.log("user liked")
-    let endpoint = "/api/v1/friendcircle/SwipeCandidateUser";
+    let endpoint = "/api/v1/friendcircle/SwipeCandidateUser/" + groupID;
     let data = {
-        "friendcircle": userID,
+        "user": userID,
         "swipe_choice": "V"
     }
     return this.request("post", endpoint, data);
   }
 
-  dislikeUser(userID) {
+  dislikeUser(groupID, userID) {
     console.log("user liked")
-    let endpoint = "/api/v1/friendcircle/SwipeCandidateUser";
+    let endpoint = "/api/v1/friendcircle/SwipeCandidateUser/" + groupID;
     let data = {
-        "friendcircle": userID,
+        "user": userID,
         "swipe_choice": "X"
     }
     return this.request("post", endpoint, data);
