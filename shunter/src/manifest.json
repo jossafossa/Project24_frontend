@@ -1,7 +1,7 @@
 {
   "name": "shunter",
   "short_name": "shunter",
-  "theme_color": "#1976d2",
+  "theme_color": "#bb1e10",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

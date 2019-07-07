@@ -38,7 +38,7 @@ export class NoticeComponent implements OnInit {
     this.noticeID = this.route.snapshot.paramMap.get('noticeID');
     this.groupID = this.route.snapshot.paramMap.get('id');
     this.api.getLoggedInUser().subscribe(d => {
-      this.postedBy = d.username;
+      //this.postedBy = d.username; <-- is kapot?
     })
     console.log(this.groupID);
     this.getNoticeID();
