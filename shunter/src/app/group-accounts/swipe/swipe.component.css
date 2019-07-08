@@ -3,7 +3,16 @@
 	height:100%;
 	display:flex;
 	flex:1;
+}
 
+.swipe-notice {
+	display:flex;
+	padding:1rem;
+	flex-direction: column;
+	justify-content: center;
+	color:white;
+	background-color:var(--secondary-bg-color);
+	height:100%;
 }
 
 .dislike, .like {

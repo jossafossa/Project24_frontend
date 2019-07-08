@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from './../../account.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-swipe',
@@ -14,8 +15,9 @@ export class SwipeComponent implements OnInit {
     "name": "henk",
     "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos laudantium voluptatibus tempora illum asperiores? Maxime facere, quod ad distinctio, cumque, consequuntur expedita repellendus quisquam eveniet nemo unde id, aliquid ea. Praesentium tenetur et, nisi aperiam illo assumenda reprehenderit dolore quasi."
   }
+  out = false;
 
-  constructor(public api: APIService) { }
+  constructor(public api: APIService, private _location: Location) { }
 
   ngOnInit() { 
     let next = this.api.getNextGroup(); 	
@@ -30,6 +32,10 @@ export class SwipeComponent implements OnInit {
 
     let next = this.api.getNextGroup();
     next.subscribe((data) => {console.log("data hiero:", data); this.setData(data); });
+  }
+
+  goBack() {    
+    this._location.back();
   }
 
   setData(data) {  
@@ -47,6 +53,7 @@ export class SwipeComponent implements OnInit {
   }
 
   empty() {
+    this.out = true;
     console.log("youre all out");
   }
 

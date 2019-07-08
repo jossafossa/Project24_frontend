@@ -15,6 +15,7 @@ export class NoticeComponent implements OnInit {
   subject;
   noticeText;
   postedBy;
+  isNew;
   groupID;
   noticeID;
   constructor(
@@ -37,6 +38,7 @@ export class NoticeComponent implements OnInit {
   ngOnInit() {
     this.noticeID = this.route.snapshot.paramMap.get('noticeID');
     this.groupID = this.route.snapshot.paramMap.get('id');
+    this.isNew = (this.noticeID == null) ? true : false;
     this.api.getLoggedInUser().subscribe(d => {
       console.log(d);
       // this.postedBy = d.name;

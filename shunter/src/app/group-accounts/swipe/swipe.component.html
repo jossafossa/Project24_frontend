@@ -1,9 +1,17 @@
-<div class="swipe-container">
-	<div class="dislike" (click)="dislike()">
-		<span>dislike</span>
+<div class="full-height">
+	<div class="swipe-container" *ngIf="!out" >		
+		<div class="dislike" (click)="dislike()">
+			<span>dislike</span>
+		</div>
+		<group-display (onLike)="like()" (onDislike)="dislike()" [group]="group"></group-display>
+		<div class="like" (click)="like()">
+			<span>like</span>
+		</div>
 	</div>
-	<group-display (onLike)="like()" (onDislike)="dislike()" [group]="group"></group-display>
-	<div class="like" (click)="like()">
-		<span>like</span>
+
+	<div class="swipe-notice" *ngIf="out">
+		<h2>you swiped everyone :O</h2>
+		<p>Please come back later</p>
+		<button (click)="goBack()">Go back</button>
 	</div>
 </div>

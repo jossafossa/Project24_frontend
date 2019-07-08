@@ -17,7 +17,9 @@
 
           <tr>
             <th>Interests</th>
-            <td>{{ interests ? interests.join(', ') : '-' }}</td>
+          <label>
+            <span *ngFor="let interest of interests" class="label">{{interest}}</span>
+          </label>
           </tr>
         </tbody>
       </table>
